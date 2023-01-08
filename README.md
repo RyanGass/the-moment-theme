@@ -1,28 +1,20 @@
 [![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)
 
-# \_s
+# A Badass Wordpress Theme (for developers) - Guide
 
-Hi. I'm a starter theme called `A Badass Wordpress Theme (for developers)`. I'm a theme meant for developers to quickly and efficiently start developing a new website. I'm intended to be used over and over again, and most importantly I'm intended to be the last theme you'll ever need for the rest of your career, ever, until you die. I don't have (m)any bells or whistles, but I come equipt with everything you'll need to build a Wordpress website fast and e Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
+Welcome to a starter theme called `A Badass Wordpress Theme (for developers)`, AKA `The Moment`. `The Moment` is a theme meant for developers who want to start developing a new Wordpress website quickly and efficiently. `The Moment` is intended to be used over and over again, and most importantly intended to be the last theme you'll ever need for the rest of your career, ever, until you die. `The Moment` doesn't have (m)any bells or whistles, but it comes equipt with everything you'll need to get your `Wordpress` website build up and running. `The Moment` can be used as a Parent theme or Child theme, just as long as it's used for every website you ever build ever forever. That's what `The Moment` is here for. Let's go!
 
-My ultra-minimal CSS might make me look like theme tartare but that means less stuff to get in your way when you're designing your awesome theme. Here are some of the other more interesting things you'll find here:
+Some things that make `The Moment` special:
 
-- A modern workflow with a pre-made command-line interface to turn your project into a more pleasant experience.
-- A just right amount of lean, well-commented, modern, HTML5 templates.
-- A custom header implementation in `inc/custom-header.php`. Just add the code snippet found in the comments of `inc/custom-header.php` to your `header.php` template.
-- Custom template tags in `inc/template-tags.php` that keep your templates clean and neat and prevent code duplication.
-- Some small tweaks in `inc/template-functions.php` that can improve your theming experience.
-- A script at `js/navigation.js` that makes your menu a toggled dropdown on small screens (like your phone), ready for CSS artistry. It's enqueued in `functions.php`.
-- 2 sample layouts in `sass/layouts/` made using CSS Grid for a sidebar on either side of your content. Just uncomment the layout of your choice in `sass/style.scss`.
-  Note: `.no-sidebar` styles are automatically loaded.
-- Smartly organized starter CSS in `style.css` that will help you to quickly get your design off the ground.
-- Full support for `WooCommerce plugin` integration with hooks in `inc/woocommerce.php`, styling override woocommerce.css with product gallery features (zoom, swipe, lightbox) enabled.
-- Licensed under GPLv2 or later. :) Use it to make something cool.
+- `The Moment` is a bare bones Wordpress starter theme based off of the world renowned `_s` AKA `underscores.me`.
+- `The Moment` is intened to be used by Wordpress Developers who value organization, flexibility, extendability, and who loath code bloat.
+- `The Moment`
 
 ## Installation
 
 ### Requirements
 
-`_s` requires the following dependencies:
+`The Moment` requires the following dependencies:
 
 - [Node.js](https://nodejs.org/)
 - [Composer](https://getcomposer.org/)
