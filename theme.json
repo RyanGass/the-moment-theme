@@ -1,0 +1,30 @@
+{
+    "version": 2,
+    "settings": {
+        "color": {
+            "defaultPalette": false,
+            "palette": [
+                {
+                    "name": "Black",
+                    "slug": "black",
+                    "color": "#000000"
+                },
+                {
+                    "name": "White",
+                    "slug": "white",
+                    "color": "#ffffff"
+                },
+                {
+                    "name": "Light Grey",
+                    "slug": "light-grey",
+                    "color": "#D1D1D1"
+                },
+                {
+                    "name": "Dark Grey",
+                    "slug": "dark-grey",
+                    "color": "#575757"
+                }
+            ]
+        }
+    }
+}

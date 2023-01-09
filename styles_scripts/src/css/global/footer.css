@@ -1,0 +1,23 @@
+/***
+*** Site Footer ***
+***/
+
+footer {
+    color: #303030;
+}
+
+.this {
+    @apply bg-black;
+
+    &:hover {
+        color: blue;
+    }
+}
+
+.that {
+    color: blue;
+}
+
+.that:hover {
+    color: green;
+}

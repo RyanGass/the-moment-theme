@@ -41,6 +41,39 @@ $ composer install
 $ npm install
 ```
 
+VS Code user settings for js/css linters
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "eslint.validate": [
+        "javascript"
+    ],
+    "eslint.codeActionsOnSave.mode": "all",
+    "eslint.format.enable": true,
+    "eslint.codeActionsOnSave.rules": null,
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "stylelint.snippet": [
+        "css",
+        "less",
+        "postcss",
+        "scss"
+    ],
+    "stylelint.validate": [
+        "css",
+        "less",
+        "postcss",
+        "scss"
+    ],
+    "editor.formatOnSave": true,
+    "editor.fontLigatures": false,
+    "editor.wordWrap": "off",
+}
+
+
+
 ### Available CLI commands
 
 `_s` comes packed with CLI commands tailored for WordPress theme development :
