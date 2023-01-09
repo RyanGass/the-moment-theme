@@ -40,20 +40,51 @@ $ npm install
 $ composer require htmlburger/carbon-fields
 ```
 
+If you use VS code, then create a new workspace folder and drop this into the .vscode/setting.json file located in the root of the folder.
+```sh
+$ {
+$    "editor.codeActionsOnSave": {
+$        "source.fixAll.eslint": true
+$    },
+$    "eslint.validate": [
+$        "javascript"
+$    ],
+$    "eslint.codeActionsOnSave.mode": "all",
+$    "eslint.format.enable": true,
+$    "eslint.codeActionsOnSave.rules": null,
+$    "css.validate": false,
+$    "less.validate": false,
+$    "scss.validate": false,
+$    "stylelint.snippet": [
+$        "css",
+$        "less",
+$        "postcss",
+$        "scss"
+$    ],
+$    "stylelint.validate": [
+$        "css",
+$        "less",
+$        "postcss",
+$        "scss"
+$    ],
+$    "editor.formatOnSave": true,
+$    "editor.fontLigatures": false,
+$    "editor.wordWrap": "off",
+$ }
+```
+
 ### Available CLI commands
 
-`_s` comes packed with CLI commands tailored for WordPress theme development :
+`The Moment` comes with CLI commands tailored for WordPress theme development:
 
-- `composer lint:wpcs` : checks all PHP files against [PHP Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/).
-- `composer lint:php` : checks all PHP files for syntax errors.
-- `composer make-pot` : generates a .pot file in the `languages/` directory.
-- `npm run compile:css` : compiles SASS files to css.
-- `npm run compile:rtl` : generates an RTL stylesheet.
-- `npm run watch` : watches all SASS files and recompiles them to css when they change.
-- `npm run lint:scss` : checks all SASS files against [CSS Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/css/).
-- `npm run lint:js` : checks all JavaScript files against [JavaScript Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/javascript/).
-- `npm run bundle` : generates a .zip archive for distribution, excluding development and system files.
+- `"build:css"` : Build and Minifies all `CSS` files for production. 
+- `build:js` : Build and Minifies all `JS` files for production.
+- `build` : Run both `build:css` and `build:js` concurrently to ready all files for production
+- `watch:css` : Start the npm watch engine to monitor all `CSS` changes
+ during development.
+- `watch:js` : Start the npm watch engine to monitor all `JS` changes and compile during development.
+- `watch` : Run both `watch:css` and `watch:js` monitor all `CSS` and `JS` chqnges during development.
 
-Now you're ready to go! The next step is easy to say, but harder to do: make an awesome WordPress theme. :)
+Alright, are you ready? Get going and build the next best Wordpress website!
 
-Good luck!
+The Moment Team
