@@ -11,13 +11,14 @@
     "Custom Theme",
     "Tailwind",
     "Carbon Fields",
-    "npm",
+    "Node",
     "PostCSS",
     "@import",
     "CSS/JS Lint, Build, and Minify",
     "Autoprefixer",
     "Concurrent commands",
-    "jQuery(less) front-end"
+    "jQuery(less) front-end",
+    "Javascript(less) main navigation"
   ],
   "devDependencies": {
     "@wordpress/scripts": "^19.2.2",
