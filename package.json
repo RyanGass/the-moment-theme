@@ -23,6 +23,7 @@
   "devDependencies": {
     "@wordpress/scripts": "^19.2.2",
     "autoprefixer": "^10.4.13",
+    "browser-sync": "^2.27.11",
     "concurrently": "^6.2.1",
     "esbuild": "^0.12.29",
     "postcss": "^8.4.21",
@@ -37,6 +38,8 @@
     "build": "concurrently \"npm run build:css\" \"npm run build:js\"",
     "watch:css": "tailwindcss -i ./styles_scripts/src/css/global/_site.css -o ./styles_scripts/dist/_site.css --postcss --watch",
     "watch:js": "esbuild ./styles_scripts/src/js/scripts.js --outfile=./styles_scripts/dist/scripts.js --watch",
-    "watch": "concurrently \"npm run watch:css\" \"npm run watch:js\""
+    "watch": "concurrently \"npm run watch:css\" \"npm run watch:js\"",
+    "browser-sync": "browser-sync start --proxy \"base-theme.local\" --host=\"base-theme.local\" --no-inject-changes --files=\"./\"",
+    "watch-sync": "concurrently \"npm run browser-sync\" \"npm run watch\""
   }
 }
