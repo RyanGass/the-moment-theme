@@ -4,57 +4,51 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package Theme_Name
+ * @package Service_Fusion_2022
  */
 
-get_header();
-?>
+get_header() ?>
 
-	<main id="primary" class="site-main">
+<?php get_template_part('templates/template-parts/banners/global', 'hero'); ?>
+<main class="mt-8">
+	<section id="posts-container" class="pt-24 pb-28">
+		<h2>While you're here, check out some of our latest blog posts</h2>
+		<?php
 
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'theme-name' ); ?></h1>
-			</header><!-- .page-header -->
+			$query_args = array(
+				'posts_per_page' => 3,
+				'post_type' => 'post',
+				'post_status' => 'publish',
+				'category__in' => $category,
+			);
+			$query = new WP_Query($query_args);
+		?>
+		<div id="post-block-wrapper" class="w-11/12 max-w-screen-xl mx-auto">
+			<div id="articles-wrapper" class="grid lg:grid-cols-3">
+				<?php $i = 1; while($query->have_posts()) : $query->the_post(); $post_date = get_the_date('M j, Y'); ?>	
+				<article class="w-11/12 mx-auto mt-6 mb-0 text-left bg-white">
+					<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+						<div class="post-image">
+							<?php if ( has_post_thumbnail() ) { ?>
+								<img class="w-full" src="<?php the_post_thumbnail_url('medium'); ?>" alt="Featured Image" />
+							<?php } ?>
+						</div>
+						<div class="p-6 post-text">
+							<h3><?php the_title(); ?></h3>
+								<?php  
 
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'theme-name' ); ?></p>
+								$current_post_id = get_the_ID(); // id of current post in the loop
+								$permalink = get_permalink( $current_post_id );
+								$title = get_the_title( $current_post_id );  
 
-					<?php
-					get_search_form();
-
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'theme-name' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$theme_name_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'theme-name' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$theme_name_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
-
+								echo '<p class="blog-excerpt">' . excerpt(15) . '</p><span class="read-more">Keep Reading</span>' ?>
+						</div>
+					</a>	
+				</article>
+				<?php $i++; endwhile; wp_reset_query(); ?>
+			</div>
+		</div>
+	</section>	
+</main>
 <?php
 get_footer();

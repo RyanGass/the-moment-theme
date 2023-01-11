@@ -84,7 +84,7 @@ if ($content) { $subtext = ' class="has-subtext"'; };
 						<div class="px-6 pt-6 post-categories">
 							<?php $category = get_the_category(); 
 								for	($c = 0; $c < count($category); $c++) {
-								echo '<a class="inline-block px-2 pt-1 text-center text-white uppercase bg-primary" href="'.get_category_link( $category[$c]->term_id ).'" title="'.$category[$c]->cat_name.'"">'.$category[$c]->cat_name.'</a>' ?>
+								echo '<a class="inline-block px-2 pt-1 text-center uppercase bg-primary" href="'.get_category_link( $category[$c]->term_id ).'" title="'.$category[$c]->cat_name.'"">'.$category[$c]->cat_name.'</a>' ?>
 							<?php } ?>
 						</div>
 
@@ -108,7 +108,7 @@ if ($content) { $subtext = ' class="has-subtext"'; };
 						</div>	
 				</article>
 				<?php $i++; endwhile; wp_reset_query(); ?>
-				<article class="w-11/12 mx-auto mt-6 mb-0 text-left text-white bg-primary post-cta-block">
+				<article class="w-11/12 mx-auto mt-6 mb-0 text-left bg-primary post-cta-block">
 					<div class="subscribe-form-wrapper">
 						<h3>Subscribe and stay up to date</h3>
 						<div class="subscribe-form">

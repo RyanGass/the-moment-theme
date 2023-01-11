@@ -12,6 +12,6 @@ module.exports = {
 	theme: {
 		extend: {},
 	},
-	plugins: [],
+	plugins: [ require( 'tailwindcss-debug-screens' ) ],
 };
 

@@ -1,0 +1,106 @@
+/***
+*** Global Hero ***
+***/
+
+#header-top:not(.lg\:block) + section#banner .banner-area {
+  @apply pb-20 pt-32 md:pt-36 lg:pb-28 lg:pt-40 ;
+}
+
+header + section#banner .banner-area {
+  @apply pb-10 pt-16 md:pt-16 lg:pb-20 lg:pt-20  ;
+}
+
+header.fixed + section#banner .banner-area {
+  @apply pb-20 pt-32 md:pt-36 lg:pb-28 lg:pt-52;
+}
+
+/*** Global Banner ***/
+
+html {
+  section#banner {
+    background: none;
+    background-color: #efefef;
+
+    &.overlay::after {
+      content: none;
+    }
+
+    &.light-text {
+      background-color: #303030;
+    }
+
+    &.light-text h1,
+    &.light-text p {
+      color: #fff;
+    }
+
+    .banner-area {
+      position: relative;
+      z-index: 1;
+
+      &.text-center div#banner-left {
+        flex-basis: 100% !important;
+      }
+
+      &.text-center div#banner-right {
+        display: none !important;
+      }
+    }
+
+    #social-sharing-inner p {
+      color: #fff;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .social-icon-wrapper a {
+      display: inline-block;
+      width: 25px;
+      margin: 0 5px;
+    }
+
+    .social-icon-wrapper a.share_facebook {
+      width: 15px;
+    }
+
+    #watch-video {
+      display: none;
+    }
+  }
+
+  section#banner.form-style-full {
+    .banner-area {
+      padding-bottom: 0 !important;
+    }
+
+    #banner-form {
+      @apply relative;
+
+      top: 50px;
+
+      #banner-form-inner {
+        form.mktoForm .mktoFormRow > .mktoFormCol {
+          margin-bottom: 0 !important;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 64rem) {
+    section#banner {
+      background-size: cover;
+      position: relative;
+
+      &.overlay::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(0 0 0 / 70%);
+        z-index: 0;
+      }
+    }
+  }
+}

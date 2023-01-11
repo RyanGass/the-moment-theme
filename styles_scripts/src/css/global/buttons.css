@@ -1,0 +1,46 @@
+/***
+*** Button Styles ***
+***/
+
+/*** Buttons ***/
+
+.btn {
+  border-radius: 2px;
+  padding: 8px 24px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  display: block;
+  width: fit-content;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  transition: background-color 0.3s, border 0.3s;
+}
+
+.btn.primary {
+  background-color: #f15320;
+  border: 2px solid #f15320;
+}
+
+.btn.primary:hover {
+  background: transparent;
+  color: #f15320;
+}
+
+.btn.secondary {
+  background: #a7c9e7;
+  border: 2px solid #a7c9e7;
+}
+
+.btn.secondary:hover {
+  background: transparent;
+  color: #a7c9e7;
+}
+
+.btn.primary.light-text:hover,
+.btn.secondary.light-text:hover {
+  color: #fff;
+  border: 2px solid #fff;
+}

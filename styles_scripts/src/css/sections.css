@@ -1,0 +1,35 @@
+/***
+*** Section Text w/Image ***
+***/
+
+section#text-image-container {
+  .section-align-left {
+    @apply flex flex-col items-start justify-between lg:items-center lg:flex-row;
+
+    .section-image {
+      @apply w-full mb-8 md:mb-0 lg:w-2/5;
+    }
+
+    .section-content {
+      @apply w-full lg:w-1/2;
+    }
+  }
+
+  .section-align-right {
+    @apply flex flex-col items-start justify-between lg:items-center lg:flex-row;
+
+    .section-image {
+      @apply w-full mb-8 lg:w-2/5 md:mb-0 order-2;
+    }
+
+    .section-content {
+      @apply w-full lg:w-1/2 order-1;
+    }
+  }
+
+  .section-block #section-image img {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}

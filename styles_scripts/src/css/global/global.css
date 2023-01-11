@@ -1,0 +1,18 @@
+/***
+*** Global Styles ***
+***/
+
+#wpadminbar {
+  top: unset;
+  bottom: 0;
+}
+
+img.custom-logo {
+  max-width: 250px;
+}
+
+/*** Flexible Content ***/
+
+main section {
+  padding: var(--space-6) 0;
+}

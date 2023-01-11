@@ -32,17 +32,10 @@ function crb_attach_post_options() {
                             'no' => 'No',
                             'yes' => 'Yes'
                         )),
-                    Field::make('radio', 'boxed_layout', 'Boxed Layout?')
-                        ->add_options(array(
-                            'no' => 'No',
-                            'yes' => 'Yes'
-                        )),
                     Field::make( 'radio', 'image_alignment', 'Set Image Alignment' )
                         ->add_options( array(
                             'left' => 'Left',
                             'right' => 'Right',
-                            'top' => 'Top',
-                            'bottom' => 'Bottom',
                         ) ),
                     Field::make( 'text', 'pre_heading', 'Pre Heading' ),
                     Field::make( 'text', 'heading', 'Heading' ),

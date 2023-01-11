@@ -1,51 +1,56 @@
-<?php
-/**
- * The template for displaying archive pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package Theme_Name
- */
+<?php get_header(); ?> 
+<?php get_template_part('templates/template-parts/banners/global', 'hero'); ?>
 
-get_header();
-?>
+<div id="category-wrapper">
+	<ul class="blog-topics">
+		<li class="topic">Filter by Topics</li>
+		<ul>
+	<?php 
 
-	<main id="primary" class="site-main">
+	$categories = get_categories( array(
+		'orderby' => 'name',
+		'parent'  => 0
+	) );
 
-		<?php if ( have_posts() ) : ?>
+	foreach ( $categories as $category ) {
+		printf( '<li><a href="%1$s">%2$s</a></li>',
+			esc_url( get_category_link( $category->term_id ) ),
+			esc_html( $category->name )
+		);
+	}
 
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
+	?>
+		</ul>
+	</ul>
+</div>
+<main>
+    <section id="posts-container" class="pt-24 posts-container pb-28 style-two">
+		<div id="post-block-wrapper" class="w-11/12 max-w-screen-xl mx-auto">
+			<div id="articles-wrapper" class="grid lg:grid-cols-3">
+				<?php the_archive_description( '<div class="taxonomy-description">', '</div>' ); ?>
+                <?php if (have_posts()) : while (have_posts()) : the_post();?>
+                <?php get_template_part('templates/template-parts/blog/blog', 'content'); ?>
+                <?php endwhile; ?>
+			</div>
+			<?php get_template_part('templates/template-parts/blog/blog', 'pagination'); ?>
+			<?php else : ?>
+			<h2>Page not Found</h2>
+			<p>We're sorry, but the page you're looking for isn't here.</p>
+			<p>Try searching for the page you are looking for or using the navigation in the header or sidebar</p>
+			<?php endif; ?>
+		</div>
+	</section>
+</main>
+<?php get_footer() ?>
+<script>
+	var body = document.querySelector('body');
+	var show_categories = document.querySelector('.blog-topics');
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-	</main><!-- #main -->
-
-<?php
-get_sidebar();
-get_footer();
+	body.addEventListener("click", function () {
+		show_categories.classList.remove('active');
+	}, false);
+	show_categories.addEventListener("click", function (ev) {
+		show_categories.classList.add('active');
+		ev.stopPropagation(); //this is important! If removed, both click events will occur
+	}, false);
+</script>

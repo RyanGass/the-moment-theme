@@ -87,4 +87,4 @@ If you use VS code, then create a new workspace folder and drop this into the .v
 
 Alright, are you ready? Get going and build the next best Wordpress website!
 
-The Moment Developement
+The Moment Dev

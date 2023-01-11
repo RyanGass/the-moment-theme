@@ -1,59 +1,106 @@
-<?php
-/**
- * The header for our theme
- *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package Theme_Name
- */
-
-?>
-<!doctype html>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	<meta name="viewport" content="width=device-width">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<?php wp_head(); ?>
+    <!-- Google Tag Manager -->
+    <script>
+    var gtmHeader = {
+        gtmHeadDelay: function() {
+            setTimeout(function(){
+
+            // (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            // new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            // j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            // 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            // })(window,document,'script','dataLayer','GTM-M424LCP');
+            // 
+			}, 3000);
+        }
+    }
+    gtmHeader.gtmHeadDelay.call();
+    </script>
+    <!-- End Google Tag Manager -->
 </head>
 
-<body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'theme-name' ); ?></a>
+<body <?php body_class( 'bg-white antialiased debug-screens' ); ?>>
+<?php if(is_page_template('templates/page-front.php')) : $wrapper_class='homepage'; else : $wrapper_class='internal'; endif; ?>
+<div id="wrapper" class="flex flex-col overflow-hidden <?= $wrapper_class; ?>">
+    <?php // Fixed Header Options
+        $fixed_header = carbon_get_theme_option('fixed_header');
+        if ( $fixed_header === 'yes') :
+            $position = 'fixed ';
+            $header_position = 'transform -translate-x-1/2 -translate-y-1/2 logo-menu-wrapper left-1/2 ';
+        else : 
+            $position = 'relative ';
+            $header_position = '';
+        endif; ?>
+    <?php // Show/Hide Utility Menu 
+        $utility_menu = carbon_get_theme_option( 'utility_menu' );
+        if ($utility_menu === 'yes') :
+            $show_menu = 'lg:block ';
+        else : 
+            $show_menu = '';
+        endif; ?>
+    <div id="header-top" class="<?php echo $position . $show_menu ?>z-10 w-full hidden">
+        <div id="utility-menu-wrapper" class="w-11/12 mx-auto max-w-screen-2xl">
+            <?php // Utlity Menu
+                wp_nav_menu(
+                    array(
+                        'container_id'    => 'utility-menu',
+                        'container_class' => '',
+                        'menu_class'      => 'lg:flex lg:justify-end',
+                        'theme_location'  => 'utility',
+                        'li_class'        => 'lg:mx-4',
+                        'fallback_cb'     => false,
+                    )
+                ); ?>
+        </div>
+    </div>
+    <header id="header" class="<?php echo $position . $header_position ?>z-10 w-full logo-menu-wrapper">
+        <div class="w-11/12 mx-auto lg:flex lg:justify-between lg:items-center max-w-screen-2xl">
+            <div class="flex items-center justify-between w-full">
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$theme_name_description = get_bloginfo( 'description', 'display' );
-			if ( $theme_name_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $theme_name_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+                <div>
+                    <?php if ( has_custom_logo() ) { ?>
+                        <?php the_custom_logo(); ?>
+                    <?php } else { ?>
+                        <div class="text-lg uppercase">
+                            <a href="<?php echo get_bloginfo( 'url' ); ?>" class="text-lg font-extrabold uppercase">
+                                <?php echo get_bloginfo( 'name' ); ?>
+                            </a>
+                        </div>
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'theme-name' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+                        <p class="text-sm font-light">
+                            <?php echo get_bloginfo( 'description' ); ?>
+                        </p>
+
+                    <?php } ?>
+                </div>
+            
+                <nav id="main-nav">
+                    <input class="side-menu" type="checkbox" id="side-menu"/>
+                    <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+                    <?php
+                    wp_nav_menu(
+                        array(
+                            'container_id'    => 'primary-menu',
+                            'container_class' => 'mt-4 p-4 xl:mt-0 lg:p-0 xl:block',
+                            'menu_class'      => 'xl:flex lg:-mx-4 items-center',
+                            'theme_location'  => 'primary',
+                            'li_class'        => 'lg:mx-4',
+                            'fallback_cb'     => false,
+                            'before'          => '<input class="mobile-nav-checkbox" type="checkbox">',
+                        )
+                    );
+                    ?>
+                </nav>
+            </div>
+        </div>
+	</header> 

@@ -9,28 +9,23 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Theme_Name
+ * @package Service_Fusion_2022
  */
-
-get_header();
-?>
-
-	<main id="primary" class="site-main">
-
-		<?php
-		while ( have_posts() ) :
-			the_post();
-
-			get_template_part( 'template-parts/content', 'page' );
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-		endwhile; // End of the loop.
-		?>
-
+get_header() ?>
+<?php get_template_part('templates/template-parts/banners/global', 'hero'); ?>
+	<main>
+		<?php if( '' !== get_post()->post_content ) : ?>
+		<section id="gutenberg-content" class="w-11/12 max-w-screen-2xl py-12 mx-auto">
+			<div class="gutenberg-content"><?php the_content();?></div>
+		</section>
+		<?php endif; ?>
+		<?php $section_multiples = 0; while ( have_posts() ) : the_post();
+			$sections = carbon_get_the_post_meta( 'crb_sections' );
+			global $sections;
+			foreach ( $sections as $section ) {
+				get_template_part('templates/template-parts/sections/section', 'INDEX'); 
+			}
+		endwhile; ?>
 	</main><!-- #main -->
 
 <?php

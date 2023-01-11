@@ -10,8 +10,8 @@ $linkedin = carbon_get_theme_option( 'linkedin' );
 <section id="subscribe-container" class="mx-auto bg-primary">
 	<div class="w-full max-w-screen-lg mx-auto text-center px-14 lg:px-0 inner-area">
 		<div id="section-header">
-			<h2 class="w-10/12 pb-2 mx-auto text-center text-white pt-7 section-title large"><?php echo $section['heading']; ?></h2>
-			<span class="text-white"><?php echo $section['sub-heading']; ?></span>
+			<h2 class="w-10/12 pb-2 mx-auto text-center pt-7 section-title large"><?php echo $section['heading']; ?></h2>
+			<span><?php echo $section['sub-heading']; ?></span>
 		</div>
 		<div id="section-content">
 			<div id="form-js"></div>

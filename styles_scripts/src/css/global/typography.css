@@ -1,0 +1,183 @@
+/***
+*** Fluid Spacing Styles ***
+***/
+
+:root {
+  --fluid-min-width: 320;
+  --fluid-max-width: 1536;
+  --fluid-screen: 100vw;
+  --fluid-bp: calc((var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)));
+}
+
+@media screen and (min-width: 1536px) {
+  :root {
+    --fluid-screen: calc(var(--fluid-max-width) * 1px);
+  }
+}
+
+:root {
+  /* margin */
+  --space-6-min: 24;
+  --space-6-max: 48;
+  --space-6: calc(((var(--space-6-min) / 16) * 1rem) + (var(--space-6-max) - var(--space-6-min)) * var(--fluid-bp));
+}
+
+/***
+*** Fluid Typographic Styles ***
+***/
+
+:root {
+  --fluid-min-width: 320;
+  --fluid-max-width: 1536;
+  --fluid-screen: 100vw;
+  --fluid-bp: calc((var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)));
+}
+
+@media screen and (min-width: 1536px) {
+  :root {
+    --fluid-screen: calc(var(--fluid-max-width) * 1px);
+  }
+}
+
+:root {
+  /* h1 - font-size */
+  --h1-f-min: 34;
+  --h1-f-max: 42;
+  --h1-f: calc(((var(--h1-f-min) / 16) * 1rem) + (var(--h1-f-max) - var(--h1-f-min)) * var(--fluid-bp));
+
+  /* h1 - line-height */
+  --h1-lh-min: 40;
+  --h1-lh-max: 48;
+  --h1-lh: calc(((var(--h1-lh-min) / 16) * 1rem) + (var(--h1-lh-max) - var(--h1-lh-min)) * var(--fluid-bp));
+
+  /* h2 - font-size */
+  --h2-f-min: 26;
+  --h2-f-max: 34;
+  --h2-f: calc(((var(--h2-f-min) / 16) * 1rem) + (var(--h2-f-max) - var(--h2-f-min)) * var(--fluid-bp));
+
+  /* h2 - line-height */
+  --h2-lh-min: 32;
+  --h2-lh-max: 40;
+  --h2-lh: calc(((var(--h2-lh-min) / 16) * 1rem) + (var(--h2-lh-max) - var(--h2-lh-min)) * var(--fluid-bp));
+
+  /* h3 - font-size */
+  --h3-f-min: 22;
+  --h3-f-max: 30;
+  --h3-f: calc(((var(--h3-f-min) / 16) * 1rem) + (var(--h3-f-max) - var(--h3-f-min)) * var(--fluid-bp));
+
+  /* h3 - line-height */
+  --h3-lh-min: 28;
+  --h3-lh-max: 36;
+  --h3-lh: calc(((var(--h3-lh-min) / 16) * 1rem) + (var(--h3-lh-max) - var(--h3-lh-min)) * var(--fluid-bp));
+
+  /* h4 - font-size */
+  --h4-f-min: 18;
+  --h4-f-max: 26;
+  --h4-f: calc(((var(--h4-f-min) / 16) * 1rem) + (var(--h4-f-max) - var(--h4-f-min)) * var(--fluid-bp));
+
+  /* h4 - line-height */
+  --h4-lh-min: 24;
+  --h4-lh-max: 32;
+  --h4-lh: calc(((var(--h4-lh-min) / 16) * 1rem) + (var(--h4-lh-max) - var(--h4-lh-min)) * var(--fluid-bp));
+
+  /* h5 - font-size */
+  --h5-f-min: 14;
+  --h5-f-max: 22;
+  --h5-f: calc(((var(--h5-f-min) / 16) * 1rem) + (var(--h5-f-max) - var(--h5-f-min)) * var(--fluid-bp));
+
+  /* h5 - line-height */
+  --h5-lh-min: 18;
+  --h5-lh-max: 28;
+  --h5-lh: calc(((var(--h5-lh-min) / 16) * 1rem) + (var(--h5-lh-max) - var(--h5-lh-min)) * var(--fluid-bp));
+
+  /* h6 - font-size */
+  --h6-f-min: 12;
+  --h6-f-max: 18;
+  --h6-f: calc(((var(--h6-f-min) / 16) * 1rem) + (var(--h6-f-max) - var(--h6-f-min)) * var(--fluid-bp));
+
+  /* h6 - line-height */
+  --h6-lh-min: 20;
+  --h6-lh-max: 28;
+  --h6-lh: calc(((var(--h6-lh-min) / 16) * 1rem) + (var(--h6-lh-max) - var(--h6-lh-min)) * var(--fluid-bp));
+}
+
+* {
+  font-family: Karla, sans-serif;
+  font-size: 1rem;
+  line-height: 2rem;
+  color: #303030;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Poppins, sans-serif;
+}
+
+h1 {
+  font-size: var(--h1-f);
+  line-height: var(--h1-lh);
+  font-weight: 600;
+}
+
+h2 {
+  font-size: var(--h2-f);
+  line-height: var(--h2-lh);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: var(--h3-f);
+  line-height: var(--h3-lh);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: var(--h4-f);
+  line-height: var(--h4-lh);
+  font-weight: 600;
+}
+
+h5 {
+  font-size: var(--h5-f);
+  line-height: var(--h5-lh);
+  font-weight: 600;
+}
+
+h6 {
+  font-size: var(--h6-f);
+  line-height: var(--h6-lh);
+  font-weight: 600;
+}
+
+main p,
+main p span,
+main p a,
+main ul,
+main li,
+#banner p,
+#banner p span,
+#banner p a,
+#banner ul,
+#banner ol,
+#banner li {
+  font-family: Karla, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+}
+
+main p,
+#banner p {
+  margin: 24px 0;
+}
+
+main ol,
+main ul {
+  list-style: disc;
+  padding: 0 0 0 15px;
+  margin: 24px 0;
+}
