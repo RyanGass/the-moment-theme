@@ -2,11 +2,11 @@
 global $section;
 $stats = $section['stats_blocks'];
 $bg_color = $section['grey_background'];
-if ($bg_color === 'yes') { $bg_color = ' bg-sectionbg'; } else { $bg_color = '';};
+if ($bg_color === 'yes') { $bg_color = ' bg-lightgrey'; } else { $bg_color = '';};
 ?>
 
 <section id="stats-container" class="stats-container<?php echo $bg_color; ?>">
-    <div id="stats-inner" class="flex flex-wrap justify-center w-11/12 mx-auto lg:py-12 lg:flex-nowrap max-w-screen-2xl">
+    <div id="stats-inner" class="flex flex-wrap justify-center w-11/12 mx-auto lg:flex-nowrap max-w-screen-2xl">
       <?php foreach ( $stats as $stat ) {  
           
         $stats_prefix = $stat['prefix'];
@@ -134,41 +134,3 @@ document.body.onscroll = function() {
 }
 
 </script>
-
-<style>
-/**
-* Shortcode - Product Stats
-*/
-
-#product-stats {
-	width: 100%;
-	background-color: #222222;
-	padding: 50px 0;
-}
-
-#product-stats .stats-blocks div div div.wpb_wrapper {
-	display: block;
-	color: #fff!important;
-}
-
-span.pre-post {
-	font-size: 46px;
-	font-weight: 300;
-}
-body .countup,
-body .countups {
-	display: inline-block;
-	color: #fff;
-	font-size: 46px;
-	font-weight: 300;
-	line-height: 1;
-}
-
-@media (min-width: 48rem) {
-	#product-stats .stats-blocks div div div.wpb_wrapper {
-    display: flex;
-		justify-content: space-around;
-		align-items: center;
-	}
-}
-</style>

@@ -25,8 +25,9 @@
 }
 
 .btn.primary:hover {
+  @apply text-primary;
+
   background: transparent;
-  color: #f15320;
 }
 
 .btn.secondary {

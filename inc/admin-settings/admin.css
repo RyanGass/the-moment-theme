@@ -3,7 +3,7 @@
 ***/
 
 body #editor * {
-  font-family: sans-serif;
+  font-family: dashicons, sans-serif !important;
 }
 
 body .edit-post-visual-editor,
@@ -40,7 +40,3 @@ body #editor .cf-container__tabs-item--current {
   background: #eee;
   border-bottom: none !important;
 }
-
-/* body #editor .cf-container__fields > div {
-  flex-basis: 25% !important;
-} */

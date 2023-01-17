@@ -2,66 +2,62 @@
 global $section;
 $testimonials = $section['crb_testimonials'];
 $count = $section['testimonial_number'];
+$content = $section['content'];
+if ($content) { $subtext = ' class="has-subtext"'; };
 ?>
 
-<section id="card-testimonial-slides-container" class="w-11/12 mx-auto mb-24 max-w-screen-2xl">
-	<button type="button" onclick="cardPrev()" class="button-nav card-slide-navigation previous"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M192 448c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l137.4 137.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448z"/></svg></button>
-	<div class="w-11/12 px-12 m-auto card-slide-inner-container">
-        <div id="card-testimonials-repeater" class="flex card-slide-track">
-			<?php $i = 1; foreach ( $testimonials as $testimonial ) {
-				$image = $testimonial['testimonial_image'];
-				$imageID = attachment_url_to_postid( $image );
-				$alt = get_post_meta($imageID, '_wp_attachment_image_alt', TRUE);
-				$image_title = get_the_title($imageID);
-				if ($count >= $i) { $showSlide = ' card-show-slide'; } else { $showSlide = ''; };
-				?>
-                <div id="card-slide-block-<?php echo $i ?>" class="card-section-block card-slide-initial card-slide-block<?php echo $showSlide ?>">
-                    <div class="h-full area">
-                        <div class="flex flex-col items-stretch justify-around h-full text-center inner-area align-center">
-                            <img class="mx-auto grow-0" src="<?php echo $image; ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" />
-                            <span class="block my-8 quote-content grow-1"><?php echo $testimonial['testimonial_content']; ?></span>
-                            <div class="mt-auto bottom-content">
-								<span class="block font-black quote-name-company grow-0"><br><?php echo $testimonial['testimonial_name']; ?><br><?php echo $testimonial['testimonial_company']; ?></span>
-								<div id="stars" class="flex justify-center w-full mt-4 grow-0">
-									<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="#fc9951">
-									<path fill="#fc9951" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-									</svg>
-									<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="#fc9951">
-									<path fill="#fc9951" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-									</svg>
-									<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="#fc9951">
-									<path fill="#fc9951" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-									</svg>
-									<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="#fc9951">
-									<path fill="#fc9951" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-									</svg>
-									<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="#fc9951">
-									<path fill="#fc9951" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-									</svg>
+<section id="card-testimonial-slides-container">
+	<div id="section-header"<?php echo $subtext ?>>
+		<h2 class="w-full lg:w-7/12 mx-auto text-center section-title small"><?php echo $section['heading']; ?></h2>
+		<?php if ($content) : echo '<p class="w-full lg:w-7/12 mx-auto text-center">' . $section['content'] . '</p>'; endif; ?>
+	</div>
+	<div class="w-full md:w-11/12 mx-auto max-w-screen-2xl">
+		<button type="button" onclick="cardPrev()" class="button-nav card-slide-navigation previous"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M192 448c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l137.4 137.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448z"/></svg></button>
+		<div class="w-full md:w-11/12 px-12 m-auto card-slide-inner-container">
+			<div id="card-testimonials-repeater" class="flex card-slide-track">
+				<?php $i = 1; foreach ( $testimonials as $testimonial ) {
+					$image = $testimonial['testimonial_image'];
+					$imageID = attachment_url_to_postid( $image );
+					$alt = get_post_meta($imageID, '_wp_attachment_image_alt', TRUE);
+					$image_title = get_the_title($imageID);
+					if ($count >= $i) { $showSlide = ' card-show-slide'; } else { $showSlide = ''; };
+					?>
+					<div id="card-slide-block-<?php echo $i ?>" class="card-section-block card-slide-initial card-slide-block<?php echo $showSlide ?>">
+						<div class="h-full area">
+							<div class="flex flex-col items-stretch justify-around h-full text-center inner-area align-center">
+								<img class="mx-auto grow-0" src="<?php echo $image; ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" />
+								<span class="block my-8 quote-content grow-1"><?php echo $testimonial['testimonial_content']; ?></span>
+								<div class="mt-auto bottom-content">
+									<span class="block font-black quote-name-company grow-0"><br><?php echo $testimonial['testimonial_name']; ?><br><?php echo $testimonial['testimonial_company']; ?></span>
+									<div id="stars" class="flex justify-center w-full mt-4 grow-0">
+										<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="#fc9951">
+										<path fill="#fc9951" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+										</svg>
+										<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="#fc9951">
+										<path fill="#fc9951" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+										</svg>
+										<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="#fc9951">
+										<path fill="#fc9951" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+										</svg>
+										<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="#fc9951">
+										<path fill="#fc9951" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+										</svg>
+										<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="#fc9951">
+										<path fill="#fc9951" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+										</svg>
+									</div>
 								</div>
 							</div>
-                        </div>
-                    </div>
-                </div>
-            <?php $i++; }; ?>
+						</div>
+					</div>
+				<?php $i++; }; ?>
+			</div>
 		</div>
-    </div>
-	<button type="button" onclick="cardNext()" class="button-nav card-slide-navigation next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"/></svg></button>
+		<button type="button" onclick="cardNext()" class="button-nav card-slide-navigation next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"/></svg></button>
+		</div>
 </section>
 <style>
-    .card-slide-inner-container {
-        overflow: hidden;
-    }
     
-    div.card-slide-block {
-        display: inline-block;
-    }
-
-	.card-slide-navigation svg {
-		fill: blue;
-		width: 40px;
-		height: 40px;
-	}
 </style>
 <script>
 		// Slider variables setup
@@ -320,72 +316,6 @@ $count = $section['testimonial_number'];
 		let gt;
         window.addEventListener("load", cardsizeSlides);
         window.addEventListener("resize", cardREsizeSlides);
-
-		// Dragable
-		// let sliderContainer = document.querySelector('.card-slide-inner-container');
-		// let innerSlider = document.querySelector('.card-slide-track');
-
-		// let pressed = false;
-		// let startX;
-		// let x;
-
-		// innerSlider.addEventListener("mousedown", (e) => {
-		// 	pressed = true;
-		// 	startXtransform = document.querySelector('.card-slide-track').style.transform;
-        //     startX = -startXtransform.replace(/[^\d.]/g, '');
-		// 	innerSlider = document.querySelector('.card-slide-track');
-		// 	x = e.pageX;
-		// 	y = window.innerWidth - innerSlider.getBoundingClientRect().right;
-		// 	sliding = x - 1;
-		// 	console.log('pageX: ' + x);
-		// 	console.log('startX: ' + startX);
-		// 	console.log('========');
-		// });
-
-		// sliderContainer.addEventListener("mouseenter", () => {
-		// 	//sliderContainer.style.cursor = "grab";
-		// });
-
-		// sliderContainer.addEventListener("mouseup", () => {
-		// 	//sliderContainer.style.cursor = "grab";
-		// 	pressed = false;
-		// });
-
-
-		// sliderContainer.addEventListener("mousemove", (e) => {
-		// 	if (!pressed) return;
-		// 	e.preventDefault();
-		// 	y = sliderContainer.offsetLeft;
-		// 	x = e.pageX - startX;
-		// 	diff = x - startX;
-		// 	trans = e.pageX + diff;
-		// 	console.log('startX: ' + startX);
-		// 	console.log('diff: ' + diff);
-		// 	console.log('trans: ' + trans);
-		// 	console.log('========');
-
-		// 	if (x < startX - 1) {
-		// 		console.log('dragging left');
-		// 		//Prev();
-		// 		document.querySelector('.card-slide-track').style.transform = 'translate(' + x + 'px)';
-		// 	}
-
-		// 	if (x > startX) {
-		// 		console.log('dragging right');
-		// 		//Next();
-		// 		document.querySelector('.card-slide-track').style.transform = 'translate(' + -x + 'px)';
-		// 	}
-			
-		// 	//innerSlider.style.transform = `translate(${x + sliding}px)`;
-		// });
-
-		// Create the slider button navigation
-		// for(let i = 1; i <= cardslides.length; i++) {
-		// 	let cardslideWrapper = document.getElementById('card-slide-nav'); // Get the nav parent element
-		// 	if (i == 1) { cardslideActive = 'class="button-active card-slide-button"';} else { cardslideActive = 'class="card-slide-button"'; } // Add classes for initial active slide
-		// 	cardslideWrapper.insertAdjacentHTML('beforeend', '<li><button ' + cardslideActive + ' id="card-slide-button-' + i + '" aria-controls="slide-' + i + '" onClick="slideToggle(this)"></button></li>'); // Create the button elements inside the card-slide-nav
-		// 	cardslideActive = ''; // Reset the active slide variable to stop from adding the active class to all elements in the loop
-		// }
 
 		// Function triggered when the slide button element is clicked. 
 		// Handles slide transitions and toggling button active states

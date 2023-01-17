@@ -14,5 +14,5 @@ img.custom-logo {
 /*** Flexible Content ***/
 
 main section {
-  padding: var(--space-6) 0;
+  padding: var(--space-12) var(--space-6);
 }

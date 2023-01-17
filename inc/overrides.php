@@ -10,6 +10,7 @@ function theme_name_setup() {
 	add_theme_support( 'custom-logo' ); // Customize "Site Settings" Logo
 	add_theme_support( 'post-thumbnails' ); // Page/Post Featured image support
 	add_theme_support( 'responsive-embeds'); // Adds responsive support to image and video embeds
+	add_theme_support( 'editor-styles' );
 }
 add_action( 'after_setup_theme', 'theme_name_setup' );
 

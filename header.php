@@ -57,7 +57,7 @@
                         'container_class' => '',
                         'menu_class'      => 'lg:flex lg:justify-end',
                         'theme_location'  => 'utility',
-                        'li_class'        => 'lg:mx-4',
+                        'li_class'        => '',
                         'fallback_cb'     => false,
                     )
                 ); ?>

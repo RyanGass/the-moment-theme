@@ -6,7 +6,7 @@ get_header() ?>
 <?php get_template_part('templates/template-parts/banners/global', 'hero'); ?>
 	<main>
         <section id="pricing-container" class="w-11/12 mx-auto mb-28 max-w-screen-2xl">
-            <h2 class="section-title small ">Next-Level Features. Small Business Pricing.</h2>
+            <h2 class="w-full lg:w-7/12 mx-auto section-title small ">Next-Level Features. Small Business Pricing.</h2>
             <div id="pricing-inner" class="flex flex-col items-center justify-center">
 				<div class="pricing-select">
 					<button id="monthly" class="price-toggle">Monthly</button>

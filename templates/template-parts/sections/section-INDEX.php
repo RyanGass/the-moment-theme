@@ -16,14 +16,19 @@
 						get_template_part('templates/template-parts/sections/section', 'feature-cards');
 						
 						break;
+					case 'features-2':
+						
+						get_template_part('templates/template-parts/sections/section', 'feature-cards-2');
+						
+						break;
 					case 'testimonial-cards':
 						
 						get_template_part('templates/template-parts/sections/section', 'testimonial-cards');
 						
 						break;
-					case 'testimonial-slider':
+					case 'testimonial-image-slider':
 						
-						get_template_part('templates/template-parts/sections/section', 'testimonial-slider');
+						get_template_part('templates/template-parts/sections/section', 'testimonial-image-slider');
 						
 						break;
 					case 'testimonial-single':
@@ -31,25 +36,10 @@
 						get_template_part('templates/template-parts/sections/section', 'testimonial-single');
 						
 						break;
-					case 'heading':
-
-                        get_template_part('templates/template-parts/sections/section', 'heading');
-						
-						break;
-					case 'affiliations':
-						
-						get_template_part('templates/template-parts/sections/section', 'affiliations');
-						
-						break;
 					case 'subscribe':
 						
 						get_template_part('templates/template-parts/sections/section', 'subscribe');
 
-						break;
-					case 'text-image-cta':
-						
-						get_template_part('templates/template-parts/sections/section', 'text-image-cta');
-						
 						break;
 					case 'recent-posts':
 						
@@ -76,19 +66,9 @@
 						get_template_part('templates/template-parts/sections/section', 'faq');
 						
 						break;
-					case 'sticky-features-section':
-						
-						get_template_part('templates/template-parts/sections/section', 'sticky-features');
-						
-						break;
 					case 'stats-counter-section':
 						
 						get_template_part('templates/template-parts/sections/section', 'stats-counter');
-						
-						break;
-					case 'industries-cta':
-						
-						get_template_part('templates/template-parts/sections/section', 'industries');
 						
 						break;
 					case 'blockquote':

@@ -5,23 +5,23 @@
             "defaultPalette": false,
             "palette": [
                 {
-                    "name": "Black",
-                    "slug": "black",
-                    "color": "#000000"
+                    "name": "Primary",
+                    "slug": "primary",
+                    "color": "#f15320"
                 },
                 {
-                    "name": "White",
-                    "slug": "white",
-                    "color": "#ffffff"
+                    "name": "Secondary",
+                    "slug": "secondary",
+                    "color": "#a7c9e7"
                 },
                 {
                     "name": "Light Grey",
-                    "slug": "light-grey",
+                    "slug": "lightgrey",
                     "color": "#D1D1D1"
                 },
                 {
                     "name": "Dark Grey",
-                    "slug": "dark-grey",
+                    "slug": "darkgrey",
                     "color": "#575757"
                 }
             ]

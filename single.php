@@ -51,7 +51,7 @@ $linkedin = carbon_get_theme_option( 'linkedin' );
 	</section>
 	<section id="posts-container" class="pt-24 posts-container pb-28 style-two">
 		<div id="section-header">
-			<h2 class="w-10/12 mx-auto text-center section-title small">Related Posts</h2>
+			<h2 class="w-full lg:w-7/12 mx-auto text-center section-title small">Related Posts</h2>
 		</div>
 		<?php
 

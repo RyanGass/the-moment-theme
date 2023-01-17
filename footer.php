@@ -47,14 +47,14 @@ $js_once = true;
 foreach ( $sections as $section ) :
 if ($section['video'] && $js_once == true) : ?>
 <script>
-	setTimeout(function(){
+	// setTimeout(function(){
 
-		var JSLink = "https://play.vidyard.com/embed/v4.js";
-		var JSElement = document.createElement('script');
-		JSElement.src = JSLink;
-		document.getElementsByTagName('head')[0].appendChild(JSElement);
+	// 	var JSLink = "https://play.vidyard.com/embed/v4.js";
+	// 	var JSElement = document.createElement('script');
+	// 	JSElement.src = JSLink;
+	// 	document.getElementsByTagName('head')[0].appendChild(JSElement);
 
-	}, 2500); 
+	// }, 2500); 
 
 </script>
 

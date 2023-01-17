@@ -1,20 +1,28 @@
 <?php 
 global $section;
 $faqs = $section['faq_cards'];
+$content = $section['content'];
+if ($content) { $subtext = ' class="has-subtext"'; };
 ?>
 
-<section id="faq-container" class="w-11/12 mx-auto max-w-screen-2xl">
-    <?php foreach ( $faqs as $faq ) { ?>    
-        <div class="question-answer">
-            <div class="header">
-                <div class="question"><?php echo $faq['faq_question'] ?></div>
-                <span class="icon"></span>
+<section id="faq-container" class="w-full">
+    <div id="faq-inner" class="w-full md:w-11/12 mx-auto max-w-screen-2xl">
+        <div id="section-header"<?php echo $subtext ?>>
+			<h2 class="w-full lg:w-7/12 mx-auto text-center section-title small"><?php echo $section['heading']; ?></h2>
+			<?php if ($content) : echo '<p class="w-full lg:w-7/12 mx-auto text-center">' . $section['content'] . '</p>'; endif; ?>
+		</div>
+        <?php foreach ( $faqs as $faq ) { ?>    
+            <div class="question-answer">
+                <div class="header">
+                    <div class="question"><?php echo $faq['faq_question'] ?></div>
+                    <span class="icon"></span>
+                </div>
+                <div class="result">
+                    <div class="answer"><?php echo $faq['faq_answer'] ?></div>
+                </div>
             </div>
-            <div class="result">
-                <div class="answer"><?php echo $faq['faq_answer'] ?></div>
-            </div>
-        </div>
-    <?php }; ?>
+        <?php }; ?>
+    </div>
 </section>
 
 <script>
