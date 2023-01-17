@@ -6,7 +6,7 @@ $linkedin = carbon_get_theme_option( 'linkedin' );
 ?>
 <?php get_header(); ?> 
 <?php get_template_part('templates/template-parts/banners/global', 'hero'); ?>
-<main class="mt-8">
+<main>
 	<section class="relative flex flex-col items-center w-full px-6 mx-auto lg:max-w-3xl lg:block scroll-setter">
 		<div id="social-sharing" class="order-2 lg:absolute lg:order-1 -left-32">
 			<div id="social-sharing-inner" class="social-sharing-wrapper lg:block" style="position: relative; top: 0px;">

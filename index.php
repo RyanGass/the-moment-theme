@@ -22,7 +22,7 @@
 		</ul>
 	</ul>
 </div>
-<main class="mt-8">
+<main>
     <section id="posts-container" class="pt-24 posts-container pb-28 style-two">
 		<div id="post-block-wrapper" class="w-11/12 max-w-screen-xl mx-auto">
 			<div id="articles-wrapper" class="grid lg:grid-cols-3">

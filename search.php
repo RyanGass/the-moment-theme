@@ -1,53 +1,34 @@
-<?php
-/**
- * The template for displaying search results pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
- *
- * @package Theme_Name
- */
+<?php get_header(); ?> 
+<?php get_template_part('templates/template-parts/banners/global', 'hero'); ?>
+<main>
+    <section id="posts-container" class="pt-24 posts-container pb-28 style-two">
+		<div id="post-block-wrapper" class="w-11/12 max-w-screen-xl mx-auto">
+			<div id="articles-wrapper" class="grid lg:grid-cols-3">
+				<?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
+				<?php query_posts('cat=' . $exclude .'&paged=' . $paged); ?>
+				<?php if (have_posts()) : $i = 1; while (have_posts()) : the_post();?>
+				<?php get_template_part('templates/template-parts/blog/blog', 'content'); ?>
+				<?php endwhile; ?>
+			</div>
+			<?php get_template_part('templates/template-parts/blog/blog', 'pagination'); ?>
+			<?php else : ?>
+			<h2>Page not Found</h2>
+			<p>We're sorry, but the page you're looking for isn't here.</p>
+			<p>Try searching for the page you are looking for or using the navigation in the header or sidebar</p>
+			<?php endif; ?>
+		</div>
+	</section>
+</main>
+<?php get_footer() ?>
+<script>
+	var body = document.querySelector('body');
+	var show_categories = document.querySelector('.blog-topics');
 
-get_header();
-?>
-
-	<main id="primary" class="site-main">
-
-		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'theme-name' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
-
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-	</main><!-- #main -->
-
-<?php
-get_sidebar();
-get_footer();
+	body.addEventListener("click", function () {
+		show_categories.classList.remove('active');
+	}, false);
+	show_categories.addEventListener("click", function (ev) {
+		show_categories.classList.add('active');
+		ev.stopPropagation(); //this is important! If removed, both click events will occur
+	}, false);
+</script>

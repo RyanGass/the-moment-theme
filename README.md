@@ -41,19 +41,17 @@ $ composer require htmlburger/carbon-fields
 If you use VS code, then create a new workspace folder and drop this into the .vscode/setting.json file located in the root of the folder.
 
 ```sh
- {
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
+{
+    "workbench.editor.untitled.hint": "hidden",
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
     "eslint.validate": [
         "javascript"
     ],
     "eslint.codeActionsOnSave.mode": "all",
     "eslint.format.enable": true,
     "eslint.codeActionsOnSave.rules": null,
-    "css.validate": false,
-    "less.validate": false,
-    "scss.validate": false,
     "stylelint.snippet": [
         "css",
         "less",
@@ -66,10 +64,18 @@ If you use VS code, then create a new workspace folder and drop this into the .v
         "postcss",
         "scss"
     ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.fixAll.stylelint": true
+    },
     "editor.formatOnSave": true,
     "editor.fontLigatures": false,
     "editor.wordWrap": "off",
- }
+    "editor.formatOnPaste": true,
+    "editor.quickSuggestions": {
+        "strings": true
+    }
+}
 ```
 
 ### Available CLI commands

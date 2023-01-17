@@ -10,8 +10,8 @@
 get_header() ?>
 
 <?php get_template_part('templates/template-parts/banners/global', 'hero'); ?>
-<main class="mt-8">
-	<section id="posts-container" class="pt-24 pb-28">
+<main>
+	<section id="posts-container" class="w-11/12 max-w-screen-xl mx-auto">
 		<h2>While you're here, check out some of our latest blog posts</h2>
 		<?php
 
@@ -23,10 +23,10 @@ get_header() ?>
 			);
 			$query = new WP_Query($query_args);
 		?>
-		<div id="post-block-wrapper" class="w-11/12 max-w-screen-xl mx-auto">
+		<div id="post-block-wrapper">
 			<div id="articles-wrapper" class="grid lg:grid-cols-3">
 				<?php $i = 1; while($query->have_posts()) : $query->the_post(); $post_date = get_the_date('M j, Y'); ?>	
-				<article class="w-11/12 mx-auto mt-6 mb-0 text-left bg-white">
+				<article>
 					<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 						<div class="post-image">
 							<?php if ( has_post_thumbnail() ) { ?>
