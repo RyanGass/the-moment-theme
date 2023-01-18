@@ -16,3 +16,11 @@ img.custom-logo {
 main section {
   padding: var(--space-12) var(--space-6);
 }
+
+@media (min-width: 1024px) {
+  main section {
+    @apply w-11/12 max-w-screen-2xl mx-auto;
+
+    padding: var(--space-12) 0;
+  }
+}

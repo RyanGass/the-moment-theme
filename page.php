@@ -15,7 +15,7 @@ get_header() ?>
 <?php get_template_part('templates/template-parts/banners/global', 'hero'); ?>
 	<main>
 		<?php if( '' !== get_post()->post_content ) : ?>
-		<section id="gutenberg-content" class="w-11/12 max-w-screen-2xl py-12 mx-auto">
+		<section id="gutenberg-content">
 			<div class="gutenberg-content"><?php the_content();?></div>
 		</section>
 		<?php endif; ?>

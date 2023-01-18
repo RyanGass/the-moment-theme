@@ -1,36 +1,35 @@
 <?php get_header(); ?> 
 <?php get_template_part('templates/template-parts/banners/global', 'hero'); ?>
-<div id="category-wrapper">
-	<ul class="blog-topics">
-		<li class="topic">Filter by Topics</li>
-		<ul>
-	<?php 
-
-	$categories = get_categories( array(
-		'orderby' => 'name',
-		'parent'  => 0
-	) );
-
-	foreach ( $categories as $category ) {
-		printf( '<li><a href="%1$s">%2$s</a></li>',
-			esc_url( get_category_link( $category->term_id ) ),
-			esc_html( $category->name )
-		);
-	}
-
-	?>
-		</ul>
-	</ul>
-</div>
 <main>
-    <section id="posts-container" class="pt-24 posts-container pb-28 style-two">
-		<div id="post-block-wrapper" class="w-11/12 max-w-screen-xl mx-auto">
-			<div id="articles-wrapper" class="grid lg:grid-cols-3">
-				<?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
-				<?php query_posts('cat=' . $exclude .'&paged=' . $paged); ?>
-				<?php if (have_posts()) : $i = 1; while (have_posts()) : the_post();?>
-				<?php get_template_part('templates/template-parts/blog/blog', 'content'); ?>
-				<?php endwhile; ?>
+    <section id="posts-container" class="posts-container">
+		<div id="category-wrapper">
+			<ul class="blog-topics">
+				<li class="topic">Filter by Topics</li>
+				<ul>
+			<?php 
+
+			$categories = get_categories( array(
+				'orderby' => 'name',
+				'parent'  => 0
+			) );
+
+			foreach ( $categories as $category ) {
+				printf( '<li><a href="%1$s">%2$s</a></li>',
+					esc_url( get_category_link( $category->term_id ) ),
+					esc_html( $category->name )
+				);
+			}
+
+			?>
+				</ul>
+			</ul>
+		</div>
+		<div id="post-block-wrapper">
+			<div id="articles-wrapper" class="grid lg:grid-cols-3 gap-6">
+				<?php the_archive_description( '<div class="taxonomy-description">', '</div>' ); ?>
+                <?php if (have_posts()) : while (have_posts()) : the_post();?>
+                <?php get_template_part('templates/template-parts/blog/blog', 'content'); ?>
+                <?php endwhile; ?>
 			</div>
 			<?php get_template_part('templates/template-parts/blog/blog', 'pagination'); ?>
 			<?php else : ?>

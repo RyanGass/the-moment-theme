@@ -38,6 +38,7 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
           elseif ( is_search() ) : printf( esc_html__( 'Search Results for: %s', 'theme-name' ), get_search_query() );
           elseif ( is_404() ) : echo 'Hey hey, the page your looking for does not exist';
           elseif ( is_tag() ) : single_tag_title();
+          elseif ( is_home() ) : echo 'Blog';
           elseif ( !empty($heading) && !is_single() ) : echo $heading; 
           else : the_title();
           endif;

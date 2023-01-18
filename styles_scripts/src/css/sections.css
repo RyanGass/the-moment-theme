@@ -419,8 +419,10 @@ section#posts-container {
       margin: var(--space-6) 0 0;
     }
 
-    .post-text {
-      padding: var(--space-3);
+    .post-image {
+      padding-top: 56.75%;
+      background-size: cover;
+      background-position: center;
     }
   }
 }
