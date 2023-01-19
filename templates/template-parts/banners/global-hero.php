@@ -43,16 +43,6 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
           else : the_title();
           endif;
           ?></h1>
-          <?php if (is_page_template('templates/page-chapters.php')) : ?>
-            <div id="social-sharing-inner" class="social-sharing-wrapper lg:block" style="position: relative; top: 0px;">
-              <p>SHARE THIS</p>
-              <div class="flex lg:block social-icon-wrapper">
-                <a class="share_facebook" title="facebook" target="popup" onclick="window.open('http://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>','Facebook Share','width=600,height=400')"><img src="/wp-content/uploads/2022/10/facebook-f.svg" /></a>
-                <a class="share_twitter" title="twitter" target="popup" onclick="window.open('https://twitter.com/home?status=The Future of an On-the-Go Workforce That Utilizes Plumbing Dispatch Software+<?php the_permalink(); ?>','Twitter Share','width=600,height=400')"><img src="/wp-content/uploads/2022/10/twitter.svg" /></a>
-                <a class="share_linkedin" title="linkedin" target="popup" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&amp;url=<?php the_permalink(); ?>','LinkedIn Share','width=600,height=400')"><img src="/wp-content/uploads/2022/10/linkedin-in.svg" /></a>
-              </div>
-            </div>
-          <?php endif; ?>
           <?php if (is_single()) : $post_date = get_the_date('M j, Y') ?>
           <span id="post-date"><?php echo $post_date ?></span>
           <?php  endif; ?>

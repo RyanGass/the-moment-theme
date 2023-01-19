@@ -11,6 +11,18 @@ img.custom-logo {
   max-width: 250px;
 }
 
+main p,
+#banner p {
+  margin: var(--space-3) 0;
+}
+
+main ol,
+main ul {
+  list-style: disc;
+  padding: 0 0 0 var(--space-3);
+  margin: var(--space-3) 0;
+}
+
 /*** Flexible Content ***/
 
 main section {

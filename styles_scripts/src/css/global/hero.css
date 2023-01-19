@@ -46,44 +46,6 @@ html {
         display: none !important;
       }
     }
-
-    #social-sharing-inner p {
-      color: #fff;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .social-icon-wrapper a {
-      display: inline-block;
-      width: 25px;
-      margin: 0 5px;
-    }
-
-    .social-icon-wrapper a.share_facebook {
-      width: 15px;
-    }
-
-    #watch-video {
-      display: none;
-    }
-  }
-
-  section#banner.form-style-full {
-    .banner-area {
-      padding-bottom: 0 !important;
-    }
-
-    #banner-form {
-      @apply relative;
-
-      top: 50px;
-
-      #banner-form-inner {
-        form.mktoForm .mktoFormRow > .mktoFormCol {
-          margin-bottom: 0 !important;
-        }
-      }
-    }
   }
 
   @media screen and (min-width: 64rem) {

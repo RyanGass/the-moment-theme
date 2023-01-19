@@ -31,16 +31,16 @@
 
 <body <?php body_class( 'bg-white antialiased debug-screens' ); ?>>
 <?php if(is_page_template('templates/page-front.php')) : $wrapper_class='homepage'; else : $wrapper_class='internal'; endif; ?>
+<?php // Fixed Header Options
+$fixed_header = carbon_get_theme_option('fixed_header');
+if ( $fixed_header === 'yes') :
+    $position = 'fixed ';
+    $header_position = 'transform -translate-x-1/2 -translate-y-1/2 logo-menu-wrapper left-1/2 ';
+else : 
+    $position = 'relative ';
+    $header_position = '';
+endif; ?>
 <div id="wrapper" class="flex flex-col overflow-hidden <?= $wrapper_class; ?>">
-    <?php // Fixed Header Options
-        $fixed_header = carbon_get_theme_option('fixed_header');
-        if ( $fixed_header === 'yes') :
-            $position = 'fixed ';
-            $header_position = 'transform -translate-x-1/2 -translate-y-1/2 logo-menu-wrapper left-1/2 ';
-        else : 
-            $position = 'relative ';
-            $header_position = '';
-        endif; ?>
     <?php // Show/Hide Utility Menu 
         $utility_menu = carbon_get_theme_option( 'utility_menu' );
         if ($utility_menu === 'yes') :

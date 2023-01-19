@@ -168,7 +168,7 @@ function crb_attach_post_options() {
 
                 // Feature Cards Style 2
                 ->add_fields( 'features-2', 'Feature Cards 2', array(
-                    Field::make( 'text', 'section_heading', 'Section Heading' ),
+                    Field::make( 'text', 'heading', 'Section Heading' ),
                     Field::make( 'text', 'content', 'Section Content' ),
                     Field::make( 'complex', 'features-2', 'Features' )
                         ->set_collapsed( true )
@@ -192,11 +192,11 @@ function crb_attach_post_options() {
                                 '2' => '2',
                                 '3' => '3',
                                 '4' => '4',
+                                '5' => '5',
                             ) ),
                     Field::make( 'complex', 'crb_testimonials', 'Testimonial Cards' )
                         ->set_collapsed( true )
                         ->set_min('2')
-                        ->set_max('4')
                         ->add_fields( 'testimonial-card', 'Testimonial Card', array(
                             Field::make( 'image', 'testimonial_image', 'Image' )
                                 ->set_value_type( 'url' ),

@@ -166,78 +166,6 @@ header {
     padding: var(--space-2) 0;
   }
 
-  ul#menu-primary-menu li a {
-  }
-
-  ul#menu-primary-menu > li#menu-item-840 > ul.sub-menu {
-    @apply flex;
-
-    transform: translate(0, 0);
-    padding-bottom: 15px;
-  }
-
-  ul#menu-primary-menu > li#menu-item-840 > ul.sub-menu > li#menu-item-1308 > a {
-    margin-bottom: 6px;
-    font-weight: 600;
-    padding-bottom: 0;
-  }
-
-  ul#menu-primary-menu > li#menu-item-840 > ul.sub-menu > li#menu-item-1308 > ul > li {
-    padding: 0;
-  }
-
-  ul#menu-primary-menu > li#menu-item-840 > ul.sub-menu > li#menu-item-1308 > ul > li > a {
-    padding: 0 20px;
-  }
-
-  ul#menu-primary-menu > li#menu-item-840 > ul.sub-menu > li#menu-item-845 a,
-  ul#menu-primary-menu > li#menu-item-840 > ul.sub-menu > li#menu-item-1524 a {
-    position: relative;
-    padding-top: 80px;
-    text-align: center;
-  }
-
-  ul#menu-primary-menu > li#menu-item-840 > ul.sub-menu > li#menu-item-845 a::before,
-  ul#menu-primary-menu > li#menu-item-840 > ul.sub-menu > li#menu-item-1524 a::before {
-    position: absolute;
-    width: 50px;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  ul#menu-primary-menu > li#menu-item-840 > ul.sub-menu > li#menu-item-845 a::before {
-    content: url(/wp-content/uploads/2022/10/ebook.svg);
-  }
-
-  ul#menu-primary-menu > li#menu-item-840 > ul.sub-menu > li#menu-item-1524 a::before {
-    content: url(/wp-content/uploads/2022/10/whitepaper.svg);
-  }
-
-  li#menu-item-1308 {
-    width: 150px;
-  }
-
-  li#menu-item-845,
-  li#menu-item-1524 {
-    width: 175px;
-    position: relative;
-  }
-
-  li#menu-item-845::after {
-    content: "";
-    position: absolute;
-    height: 80%;
-    width: 1px;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-  }
-
-  ul#menu-primary-menu > li ul.sub-menu li {}
-
-  ul#menu-primary-menu > li:not(.button.white) > a {}
-
   ul#menu-primary-menu > li.menu-item-has-children,
   ul#menu-primary-menu > li.menu-item-has-children > a {
     position: relative;
@@ -256,6 +184,7 @@ header {
     transform: translate(0, -50%);
     right: -15px;
     transition: transform 0.5s;
+    border: 1px solid #303030; /* add an icon as a background image and remove this border */
   }
 
   ul#menu-primary-menu > li.menu-item-has-children input.mobile-nav-checkbox:checked ~ a::after {

@@ -8,8 +8,8 @@ if ($content) { $subtext = ' class="has-subtext"'; };
 
 <section id="card-testimonial-slides-container">
 	<div id="section-header"<?php echo $subtext ?>>
-		<h2 class="w-full lg:w-7/12 mx-auto text-center section-title small"><?php echo $section['heading']; ?></h2>
-		<?php if ($content) : echo '<p class="w-full lg:w-7/12 mx-auto text-center">' . $section['content'] . '</p>'; endif; ?>
+		<h2 class="section-title"><?php echo $section['heading']; ?></h2>
+		<?php if ($content) : echo '<p>' . $section['content'] . '</p>'; endif; ?>
 	</div>
 	<div class="w-full md:w-11/12 mx-auto max-w-screen-2xl">
 		<button type="button" onclick="cardPrev()" class="button-nav card-slide-navigation previous"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M192 448c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l137.4 137.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448z"/></svg></button>
@@ -20,7 +20,7 @@ if ($content) { $subtext = ' class="has-subtext"'; };
 					$imageID = attachment_url_to_postid( $image );
 					$alt = get_post_meta($imageID, '_wp_attachment_image_alt', TRUE);
 					$image_title = get_the_title($imageID);
-					if ($count >= $i) { $showSlide = ' card-show-slide'; } else { $showSlide = ''; };
+					if ($count >= $i) { $showSlide = ' card-show-slide save-card-count'; } else { $showSlide = ''; };
 					?>
 					<div id="card-slide-block-<?php echo $i ?>" class="card-section-block card-slide-initial card-slide-block<?php echo $showSlide ?>">
 						<div class="h-full area">
@@ -60,385 +60,349 @@ if ($content) { $subtext = ' class="has-subtext"'; };
     
 </style>
 <script>
-		// Slider variables setup
-		let cardslides = document.querySelectorAll('.card-slide-block'); // Create an array of slides
-		let cardslideid = document.querySelector('.card-slide-block').id // Create an array of slide ids
-		let cardslideButtons = document.getElementsByClassName("card-slide-button"); // Create an array of slide nav buttons
-		let cardsliderPosition = 0; 
-		let cardposition = 0;
+// Slider variables setup
+let cardslides = document.querySelectorAll('.card-slide-block'); // Create an array of slides
+let cardslideid = document.querySelector('.card-slide-block').id // Create an array of slide ids
+let cardslideButtons = document.getElementsByClassName("card-slide-button"); // Create an array of slide nav buttons
+let cardsliderPosition = 0; 
+let cardposition = 0;
 
-        function cardsizeSlides() {
-            // Prep Slides and Containers
-            let cardslideContainer = document.querySelector('.card-slide-inner-container');
-            let cardslideTrack = document.querySelector('.card-slide-track');
-            let cardslideContainerWidth = cardslideContainer.offsetWidth;
-			let cardslideCount = document.querySelectorAll('.card-show-slide');
-			let cardslideInitial = document.querySelectorAll('.card-slide-initial');
-            let cardslideWidth = cardslideContainerWidth / cardslideCount.length;
-			let cardslideBlockContainer = document.getElementById('card-testimonials-repeater');
-            let cardslideBlock = document.querySelectorAll('.card-slide-block');
-			document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cardslideInitial.length) - 48) + "px)"; 
-			
-            for (let i = 0; i <= cardslideBlock.length - 1; i++) {
-                cardslideBlock[i].style.width = cardslideWidth + "px";
-				if (i <= cardslideBlock.length - 1) {
-					cardclone = cardslideBlock[i].cloneNode(true);
-					cardclone.removeAttribute('id');
-					cardclone.className = 'card-section-block card-slide-block slide-clone';
-					document.getElementById('card-testimonials-repeater').appendChild(cardclone);
+function cardsizeSlides() {
+	// Prep Slides and Containers
+	let cardslideContainer = document.querySelector('.card-slide-inner-container');
+	let cardslideTrack = document.querySelector('.card-slide-track');
+	let cardslideContainerWidth = cardslideContainer.offsetWidth;
+	let cardslideCount = document.querySelectorAll('.card-show-slide');
+	let cardslideInitial = document.querySelectorAll('.card-slide-initial');
+	let cardslideWidth = cardslideContainerWidth / cardslideCount.length;
+	let cardslideBlockContainer = document.getElementById('card-testimonials-repeater');
+	let cardslideBlock = document.querySelectorAll('.card-slide-block');
+	document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cardslideInitial.length) - 48) + "px)"; 
+	
+	for (let i = 0; i <= cardslideBlock.length - 1; i++) {
+		cardslideBlock[i].style.width = cardslideWidth + "px";
+		if (i <= cardslideBlock.length - 1) {
+			cardclone = cardslideBlock[i].cloneNode(true);
+			cardclone.removeAttribute('id');
+			cardclone.className = 'card-section-block card-slide-block slide-clone';
+			document.getElementById('card-testimonials-repeater').appendChild(cardclone);
+		}
+
+		if (i >= 0) {
+			cardpreclone = cardslideBlock[i].cloneNode(true);
+			cardpreclone.className = 'card-section-block card-slide-block slide-clone clone-before';
+			cardpreclone.removeAttribute('id');
+			let cardparentdiv = document.getElementById('card-testimonials-repeater');
+			let cardinsertPreclone = document.getElementById('card-slide-block-1');
+			cardparentdiv.insertBefore(cardpreclone, cardinsertPreclone);
+		}
+	}
+
+	let cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
+	cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
+
+	const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+
+	if (vw <= 1024 && vw > 768) {
+		cardslideCount = document.querySelectorAll('.card-show-slide');
+		last = cardslideCount.length - 1;
+		for (let c = 0; c <= last; c++) {
+			if (c > 1 && c <= last ) {
+				cardslideCount[c].classList.remove('card-show-slide', 'card-slide-initial');
+			}
+		}
+
+		cardslideContainer = document.querySelector('.card-slide-inner-container');
+		cardslideContainerWidth = cardslideContainer.offsetWidth;
+		cardslideCount = document.querySelectorAll('.card-show-slide');
+		cardslideWidth = cardslideContainerWidth / cardslideCount.length;
+		document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cardslideInitial.length) - 48) + "px)"; 
+		cardslideBlock = document.querySelectorAll('.card-slide-block');
+		for (let i = 0; i <= cardslideBlock.length - 1; i++) {
+			cardslideBlock[i].style.width = cardslideWidth + "px";
+		}
+	cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
+	cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
+
+	}
+
+	if (vw <= 768) {
+		cardslideCount = document.querySelectorAll('.card-show-slide');
+		
+		for (let j = 0; j <= cardslideCount.length -2; j++) {
+			cardslideCount[j].classList.remove('card-show-slide', 'card-slide-initial');
+		}
+
+		cardslideContainer = document.querySelector('.card-slide-inner-container');
+		cardslideContainerWidth = cardslideContainer.offsetWidth;
+		cardslideCount = document.querySelectorAll('.card-show-slide');
+		cardslideWidth = cardslideContainerWidth / cardslideCount.length;
+		document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cardslideInitial.length) - 48) + "px)"; 
+		cardslideBlock = document.querySelectorAll('.card-slide-block');
+		for (let i = 0; i <= cardslideBlock.length - 1; i++) {
+			cardslideBlock[i].style.width = cardslideWidth + "px";
+		}
+	cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
+	cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
+
+	}
+
+}
+
+function cardREsizeSlides() {
+	const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+	
+	let cardslideContainer = document.querySelector('.card-slide-inner-container');
+	let cardslideTrack = document.querySelector('.card-slide-track');
+	let cardslideContainerWidth = cardslideContainer.offsetWidth;
+	let cardslideInitial = document.querySelectorAll('.card-slide-initial');
+	let cardslideCount = document.querySelectorAll('.card-show-slide');
+	let cloneBefore = document.querySelectorAll('.clone-before');
+	let cardslideWidth = cardslideContainerWidth / cardslideCount.length;
+	let cardslideBlock = document.querySelectorAll('.card-slide-block');
+
+	for (let i = 0; i <= cardslideBlock.length - 1; i++) {
+		cardslideBlock[i].style.width = cardslideWidth + "px";
+	}
+
+	cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
+	cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
+	
+	if (vw >= 1024) {
+		large = true;
+		
+		if (large == true) {
+			document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)";
+		}; 
+
+		if (medium == true && large == true) {
+			let newCardSlideCount = document.querySelectorAll('.save-card-count');
+			if (cardslideCount.length != newCardSlideCount.length) {
+				for (k = 0; k <= cardslideCount.length; k++) {
+					cardslideCount[k].nextElementSibling.classList.add('card-show-slide', 'card-slide-initial');;
 				}
+			}
 
-				if (i >= 0) {
-					cardpreclone = cardslideBlock[i].cloneNode(true);
-					cardpreclone.className = 'card-section-block card-slide-block slide-clone';
-					cardpreclone.removeAttribute('id');
-					let cardparentdiv = document.getElementById('card-testimonials-repeater');
-					let cardinsertPreclone = document.getElementById('card-slide-block-1');
-					cardparentdiv.insertBefore(cardpreclone, cardinsertPreclone);
-				}
-            }
-
-			let cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
-            cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
-
-			const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-
-			if (vw <= 1024 && vw > 768) {
-				cardslideCount = document.querySelectorAll('.card-show-slide');
-				last = cardslideCount.length - 1;
-				cardslideCount[last].classList.remove('card-show-slide', 'card-slide-initial');
-
-				cardslideContainer = document.querySelector('.card-slide-inner-container');
-				cardslideContainerWidth = cardslideContainer.offsetWidth;
-				cardslideCount = document.querySelectorAll('.card-show-slide');
-				cardslideWidth = cardslideContainerWidth / cardslideCount.length;
-				document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cardslideInitial.length) - 48) + "px)"; 
-				cardslideBlock = document.querySelectorAll('.card-slide-block');
-				for (let i = 0; i <= cardslideBlock.length - 1; i++) {
-					cardslideBlock[i].style.width = cardslideWidth + "px";
-				}
-			cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
-            cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
+			cardslideContainer = document.querySelector('.card-slide-inner-container');
+			cardslideContainerWidth = cardslideContainer.offsetWidth;
+			cardslideCount = document.querySelectorAll('.card-show-slide');
+			cardslideWidth = cardslideContainerWidth / cardslideCount.length;
+			cardslideInitial = document.querySelectorAll('.card-slide-initial');
+			document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)"; 
+			for (let l = 0; l <= cardslideBlock.length - 1; l++) {
+				cardslideBlock[l].style.width = cardslideWidth + "px";
 
 			}
 
-			if (vw <= 768) {
-				console.log('i am <= 768px')
-				cardslideCount = document.querySelectorAll('.card-show-slide');
-				
-				for (let j = 0; j <= cardslideCount.length -2; j++) {
-					cardslideCount[j].classList.remove('card-show-slide', 'card-slide-initial');
-				}
-
-				cardslideContainer = document.querySelector('.card-slide-inner-container');
-				cardslideContainerWidth = cardslideContainer.offsetWidth;
-				cardslideCount = document.querySelectorAll('.card-show-slide');
-				cardslideWidth = cardslideContainerWidth / cardslideCount.length;
-				document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cardslideInitial.length) - 48) + "px)"; 
-				cardslideBlock = document.querySelectorAll('.card-slide-block');
-				for (let i = 0; i <= cardslideBlock.length - 1; i++) {
-					cardslideBlock[i].style.width = cardslideWidth + "px";
-				}
 			cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
-            cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
+			cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
+
+			medium = false;
+		}; 
+
+		if (small == true) {
+			small = false;
+		};
+	}
+
+	
+	if (vw >= 769 && vw <= 1023) {
+		medium = true;
+		
+		if (large == true && medium == true) {
+
+			cardslideCount = document.querySelectorAll('.card-show-slide');
+			last = cardslideCount.length - 1;
+			for (let c = 0; c <= last; c++) {
+				if (c > 1 && c <= last ) {
+					cardslideCount[c].classList.remove('card-show-slide', 'card-slide-initial');
+				}
+			}
+
+			cardslideContainer = document.querySelector('.card-slide-inner-container');
+			cardslideContainerWidth = cardslideContainer.offsetWidth;
+			cardslideCount = document.querySelectorAll('.card-show-slide');
+			cardslideWidth = cardslideContainerWidth / cardslideCount.length;
+			cardslideInitial = document.querySelectorAll('.card-slide-initial');
+			document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)"; 
+			for (let l = 0; l <= cardslideBlock.length - 1; l++) {
+				cardslideBlock[l].style.width = cardslideWidth + "px";
 
 			}
 
-        }
+			cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
+			cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
 
-		function cardREsizeSlides() {
-			//console.log('not in a media query');
-			const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+			large = false;
+		}; 
+
+		if (medium == true) {
+			document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)";
+		}; 
+
+		if (small == true && medium == true) {
+
+			cardslideCount = document.querySelectorAll('.card-show-slide');
+			let newCardSlideCount = document.querySelectorAll('.save-card-count');
+			if (cardslideCount.length != newCardSlideCount.length) {
+				for (k = 0; k <= cardslideCount.length; k++) {
+					if (k == cardslideCount.length - 1 || k == cardslideCount.length - 2) {
+						cardslideCount[k].nextElementSibling.classList.add('card-show-slide', 'card-slide-initial');;
+					}
+				}
+			}
+
+			cardslideContainer = document.querySelector('.card-slide-inner-container');
+			cardslideContainerWidth = cardslideContainer.offsetWidth;
+			cardslideCount = document.querySelectorAll('.card-show-slide');
+			cardslideWidth = cardslideContainerWidth / cardslideCount.length;
+			cardslideInitial = document.querySelectorAll('.card-slide-initial');
+			document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)"; 
+			for (let l = 0; l <= cardslideBlock.length - 1; l++) {
+				cardslideBlock[l].style.width = cardslideWidth + "px";
+
+			}
+
+			cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
+			cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
+
+			small = false;
+		};
+	}
+
+	if (vw <= 768) {
+		small = true;
+		
+		if (large == true) {
+			large = false;
+		}; 
+
+		if (medium == true && small == true) {
+
+			cardslideCount = document.querySelectorAll('.card-show-slide');
+			last = cardslideCount.length - 1;
+			for (let c = 0; c <= last; c++) {
+				if (c > 0 && c <= last ) {
+					cardslideCount[c].classList.remove('card-show-slide', 'card-slide-initial');
+				}
+			}
 			
-			let cardslideContainer = document.querySelector('.card-slide-inner-container');
-			let cardslideTrack = document.querySelector('.card-slide-track');
-			let cardslideContainerWidth = cardslideContainer.offsetWidth;
-			let cardslideInitial = document.querySelectorAll('.card-slide-initial');
-			let cardslideCount = document.querySelectorAll('.card-show-slide');
-			let cardslideWidth = cardslideContainerWidth / cardslideCount.length;
-			let cardslideBlock = document.querySelectorAll('.card-slide-block');
 
+			cardslideContainer = document.querySelector('.card-slide-inner-container');
+			cardslideContainerWidth = cardslideContainer.offsetWidth;
+			cardslideCount = document.querySelectorAll('.card-show-slide');
+			cardslideWidth = cardslideContainerWidth / cardslideCount.length;
+			document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)"; 
 			for (let i = 0; i <= cardslideBlock.length - 1; i++) {
-                cardslideBlock[i].style.width = cardslideWidth + "px";
-            }
-
+				cardslideBlock[i].style.width = cardslideWidth + "px";
+			}
 			cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
-            cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
+			cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
 
-			if (vw >= 1024) {
-				console.log('>= 1024');
+			medium = false;
+		}; 
 
-				if (cardslideCount.length == 3) { // md
-					console.log('cardslideCount.length == 3');
-					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cardslideInitial.length) - 48) + "px)"; 
-				}
+		if (small == true) {
+			document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)";
+		};
+	}
+}
+let large;
+let medium;
+let small;
+window.addEventListener("load", cardsizeSlides);
+window.addEventListener("resize", cardREsizeSlides);
 
-				if (cardslideCount.length == 2 && lgonce != true) {
-					console.log('cardslideCount.length == 2 && lgonce != true');
-					for (k = 0; k <= cardslideCount.length; k++) {
-						if (k == cardslideCount.length - 1) {
-							test = cardslideCount[k].nextElementSibling.classList.add('card-show-slide', 'card-slide-initial');;
-						}
-					}
+// Function triggered when the slide button element is clicked. 
+// Handles slide transitions and toggling button active states
+function cardslideToggle(id) {
+	let cardsliderButtonId = document.getElementById(id.getAttribute("id")).id; // Get the id of the clicked button
+	let cardsliderPositionSlice = cardsliderButtonId.slice(-1); // Slice the last character of the id and save in a new variable
+	cardposition = cardsliderPositionSlice -= 1; // Need to reset position to match the current "clicked" position - This value is then used by Next()
+	cardsliderPosition = cardposition; // Need to reset sliderPosition to match the current "clicked" position - This value is then used by Next()
+	for(let i = 1, s = 0; i <= cardslides.length; i++, s++) { // setup dual for loop variables and conditions
+		cardslides[s].classList.add('closed'); // add "closed" class to all slides
+		document.getElementById(id.getAttribute("aria-controls")).classList.remove('closed'); // remove "close" class from the in focus slide - aria-controls set to the id of the slide.
+		document.getElementById('card-slide-button-' + i).classList.remove('button-active'); // Remove focus from current button 
+		document.getElementById(id.getAttribute("id")).classList.add('button-active'); // Add focus to newly clicked button
+	}
+}
 
-					cardslideContainer = document.querySelector('.card-slide-inner-container');
-					cardslideContainerWidth = cardslideContainer.offsetWidth;
-					cardslideCount = document.querySelectorAll('.card-show-slide');
-					cardslideWidth = cardslideContainerWidth / cardslideCount.length;
-					cardslideInitial = document.querySelectorAll('.card-slide-initial');
-					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cardslideInitial.length) - 48) + "px)"; 
-					for (let l = 0; l <= cardslideBlock.length - 1; l++) {
-						cardslideBlock[l].style.width = cardslideWidth + "px";
-					}
+// Transition slides
+function cardhideSlide() {
+	cardslides[cardposition].classList.remove('closed'); // Show the new slide
+	for (let i = 0; i < cardslides.length; i++) {
+		if (i !== cardposition) cardslides[i].classList.add('closed'); // Hide the current slide
+	}
+}
 
-					cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
-					cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
+// Check current slide position and how to set the next slide
+function cardcontrol() {
+	if (cardposition >= 0 && cardposition < cardslides.length) { // Current position is not first and not last
+		cardhideSlide();
+	} else if (cardposition === cardslides.length) { // Current slide position is last
+		cardposition = 0; // Reset position to first slide
+		cardhideSlide();
+	} else {
+		// There is no else
+	}
+}
 
-					lgonce = true;
-					mdonce = '';
-				}
+// Previous can be used if creating prev/next buttons
+function cardPrev() {
 
-				if (cardslideCount.length == 3 && mdonce != true) {
-					console.log('cardslideCount.length == 3 && mdonce != true');
-					cardslideCount = document.querySelectorAll('.card-show-slide');
-					last = cardslideCount.length - 1;
-					cardslideCount[last].classList.remove('card-show-slide', 'card-slide-initial');
-					
-					cardslideContainer = document.querySelector('.card-slide-inner-container');
-					cardslideContainerWidth = cardslideContainer.offsetWidth;
-					
-					cardslideWidth = cardslideContainerWidth / cardslideCount.length;
-					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cardslideInitial.length) - 48) + "px)"; 
-					for (let i = 0; i <= cardslideBlock.length - 1; i++) {
-						cardslideBlock[i].style.width = cardslideWidth + "px";
-					}
-					cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
-					cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
-					mdonce = true;
-					lgonce = '';
-				}
-			}
-
-			
-			if (vw >= 769 && vw <= 1023) {
-				console.log('>= 769 && <= 1023');
-				
-				if (cardslideCount.length == 2 && mdonce != true && smonce != true) { // lg
-					console.log('cardslideCount.length == 2 && mdonce != true && smonce != true');
-					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cardslideInitial.length + 2) - 48) + "px)";
-					smonce = true;
-				}
-				if (cardslideCount.length == 2 && mdonce != true && smonce == true) { // lg
-					console.log('cardslideCount.length == 2 && mdonce != true && smonce == true');
-					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cardslideInitial.length + 1) - 48) + "px)"; 
-					smonce = undefined;
-				}
-				if (cardslideCount.length == 1 && mdonce != true && smonce == true && gt == true) { // lg
-					console.log('cardslideCount.length == 1 && mdonce != true && smonce == true && gt == true');
-					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cardslideInitial.length + 2) - 48) + "px)"; 
-					smonce = undefined;
-				}
-				if (cardslideCount.length == 1 && mdonce == true && smonce == true && gt == true) { // lg
-					console.log('cardslideCount.length == 1 && mdonce == true && smonce == true && gt == true');
-					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cardslideInitial.length + 2) - 48) + "px)"; 
-					smonce = undefined;
-				}
-				if (cardslideCount.length == 2 && mdonce == true) { // sm
-					console.log('cardslideCount.length == 2 && mdonce == true');
-					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cardslideInitial.length + 1) - 48) + "px)"; 
-				}
-				
-				if (cardslideCount.length == 1 && smonce != true) {
-					console.log('cardslideCount.length == 1 && smonce != true');
-					for (k = 0; k <= cardslideCount.length; k++) {
-						if (k == cardslideCount.length - 1) {
-							test = cardslideCount[k].nextElementSibling.classList.add('card-show-slide', 'card-slide-initial');;
-						}
-					}
-
-					cardslideContainer = document.querySelector('.card-slide-inner-container');
-					cardslideContainerWidth = cardslideContainer.offsetWidth;
-					cardslideCount = document.querySelectorAll('.card-show-slide');
-					cardslideWidth = cardslideContainerWidth / cardslideCount.length;
-					cardslideInitial = document.querySelectorAll('.card-slide-initial');
-					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cardslideInitial.length + 1) - 48) + "px)"; 
-					for (let l = 0; l <= cardslideBlock.length - 1; l++) {
-
-						cardslideBlock[l].style.width = cardslideWidth + "px";
-
-					}
-
-					cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
-					cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
-				
-					smonce = '';
-					once = '';
-				}
-			}
-
-			if (vw <= 768) {
-				console.log('<= 768');
-				
-				if (cardslideCount.length == 1 && once == true) { // sm
-					console.log('cardslideCount.length == 1');
-					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cardslideInitial.length + 2) - 48) + "px)"; 
-				}
-				
-				if (cardslideCount.length == 2 && once != true) {
-					console.log('cardslideCount.length == 2 && once != true');
-					cardslideCount = document.querySelectorAll('.card-show-slide');
-					last = cardslideCount.length - 1;
-					cardslideCount[last].classList.remove('card-show-slide', 'card-slide-initial');
-
-					cardslideContainer = document.querySelector('.card-slide-inner-container');
-					cardslideContainerWidth = cardslideContainer.offsetWidth;
-					cardslideCount = document.querySelectorAll('.card-show-slide');
-					cardslideWidth = cardslideContainerWidth / cardslideCount.length;
-					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cardslideInitial.length + 1) - 48) + "px)"; 
-					for (let i = 0; i <= cardslideBlock.length - 1; i++) {
-						cardslideBlock[i].style.width = cardslideWidth + "px";
-					}
-					cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
-					cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
-					once = true;
-				}
-
-				if (cardslideCount.length == 1 && once != true) {
-					console.log('cardslideCount.length == 1 && once != true');
-					gt = true;
-				}
-			}
-		}
-		let lgonce;
-		let mdonce;
-		let smonce;
-		let once;
-		let gt;
-        window.addEventListener("load", cardsizeSlides);
-        window.addEventListener("resize", cardREsizeSlides);
-
-		// Function triggered when the slide button element is clicked. 
-		// Handles slide transitions and toggling button active states
-		function cardslideToggle(id) {
-			let cardsliderButtonId = document.getElementById(id.getAttribute("id")).id; // Get the id of the clicked button
-			let cardsliderPositionSlice = cardsliderButtonId.slice(-1); // Slice the last character of the id and save in a new variable
-			cardposition = cardsliderPositionSlice -= 1; // Need to reset position to match the current "clicked" position - This value is then used by Next()
-			cardsliderPosition = cardposition; // Need to reset sliderPosition to match the current "clicked" position - This value is then used by Next()
-			for(let i = 1, s = 0; i <= cardslides.length; i++, s++) { // setup dual for loop variables and conditions
-				cardslides[s].classList.add('closed'); // add "closed" class to all slides
-				document.getElementById(id.getAttribute("aria-controls")).classList.remove('closed'); // remove "close" class from the in focus slide - aria-controls set to the id of the slide.
-				document.getElementById('card-slide-button-' + i).classList.remove('button-active'); // Remove focus from current button 
-				document.getElementById(id.getAttribute("id")).classList.add('button-active'); // Add focus to newly clicked button
-			}
-		}
+	if (cardposition === 0) {
+		cardposition = cardslides.length - 1;
+		cardsliderPosition = cardslides.length - 1;
+	} else {	
+		cardposition--;
+		cardsliderPosition--;
+	}
 	
-		// Transition slides
-		function cardhideSlide() {
-			cardslides[cardposition].classList.remove('closed'); // Show the new slide
-			for (let i = 0; i < cardslides.length; i++) {
-				if (i !== cardposition) cardslides[i].classList.add('closed'); // Hide the current slide
-			}
-		}
+	let cardslideContainer = document.querySelector('.card-slide-inner-container');
+	let cardslideContainerWidth = document.getElementById('card-testimonials-repeater').style.width.replace(/[^\d.]/g, '');
+	let cardslideCount = document.querySelectorAll('.card-slide-block');
+	let cardslideWidth = cardslideContainerWidth / cardslideCount.length;
+	let cardtransformStyle = document.querySelector('.card-slide-track').style.transform;
+	let cardtranslateX = cardtransformStyle.replace(/[^\d.]/g, '');
+	cardtranslateInc = -(+cardtranslateX) - cardslideWidth;
 
-		// Check current slide position and how to set the next slide
-		function cardcontrol() {
-			if (cardposition >= 0 && cardposition < cardslides.length) { // Current position is not first and not last
-				cardhideSlide();
-			} else if (cardposition === cardslides.length) { // Current slide position is last
-				cardposition = 0; // Reset position to first slide
-				cardhideSlide();
-			} else {
-				// There is no else
-			}
-		}
+	if (cardposition > 0) {
+		document.querySelector('.card-slide-track').style.cssText = "transform: translate(" + cardtranslateInc + "px); -webkit-transition: transform .3s; transition: transform .3s; width: " + cardslideContainerWidth + "px";
+	} 
 
-		// Transition active button
-		// function cardbuttonToggle() {
-		// 	cardslideButtons[cardsliderPosition].classList.add('button-active');
-		// 	for (let s = 0; s < cardslides.length; s++) {
-		// 		if (s !== cardsliderPosition) cardslideButtons[s].classList.remove('button-active');
-		// 	}
-		// }
+	if (cardposition == 0) {
+		document.querySelector('.card-slide-track').style.cssText = "transform: translate(" + cardtranslateInc + "px); -webkit-transition: transform .3s; transition: transform .3s; width: " + cardslideContainerWidth + "px;";
+		setTimeout(function(){ document.querySelector('.card-slide-track').style.cssText = "transform: translate(" + -(cardslideWidth * cardslides.length + 48) + "px); width: " + cardslideContainerWidth + "px;"; }, 300);
+	}
 	
-		
-		// Check active button position and how to set the next button
-		// function cardbuttonControl() {
-		// 	if (cardsliderPosition >= 0 && cardsliderPosition < cardslides.length) { // Current position is not first and not last
-		// 		cardbuttonToggle();
-		// 	} else if (cardsliderPosition === cardslides.length) { // Current active button position is last
-		// 		cardsliderPosition = 0; // Reset position to first slide
-		// 		cardbuttonToggle();
-		// 	} else {
-		// 		// There is no else
-		// 	}
-		// }
-	
-		// Previous can be used if creating prev/next buttons
-		function cardPrev() {
+	cardcontrol();
+}
 
-			if (cardposition === 0) {
-				cardposition = 3;
-				cardsliderPosition = 3;
-			} else {	
-				cardposition--;
-				cardsliderPosition--;
-			}
-			
-			let cardslideContainer = document.querySelector('.card-slide-inner-container');
-            let cardslideContainerWidth = document.getElementById('card-testimonials-repeater').style.width.replace(/[^\d.]/g, '');
-			let cardslideCount = document.querySelectorAll('.card-slide-block');
-            let cardslideWidth = cardslideContainerWidth / cardslideCount.length;
-            let cardtransformStyle = document.querySelector('.card-slide-track').style.transform;
-            let cardtranslateX = cardtransformStyle.replace(/[^\d.]/g, '');
-            cardtranslateInc = -(+cardtranslateX) - cardslideWidth;
+// Parent function to advance slides and slide buttons
+function cardNext() {
+	cardposition++; // Advances counter to target the next slide
+	cardsliderPosition++; // Advances counter to target next slide button
 
-            if (cardposition > 0) {
-				document.querySelector('.card-slide-track').style.cssText = "transform: translate(" + cardtranslateInc + "px); -webkit-transition: transform .3s; transition: transform .3s; width: " + cardslideContainerWidth + "px";
-			} 
+	let cardslideContainer = document.querySelector('.card-slide-inner-container');
+	let cardslideContainerWidth = document.getElementById('card-testimonials-repeater').style.width.replace(/[^\d.]/g, '');
+	let cardslideCount = document.querySelectorAll('.card-slide-block');
+	let cardslideWidth = cardslideContainerWidth / cardslideCount.length;
+	let cardtransformStyle = document.querySelector('.card-slide-track').style.transform;
+	let cardtranslateX = cardtransformStyle.replace(/[^\d.]/g, '');
+	cardtranslateInc = -(+cardtranslateX) + cardslideWidth;
 
-			if (cardposition == 0) {
-				document.querySelector('.card-slide-track').style.cssText = "transform: translate(" + cardtranslateInc + "px); -webkit-transition: transform .3s; transition: transform .3s; width: " + cardslideContainerWidth + "px;";
-				setTimeout(function(){ document.querySelector('.card-slide-track').style.cssText = "transform: translate(" + -(cardslideWidth * cardslides.length + 48) + "px); width: " + cardslideContainerWidth + "px;"; }, 300);
-			}
-			
-			cardcontrol();
-			//cardbuttonControl()
-		}
-	
-		// Parent function to advance slides and slide buttons
-		function cardNext() {
-			cardposition++; // Advances counter to target the next slide
-			cardsliderPosition++; // Advances counter to target next slide button
+	if (cardposition <= (cardslides.length - 1)) {
+		document.querySelector('.card-slide-track').style.cssText = "transform: translate(" + cardtranslateInc + "px); -webkit-transition: transform .3s; transition: transform .3s; width: " + cardslideContainerWidth + "px";
+	} 
 
-            let cardslideContainer = document.querySelector('.card-slide-inner-container');
-            let cardslideContainerWidth = document.getElementById('card-testimonials-repeater').style.width.replace(/[^\d.]/g, '');
-			let cardslideCount = document.querySelectorAll('.card-slide-block');
-            let cardslideWidth = cardslideContainerWidth / cardslideCount.length;
-            let cardtransformStyle = document.querySelector('.card-slide-track').style.transform;
-            let cardtranslateX = cardtransformStyle.replace(/[^\d.]/g, '');
-            cardtranslateInc = -(+cardtranslateX) + cardslideWidth;
+	if (cardposition == cardslides.length) {
+		document.querySelector('.card-slide-track').style.cssText = "transform: translate(" + cardtranslateInc + "px); -webkit-transition: transform .3s; transition: transform .3s; width: " + cardslideContainerWidth + "px;";
+		setTimeout(function(){ document.querySelector('.card-slide-track').style.cssText = "transform: translate(" + -(cardslideWidth * cardslides.length + 48) + "px); width: " + cardslideContainerWidth + "px;"; }, 300);
+	}
 
-            if (cardposition <= (cardslides.length - 1)) {
-				document.querySelector('.card-slide-track').style.cssText = "transform: translate(" + cardtranslateInc + "px); -webkit-transition: transform .3s; transition: transform .3s; width: " + cardslideContainerWidth + "px";
-			} 
+	cardcontrol(); // Advance the active slide
+}
 
-			if (cardposition == cardslides.length) {
-				document.querySelector('.card-slide-track').style.cssText = "transform: translate(" + cardtranslateInc + "px); -webkit-transition: transform .3s; transition: transform .3s; width: " + cardslideContainerWidth + "px;";
-				setTimeout(function(){ document.querySelector('.card-slide-track').style.cssText = "transform: translate(" + -(cardslideWidth * cardslides.length + 48) + "px); width: " + cardslideContainerWidth + "px;"; }, 300);
-			}
-
-            cardcontrol(); // Advance the active slide
-			//cardbuttonControl() // Advance the active slide button
-		}
-
-		// Create a timer that calls Next() every 5 seconds
-		//var myTimer = setInterval(Next, 5000);
-
-		// Pause the slider when on mouseover
-		cardsource = document.getElementById('testimonial-slides-container');
-		//source.addEventListener("mouseover", function(){ clearInterval(myTimer)});
-		
-		// Start a new timer on mouse out
-		//source.addEventListener("mouseout", function(){ myTimer = setInterval(Next, 5000);});
-        </script>
+</script>
         

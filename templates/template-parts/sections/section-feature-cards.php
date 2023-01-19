@@ -13,9 +13,9 @@ foreach ( $features as $feature ) { if ($i <= 2) { $i++; } } ?>
 <section id="feature-container"<?php echo $bg_color; ?>>
     <div class="w-11/12 mx-auto feature-inner max-w-screen-2xl">
         <div id="section-header"<?php echo $subtext ?>>
-			<h2 class="w-full md:w-10/12 mx-auto text-center section-title small"><?php echo $section['heading']; ?></h2>
-			<?php if ($content) : echo '<p class="w-full lg:w-7/12 mx-auto text-center">' . $section['content'] . '</p>'; endif; ?>
-		</div>
+            <h2 class="section-title"><?php echo $section['heading']; ?></h2>
+            <?php if ($content) : echo '<p>' . $section['content'] . '</p>'; endif; ?>
+        </div>
         <div id="features-repeater" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-<?php echo $i ?>">
             <?php foreach ( $features as $feature ) { 
                 $image = $feature['featured_image'];

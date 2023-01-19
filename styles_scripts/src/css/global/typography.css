@@ -39,9 +39,39 @@
   --space-4: calc(((var(--space-4-min) / 16) * 1rem) + (var(--space-4-max) - var(--space-4-min)) * var(--fluid-bp));
 
   /* - */
+  --space-5-min: 20;
+  --space-5-max: 40;
+  --space-5: calc(((var(--space-5-min) / 16) * 1rem) + (var(--space-5-max) - var(--space-5-min)) * var(--fluid-bp));
+
+  /* - */
   --space-6-min: 24;
   --space-6-max: 48;
   --space-6: calc(((var(--space-6-min) / 16) * 1rem) + (var(--space-6-max) - var(--space-6-min)) * var(--fluid-bp));
+
+  /* - */
+  --space-7-min: 28;
+  --space-7-max: 56;
+  --space-7: calc(((var(--space-7-min) / 16) * 1rem) + (var(--space-7-max) - var(--space-7-min)) * var(--fluid-bp));
+
+  /* - */
+  --space-8-min: 32;
+  --space-8-max: 64;
+  --space-8: calc(((var(--space-8-min) / 16) * 1rem) + (var(--space-8-max) - var(--space-8-min)) * var(--fluid-bp));
+
+  /* - */
+  --space-9-min: 36;
+  --space-9-max: 72;
+  --space-9: calc(((var(--space-9-min) / 16) * 1rem) + (var(--space-9-max) - var(--space-9-min)) * var(--fluid-bp));
+
+  /* - */
+  --space-10-min: 40;
+  --space-10-max: 80;
+  --space-10: calc(((var(--space-10-min) / 16) * 1rem) + (var(--space-10-max) - var(--space-10-min)) * var(--fluid-bp));
+
+  /* - */
+  --space-11-min: 44;
+  --space-11-max: 88;
+  --space-11: calc(((var(--space-11-min) / 16) * 1rem) + (var(--space-11-max) - var(--space-11-min)) * var(--fluid-bp));
 
   /* - */
   --space-12-min: 48;
@@ -208,16 +238,4 @@ main li,
   font-size: 1.1rem;
   line-height: 1.6rem;
   font-weight: 400;
-}
-
-main p,
-#banner p {
-  margin: var(--space-3) 0;
-}
-
-main ol,
-main ul {
-  list-style: disc;
-  padding: 0 0 0 24px;
-  margin: var(--space-3) 0;
 }

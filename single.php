@@ -7,7 +7,7 @@ $linkedin = carbon_get_theme_option( 'linkedin' );
 <?php get_header(); ?> 
 <?php get_template_part('templates/template-parts/banners/global', 'hero'); ?>
 <main>
-	<section class="relative flex flex-col items-center w-full px-6 mx-auto lg:max-w-3xl lg:block scroll-setter">
+	<section class="relative flex flex-col items-center w-full mx-auto lg:max-w-3xl lg:block scroll-setter">
 		<div id="social-sharing" class="order-2 lg:absolute lg:order-1 -left-32">
 			<div id="social-sharing-inner" class="social-sharing-wrapper lg:block" style="position: relative; top: 0px;">
 				<p>SHARE</p>
@@ -19,23 +19,23 @@ $linkedin = carbon_get_theme_option( 'linkedin' );
 				</div>
 			</div>
     	</div>
-		<div id="post-content" class="order-1 float-right max-w-3xl lg:order-2 lg:-mt-14">
+		<div id="post-content" class="order-1 float-right max-w-3xl lg:order-2">
 			<?php if ( has_post_thumbnail() ) { ?>
 				<img src="<?php the_post_thumbnail_url(); ?>" alt="Attorney Portrait">
 			<?php } ?>
-			<div id="post-meta" class="flex py-12">
+			<div id="post-meta" class="flex">
 				<div class="flex post-author basis-1/2">
-					<img class="sm:mr-4" src="/wp-content/uploads/2022/10/SF_Logo_Part_1_large.png" alt="Service Fusion Logo" width="80" />
+					<img src="/wp-content/uploads/2022/10/SF_Logo_Part_1_large.png" alt="Service Fusion Logo" width="80" />
 					<div>
 						<span class="uppercase text-light-gray meta-heading">Written By</span> 
-						<span class="block text-primary meta-author"><?php the_author(); ?></span>
+						<span class="block meta-author"><?php the_author(); ?></span>
 					</div>
 				</div>
 				<div class="uppercase post-categories basis-1/2 meta-heading">Topic</span>
 					<span class="block text-light-gray">
 					<?php $category = get_the_category(); 
 						for	($c = 0; $c < count($category); $c++) {
-						echo '<a class="text-primary" href="'.get_category_link( $category[$c]->term_id ).'" title="'.$category[$c]->cat_name.'"">'.$category[$c]->cat_name.'</a>,' ?>
+						echo '<a href="'.get_category_link( $category[$c]->term_id ).'" title="'.$category[$c]->cat_name.'"">'.$category[$c]->cat_name.'</a>,' ?>
 					<?php } ?>
 				</div>
 			</div>
@@ -49,7 +49,7 @@ $linkedin = carbon_get_theme_option( 'linkedin' );
 			?>
 		</div>
 	</section>
-	<section id="posts-container" class="pt-24 posts-container pb-28 style-two">
+	<section id="posts-container" class="posts-container">
 		<div id="section-header">
 			<h2 class="w-full lg:w-7/12 mx-auto text-center section-title small">Related Posts</h2>
 		</div>
@@ -59,36 +59,38 @@ $linkedin = carbon_get_theme_option( 'linkedin' );
 				'posts_per_page' => 3,
 				'post_type' => 'post',
 				'post_status' => 'publish',
-				// 'category__in' => $category,
+				'category__in' => $category,
 			);
 			$query = new WP_Query($query_args);
 		?>
 		<div id="post-block-wrapper" class="w-11/12 max-w-screen-xl mx-auto">
 			<div id="articles-wrapper" class="grid lg:grid-cols-3">
 				<?php while($query->have_posts()) : $query->the_post(); $post_date = get_the_date('M j, Y'); ?>	
-				<article class="w-11/12 mx-auto mt-6 mb-0 text-left bg-white">
+				<article class="w-11/12 mx-auto">
 						
-						<?php if ( has_post_thumbnail() ) { ?>
-							<div class="post-image" style="background-image:url(<?php the_post_thumbnail_url('medium'); ?>);"></div>
-						<?php } ?>
+						<div class="post-image">
+							<?php if ( has_post_thumbnail() ) { ?>
+								<img class="w-full" src="<?php the_post_thumbnail_url(); ?>" alt="Featured Image" />
+							<?php } ?>
+						</div>
 						
 						
-						<div class="px-6 pt-6 post-categories">
+						<div class="post-categories">
 							<?php $category = get_the_category(); 
 								for	($c = 0; $c < count($category); $c++) {
-								echo '<a class="inline-block px-2 pt-1 text-center text-white uppercase bg-primary hover:bg-secondary" href="'.get_category_link( $category[$c]->term_id ).'" title="'.$category[$c]->cat_name.'"">'.$category[$c]->cat_name.'</a>' ?>
+								echo '<a class="inline-block" href="'.get_category_link( $category[$c]->term_id ).'" title="'.$category[$c]->cat_name.'"">'.$category[$c]->cat_name.'</a>' ?>
 							<?php } ?>
 						</div>
 
-						<div class="p-6 post-text">
+						<div class="post-text">
 							<h3><?php the_title(); ?></h3>
 							
 							<div class="post-meta">
-								<span class="post-author text-primary">By <?php the_author(); ?></span>
+								<span class="post-author">By <?php the_author(); ?></span>
 								<span class="post-date"> / <?php echo $post_date ?></span>
 							</div>
 
-							<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="button red">
+							<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="btn primary">
 								<?php  
 
 								$current_post_id = get_the_ID(); // id of current post in the loop
@@ -112,16 +114,19 @@ $linkedin = carbon_get_theme_option( 'linkedin' );
 function socialShareButtonsScroll() {
 	const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 	const share = document.getElementById('social-sharing-inner');
+	const header_pos = document.querySelector('header');
 	if (vw >= 1024) {
 		let scrollerTop = document.getElementById("post-content").getBoundingClientRect().top;
 		let relatedPosts = document.getElementById('articles-wrapper').getBoundingClientRect().top;
 		
-		if (relatedPosts <= window.innerHeight) {
-			share.style.cssText = 'position:fixed;top:120px;';
-		}
+		// if (relatedPosts <= window.innerHeight) {
+		// 	share.style.cssText = 'position:fixed;top:120px;';
+		// }
 
-		if (relatedPosts > window.innerHeight && scrollerTop <= 0 ) {
+		if (relatedPosts > window.innerHeight && scrollerTop <= 0 && header_pos.classList.contains('fixed') ) {
 			share.style.cssText = 'position:fixed;top:120px;';
+		} else if (relatedPosts > window.innerHeight && scrollerTop <= 0 && header_pos.classList.contains('relative') ) {
+			share.style.cssText = 'position:fixed;top:0px;';
 		} else {
 			share.style.cssText = 'position:relative;top:0;'; 
 		}
