@@ -4,9 +4,12 @@ $testimonials = $section['crb_testimonials'];
 $count = $section['testimonial_number'];
 $content = $section['content'];
 if ($content) { $subtext = ' class="has-subtext"'; };
+$use_bg_color = $section['use_background_color'];
+$bg_color = $section['background_color'];
+if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $bg_color = '';};
 ?>
 
-<section id="card-testimonial-slides-container">
+<section id="card-testimonial-slides-container" class="w-full testimonial-container<?php echo $bg_color; ?>">
 	<div id="section-header"<?php echo $subtext ?>>
 		<h2 class="section-title"><?php echo $section['heading']; ?></h2>
 		<?php if ($content) : echo '<p>' . $section['content'] . '</p>'; endif; ?>

@@ -4,9 +4,12 @@ $image = $section['testimonial_image'];;
 $imageID = attachment_url_to_postid( $image );
 $alt = get_post_meta($imageID, '_wp_attachment_image_alt', TRUE);
 $image_title = get_the_title($imageID);
+$use_bg_color = $section['use_background_color'];
+$bg_color = $section['background_color'];
+if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $bg_color = '';};
 ?>
 
-<section id="testimonial-single-container" class="w-full bg-lightgrey">
+<section id="testimonial-single-container" class="w-full<?php echo $bg_color; ?>">
     <div id="testimonial-single-inner" class="mx-auto max-w-screen-2xl">
         <div class="section-block">
             <div class="area">

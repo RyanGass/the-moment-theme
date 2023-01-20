@@ -1,8 +1,9 @@
 <?php 
 
 global $section;
-$bg_color = $section['grey_background'];
-if ($bg_color === 'yes') { $bg_color = ' bg-lightgrey'; } else $bg_color = '';
+$use_bg_color = $section['use_background_color'];
+$bg_color = $section['background_color'];
+if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $bg_color = '';};
 ?>
 
 <section id="blockquote-container" class="w-full<?php echo $bg_color; ?>">

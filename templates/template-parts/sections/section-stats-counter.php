@@ -1,11 +1,12 @@
 <?php 
 global $section;
 $stats = $section['stats_blocks'];
-$bg_color = $section['grey_background'];
-if ($bg_color === 'yes') { $bg_color = ' bg-lightgrey'; } else { $bg_color = '';};
+$use_bg_color = $section['use_background_color'];
+$bg_color = $section['background_color'];
+if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $bg_color = '';};
 ?>
 
-<section id="stats-container" class="stats-container<?php echo $bg_color; ?>">
+<section id="stats-container" class="w-full stats-container<?php echo $bg_color; ?>">
     <div id="stats-inner" class="flex flex-wrap justify-center w-11/12 mx-auto lg:flex-nowrap max-w-screen-2xl">
       <?php foreach ( $stats as $stat ) {  
           

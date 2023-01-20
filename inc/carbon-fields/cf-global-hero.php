@@ -124,45 +124,165 @@ function crb_attach_hero_options() {
                         'value' => 'yes',
                         'compare' => '=',
                     )
-                ) ), 
-            Field::make( 'radio', 'show_right_image', 'Show Side Image?' )
-                ->set_default_value( 'no' )    
+                ) ),
+            )) 
+            ->add_tab( __('Right Side Options'), array(
+            Field::make( 'radio', 'right_content_option', 'Choose Content Type' )
+                ->set_default_value( 'none' )    
                 ->add_options( array(
-                        'yes' => 'Yes',
-                        'no' => 'No',
-                    ) )
-                ->set_conditional_logic( array(
-                        'relation' => 'AND',
-                    array(
-                        'field' => 'show_hero',
-                        'value' => 'yes',
-                        'compare' => '=',
-                    ),
-                    array(
-                        'field' => 'alignment',
-                        'value' => 'left',
-                        'compare' => '=',
-                    ),
+                        'none' => 'None',
+                        'image' => 'Image',
+                        'video' => 'Video',
+                        'form' => 'Form',
                     ) ),
+            
             Field::make( 'image', 'right_image', 'Side Image' )
                 ->set_value_type( 'url' )
                 ->set_conditional_logic( array(
                     'relation' => 'AND',
                     array(
-                        'field' => 'show_hero',
-                        'value' => 'yes',
+                        'field' => 'right_content_option',
+                        'value' => 'image',
                         'compare' => '=',
-                    ),
-                    array(
-                        'field' => 'show_right_image',
-                        'value' => 'yes',
-                        'compare' => '=',
-                    ),
-                    array(
-                        'field' => 'alignment',
-                        'value' => 'left',
-                        'compare' => '=',
-                    ),
+                    )
                 ) ),
+            Field::make( 'radio', 'form_type', 'What Type of Form?' )
+                    ->add_options( array(
+                        'embed' => 'Embed',
+                        'mkto' => 'Marketo',
+                        'gravity' => 'Gravity Forms',
+                        'cf7' => 'Contact Form 7',
+                    ) )
+                    ->set_conditional_logic( array(
+                        'relation' => 'AND',
+                        array(
+                            'field' => 'right_content_option',
+                            'value' => 'form',
+                            'compare' => '=',
+                        )
+                    ) ),
+                    Field::make( 'text', 'form_title', 'Form Title' )
+                    ->set_conditional_logic( array(
+                    'relation' => 'OR',
+                        array(
+                            'field' => 'right_content_option',
+                            'value' => 'form',
+                            'compare' => '=',
+                        )
+                    ) ),
+                    Field::make( 'text', 'mkto-form-id', 'Marketo Form ID' )
+                    ->set_help_text( 'Ex: 1028' )
+                    ->set_conditional_logic( array(
+                    'relation' => 'OR',
+                        array(
+                            'field' => 'form_type',
+                            'value' => 'mkto',
+                            'compare' => '=',
+                        )
+                    ) ),
+                    Field::make( 'text', 'mkto-account-id', 'Marketo Account ID' )
+                    ->set_help_text( 'Ex: 157-RPM-092' )
+                    ->set_conditional_logic( array(
+                    'relation' => 'OR',
+                        array(
+                            'field' => 'form_type',
+                            'value' => 'mkto',
+                            'compare' => '=',
+                        )
+                    ) ),
+                    Field::make( 'textarea', 'embed_code', 'Embed Code' )
+                    ->set_conditional_logic( array(
+                    'relation' => 'AND',
+                        array(
+                            'field' => 'form_type',
+                            'value' => 'embed',
+                            'compare' => '=',
+                        ),
+                        array(
+                            'field' => 'right_content_option',
+                            'value' => 'form',
+                            'compare' => '=',
+                        )
+                    ) ),
+                    Field::make( 'text', 'gf-form-id', 'Gravity Forms ID' )
+                    ->set_help_text( 'Ex: 1' )
+                    ->set_conditional_logic( array(
+                    'relation' => 'OR',
+                        array(
+                            'field' => 'form_type',
+                            'value' => 'gravity',
+                            'compare' => '=',
+                        )
+                    ) ),
+                    Field::make( 'text', 'cf-7-form-id', 'Contact Form 7 ID' )
+                    ->set_help_text( 'Ex: 70' )
+                    ->set_conditional_logic( array(
+                    'relation' => 'OR',
+                        array(
+                            'field' => 'form_type',
+                            'value' => 'cf7',
+                            'compare' => '=',
+                        )
+                    ) ),
+
+            Field::make('radio', 'video_service', 'Video Service')
+                    ->add_options(array(
+                        'youtube' => 'YouTube',
+                        'vimeo' => 'Vimeo',
+                        'hosted' => 'Hosted'
+                    ) )
+                    ->set_conditional_logic( array(
+                    'relation' => 'AND',
+                        array(
+                            'field' => 'right_content_option',
+                            'value' => 'video',
+                            'compare' => '=',
+                        )
+                    ) ),
+                Field::make( 'text', 'video_url', 'Video URL' )
+                ->set_help_text( 'Ex: /wp-content/themes/theme-name/assets/videos/bbb.mp4' )
+                ->set_conditional_logic( array(
+                    'relation' => 'AND',
+                        array(
+                            'field' => 'video_service',
+                            'value' => 'hosted',
+                            'compare' => '=',
+                        ),
+                        array(
+                            'field' => 'right_content_option',
+                            'value' => 'video',
+                            'compare' => '=',
+                        )
+                    ) ),
+                Field::make( 'text', 'vimeo_id', 'Vimeo ID' )
+                ->set_help_text( 'Ex: 1084537?h=b1b3ab5aa2' )
+                ->set_conditional_logic( array(
+                    'relation' => 'AND',
+                        array(
+                            'field' => 'video_service',
+                            'value' => 'vimeo',
+                            'compare' => '=',
+                        ),
+                        array(
+                            'field' => 'right_content_option',
+                            'value' => 'video',
+                            'compare' => '=',
+                        )
+                    ) ),
+                Field::make( 'text', 'youtube_id', 'Youtube ID')
+                ->set_help_text( 'Ex: aqz-KE-bpKQ' )
+                ->set_conditional_logic( array(
+                    'relation' => 'AND',
+                        array(
+                            'field' => 'video_service',
+                            'value' => 'youtube',
+                            'compare' => '=',
+                        ),
+                        array(
+                            'field' => 'right_content_option',
+                            'value' => 'video',
+                            'compare' => '=',
+                        )
+                    ) ),
         ) );
 }

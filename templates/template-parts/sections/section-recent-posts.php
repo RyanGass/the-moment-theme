@@ -6,9 +6,12 @@ if ($category == 'all') {
 };
 $content = $section['content'];
 if ($content) { $subtext = ' class="has-subtext"'; };
+$use_bg_color = $section['use_background_color'];
+$bg_color = $section['background_color'];
+if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $bg_color = '';};
 ?>
 
-<section id="posts-container">
+<section id="posts-container" class="w-full posts-container<?php echo $bg_color; ?>">
 	<div id="section-header"<?php echo $subtext ?>>
 		<h2 class="section-title"><?php echo $section['heading']; ?></h2>
 		<?php if ($content) : echo '<p>' . $section['content'] . '</p>'; endif; ?>

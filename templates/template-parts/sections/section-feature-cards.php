@@ -4,13 +4,14 @@ $features = $section['crb_features'];
 $image_size = $section['image_size'];
 $content = $section['content'];
 if ($content) { $subtext = ' class="has-subtext"'; };
-$bg_color = $section['grey_background'];
-if ($bg_color === 'yes') { $bg_color = ' class="bg-lightgrey"'; } else { $bg_color = ''; };
+$use_bg_color = $section['use_background_color'];
+$bg_color = $section['background_color'];
+if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $bg_color = '';};
 ?>
 
 <?php $i = 0; 
 foreach ( $features as $feature ) { if ($i <= 2) { $i++; } } ?>
-<section id="feature-container"<?php echo $bg_color; ?>>
+<section id="feature-container" class="w-full<?php echo $bg_color; ?>">
     <div class="w-11/12 mx-auto feature-inner max-w-screen-2xl">
         <div id="section-header"<?php echo $subtext ?>>
             <h2 class="section-title"><?php echo $section['heading']; ?></h2>

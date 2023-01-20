@@ -3,9 +3,12 @@ global $section;
 $faqs = $section['faq_cards'];
 $content = $section['content'];
 if ($content) { $subtext = ' class="has-subtext"'; };
+$use_bg_color = $section['use_background_color'];
+$bg_color = $section['background_color'];
+if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $bg_color = '';};
 ?>
 
-<section id="faq-container" class="w-full">
+<section id="faq-container" class="w-full<?php echo $bg_color; ?>">
     <div id="faq-inner" class="w-full md:w-11/12 mx-auto max-w-screen-2xl">
         <div id="section-header"<?php echo $subtext ?>>
             <h2 class="section-title"><?php echo $section['heading']; ?></h2>

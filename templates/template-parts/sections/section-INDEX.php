@@ -36,19 +36,14 @@
 						get_template_part('templates/template-parts/sections/section', 'testimonial-single');
 						
 						break;
-					case 'subscribe':
-						
-						get_template_part('templates/template-parts/sections/section', 'subscribe');
-
-						break;
 					case 'recent-posts':
 						
 						get_template_part('templates/template-parts/sections/section', 'recent-posts');
 						
 						break;
-					case 'mkto-form':
+					case 'form':
 						
-						get_template_part('templates/template-parts/sections/section', 'mkto-form');
+						get_template_part('templates/template-parts/sections/section', 'form');
 						
 						break;
 					case 'image-single':

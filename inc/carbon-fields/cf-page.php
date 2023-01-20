@@ -27,11 +27,21 @@ function crb_attach_post_options() {
 
                 // Text w/ Image
                 ->add_fields( 'text-image', 'Text w/ Image', array(
-                    Field::make('radio', 'grey_background', 'Grey Background?')
+                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
                         ->add_options(array(
                             'no' => 'No',
                             'yes' => 'Yes'
                         )),
+                    Field::make( 'color', 'background_color', 'Background Color' )
+                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        ) ),
                     Field::make( 'radio', 'image_alignment', 'Set Image Alignment' )
                         ->add_options( array(
                             'left' => 'Left',
@@ -48,11 +58,21 @@ function crb_attach_post_options() {
 
                 // Text w/ Video
                 ->add_fields( 'text-video', 'Text w/ Video', array(
-                    Field::make('radio', 'grey_background', 'Grey Background?')
+                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
                         ->add_options(array(
                             'no' => 'No',
                             'yes' => 'Yes'
                         )),
+                    Field::make( 'color', 'background_color', 'Background Color' )
+                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        ) ),
                     Field::make( 'radio', 'video_alignment', 'Set Video Alignment' )
                     ->add_options( array(
                         'left' => 'Left',
@@ -139,13 +159,23 @@ function crb_attach_post_options() {
                 
                 // Feature Cards
                 ->add_fields( 'feature-cards', 'Feature Cards', array(
-                    Field::make( 'text', 'heading', 'Section Heading' ),
-                    Field::make( 'text', 'content', 'Section Content' ),
-                    Field::make('radio', 'grey_background', 'Grey Background?')
+                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
                         ->add_options(array(
                             'no' => 'No',
                             'yes' => 'Yes'
                         )),
+                    Field::make( 'color', 'background_color', 'Background Color' )
+                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        ) ),
+                    Field::make( 'text', 'heading', 'Section Heading' ),
+                    Field::make( 'text', 'content', 'Section Content' ),
                     Field::make( 'radio', 'image_size', 'Image Size' )
                         ->add_options( array(
                             'sm' => 'Small',
@@ -163,11 +193,26 @@ function crb_attach_post_options() {
                             Field::make( 'text', 'button_text', 'Button Text' )
                         ) ),
                     Field::make( 'text', 'button_text', 'Section Button Text' ),
-                    Field::make( 'text', 'button_url', 'Section Button URL' ),
+                    Field::make( 'text', 'button_url', 'Section Button URL' )
                 ) )
 
                 // Feature Cards Style 2
                 ->add_fields( 'features-2', 'Feature Cards 2', array(
+                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
+                        ->add_options(array(
+                            'no' => 'No',
+                            'yes' => 'Yes'
+                        )),
+                    Field::make( 'color', 'background_color', 'Background Color' )
+                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        ) ),
                     Field::make( 'text', 'heading', 'Section Heading' ),
                     Field::make( 'text', 'content', 'Section Content' ),
                     Field::make( 'complex', 'features-2', 'Features' )
@@ -184,6 +229,21 @@ function crb_attach_post_options() {
 
                 // Testimonial Cards
                 ->add_fields( 'testimonial-cards', 'Testimonial Cards', array(
+                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
+                        ->add_options(array(
+                            'no' => 'No',
+                            'yes' => 'Yes'
+                        )),
+                    Field::make( 'color', 'background_color', 'Background Color' )
+                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        ) ),
                     Field::make( 'text', 'heading', 'Section Heading' ),
                     Field::make( 'text', 'content', 'Section Content' ),
                     Field::make( 'radio', 'testimonial_number', 'How Many Testimonials to Show' )
@@ -233,6 +293,21 @@ function crb_attach_post_options() {
 
                 // Testimonial Single
                 ->add_fields( 'testimonial-single', 'Testimonial Single', array(
+                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
+                        ->add_options(array(
+                            'no' => 'No',
+                            'yes' => 'Yes'
+                        )),
+                    Field::make( 'color', 'background_color', 'Background Color' )
+                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        ) ),
                     Field::make( 'image', 'testimonial_image', 'Image' )
                         ->set_value_type( 'url' ),
                     Field::make( 'textarea', 'testimonial_content', 'Content' ),
@@ -240,25 +315,96 @@ function crb_attach_post_options() {
                     Field::make( 'text', 'testimonial_company', 'Company' ) 
                 ) )
 
-                // Subscribe Form (Marketo)
-                ->add_fields( 'subscribe', 'Subscribe Form', array(
-                            Field::make( 'text', 'heading', 'Heading' ),
-                            Field::make( 'text', 'sub-heading', 'Sub Heading' ),
-                            Field::make( 'text', 'mkto-form-id', 'Marketo Form ID' ),
-                            Field::make( 'radio', 'show_social', 'Show Social Media Icons?' )
+                // Contact Form / Marketo Form
+                ->add_fields( 'form', 'Contact Form', array(
+                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
+                        ->add_options(array(
+                            'no' => 'No',
+                            'yes' => 'Yes'
+                        )),
+                    Field::make( 'color', 'background_color', 'Background Color' )
+                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        ) ),
+                    Field::make( 'radio', 'form_type', 'What Type of Form?' )
                                 ->add_options( array(
-                                    'yes' => 'Yes',
-                                    'no' => 'No'
+                                    'embed' => 'Embed',
+                                    'mkto' => 'Marketo',
+                                    'gravity' => 'Gravity Forms',
+                                    'cf7' => 'Contact Form 7'
                             ) ),
-                ) )
-
-                // General Form (Marketo)
-                ->add_fields( 'mkto-form', 'General Marketo Form', array(
-                            Field::make( 'text', 'mkto-form-id', 'Marketo Form ID' ),
+                            Field::make( 'text', 'form_title', 'Form Title' ),
+                            Field::make( 'text', 'mkto-form-id', 'Marketo Form ID' )
+                            ->set_conditional_logic( array(
+                            'relation' => 'OR',
+                                array(
+                                    'field' => 'form_type',
+                                    'value' => 'mkto',
+                                    'compare' => '=',
+                                )
+                            ) ),
+                            Field::make( 'text', 'mkto-account-id', 'Marketo Account ID' )
+                            ->set_help_text( 'Ex: 157-RPM-092' )
+                            ->set_conditional_logic( array(
+                            'relation' => 'OR',
+                                array(
+                                    'field' => 'form_type',
+                                    'value' => 'mkto',
+                                    'compare' => '=',
+                                )
+                            ) ),
+                            Field::make( 'textarea', 'embed_code', 'Embed Code' )
+                            ->set_conditional_logic( array(
+                            'relation' => 'OR',
+                                array(
+                                    'field' => 'form_type',
+                                    'value' => 'embed',
+                                    'compare' => '=',
+                                )
+                            ) ),
+                            Field::make( 'text', 'gf-form-id', 'Gravity Forms ID' )
+                            ->set_conditional_logic( array(
+                            'relation' => 'OR',
+                                array(
+                                    'field' => 'form_type',
+                                    'value' => 'gravity',
+                                    'compare' => '=',
+                                )
+                            ) ),
+                            Field::make( 'text', 'cf-7-form-id', 'Contact Form 7 ID' )
+                            ->set_conditional_logic( array(
+                            'relation' => 'OR',
+                                array(
+                                    'field' => 'form_type',
+                                    'value' => 'cf7',
+                                    'compare' => '=',
+                                )
+                            ) ),
                 ) )
 
                 // Recent Posts
                 ->add_fields( 'recent-posts', 'Recent Posts', array(
+                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
+                        ->add_options(array(
+                            'no' => 'No',
+                            'yes' => 'Yes'
+                        )),
+                    Field::make( 'color', 'background_color', 'Background Color' )
+                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        ) ),
                     Field::make( 'select', 'post_categories', 'Show Categories' )
                         ->add_options( $all_categories ),
                     Field::make( 'text', 'heading', 'Section Heading' ),
@@ -269,6 +415,21 @@ function crb_attach_post_options() {
 
                 // FAQ Section
                 ->add_fields( 'faq-section', 'FAQs', array(
+                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
+                        ->add_options(array(
+                            'no' => 'No',
+                            'yes' => 'Yes'
+                        )),
+                    Field::make( 'color', 'background_color', 'Background Color' )
+                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        ) ),
                     Field::make( 'text', 'heading', 'Section Heading' ),
                     Field::make( 'text', 'content', 'Section Content' ),
                     Field::make( 'complex', 'faq_cards', 'FAQ Cards' )
@@ -281,11 +442,21 @@ function crb_attach_post_options() {
 
                 // Stats Counter Section
                 ->add_fields( 'stats-counter-section', 'Stats Counter', array(
-                    Field::make('radio', 'grey_background', 'Grey Background?')
+                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
                         ->add_options(array(
                             'no' => 'No',
                             'yes' => 'Yes'
                         )),
+                    Field::make( 'color', 'background_color', 'Background Color' )
+                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        ) ),
                     Field::make( 'complex', 'stats_blocks', 'Stats Blocks' )
                         ->set_collapsed( true )
                         ->add_fields( 'stats-block', 'Stats Block', array(
@@ -306,11 +477,21 @@ function crb_attach_post_options() {
 
                 // BlockQuote
                 ->add_fields( 'blockquote', 'Blockquote', array(
-                    Field::make('radio', 'grey_background', 'Grey Background?')
+                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
                         ->add_options(array(
                             'no' => 'No',
                             'yes' => 'Yes'
                         )),
+                    Field::make( 'color', 'background_color', 'Background Color' )
+                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        ) ),
                     Field::make( 'text', 'quote_text', 'Quote Text' ),
                     Field::make( 'text', 'quote_cite', 'Quote Cite' ),
                 ) )

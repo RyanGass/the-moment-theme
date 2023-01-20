@@ -331,46 +331,10 @@ section#card-testimonial-slides-container {
     padding-top: 0;
   }
 
-  ul#card-slide-nav {
-    position: absolute;
-    bottom: 2.5rem;
-    display: block;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    text-align: center;
-  }
-
-  ul#card-slide-nav li {
-    list-style: none;
-    width: 45px;
-    height: 5px;
-    border-radius: 2px;
-    margin: 0 8px;
-    display: inline-block;
-  }
-
-  ul#card-slide-nav li button {
-    width: 100%;
-    height: 100%;
-    border-radius: 2px;
-    padding: 0;
-    background: #bdbdbd;
-  }
-
-  ul#card-slide-nav li button.button-active {
-    background-color: #fff;
-  }
-
   @media (min-width: 768px) {
     .button-nav.card-slide-navigation {
       top: 100%;
       bottom: unset;
-    }
-
-    ul#card-slide-nav {
-      bottom: 3rem;
     }
   }
 
@@ -695,7 +659,12 @@ section#posts-container {
     padding-top: 33.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
   }
 
-  .section-video .responsive-iframe {
+  &.hero-video .section-video {
+    padding-top: 56.25%;
+  }
+
+  iframe.responsive-iframe,
+  video.responsive-iframe {
     position: absolute;
     top: 0;
     left: 0;

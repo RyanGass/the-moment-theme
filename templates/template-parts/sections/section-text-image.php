@@ -3,8 +3,9 @@
 global $section;
 $image_alignment = $section['image_alignment'];
 $image = $section['image'];
-$bg_color = $section['grey_background'];
-if ($bg_color === 'yes') { $bg_color = ' bg-lightgrey'; } else { $bg_color = '';};
+$use_bg_color = $section['use_background_color'];
+$bg_color = $section['background_color'];
+if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $bg_color = '';};
 $imageID = attachment_url_to_postid( $image );
 $alt = get_post_meta($imageID, '_wp_attachment_image_alt', TRUE);
 $image_title = get_the_title($imageID);

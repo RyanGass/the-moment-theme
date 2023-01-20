@@ -29,6 +29,12 @@ module.exports = {
 		'./styles_scripts/src/css/*.css',
 		'./styles_scripts/src/css/**/*.css',
 		'./styles_scripts/src/js/*.js' ],
+	safelist: [
+		'bg-[#F15320]',
+		'bg-[#A7C9E7]',
+		'bg-[#D1D1D1]',
+		'bg-[#575757]',
+	],
 	theme: {
 		extend: {
 			colors,

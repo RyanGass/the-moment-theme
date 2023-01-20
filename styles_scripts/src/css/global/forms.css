@@ -1,0 +1,20 @@
+.form-inner-wrapper {
+  background-color: #fff;
+  padding: var(--space-6);
+  text-align: center;
+}
+
+.form-title {
+  margin-bottom: var(--space-3);
+}
+
+input,
+select,
+textarea {
+  @apply w-full;
+
+  border: 1px solid #efefef;
+  border-radius: 3px;
+  margin-bottom: var(--space-2);
+  padding: 10px 0 10px 10px;
+}

@@ -3,9 +3,12 @@ global $section;
 $features = $section['features-2'];
 $content = $section['content'];
 if ($content) { $subtext = ' class="has-subtext"'; };
+$use_bg_color = $section['use_background_color'];
+$bg_color = $section['background_color'];
+if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $bg_color = '';};
 ?>
 
-<section id="feature-2-container" class="w-full bg-lightgrey ">
+<section id="feature-2-container" class="w-full<?php echo $bg_color; ?>">
 <div class="mx-auto feature-2-inner max-w-screen-2xl">    
     <div id="section-header"<?php echo $subtext ?>>
         <h2 class="section-title"><?php echo $section['heading']; ?></h2>
