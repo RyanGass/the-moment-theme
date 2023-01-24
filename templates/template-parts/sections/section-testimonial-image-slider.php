@@ -18,10 +18,10 @@ if ($text_below == 'yes') { $tb = ' text-below';} else { $tb = '';};
 			<button type="button" onclick="Prev()" class="button-nav slide-navigation previous"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M192 448c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l137.4 137.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448z"/></svg></button>
 		<?php endif; ?>
 		<?php $i = 1; foreach ( $testimonials as $testimonial ) { if ($i >= 2) { $closed = 'closed'; }; ?>    
-			<div id="slide-<?php echo $i ?>" class="slide-block pb-24 pt-20 md:pb-40 md:pt-40 lg:pt-72 <?php echo $closed ?>" style="background-image: url(<?php echo $testimonial['testimonial_image']; ?>)">   
+			<div id="slide-<?php echo $i ?>" class="slide-block <?php echo $closed ?>" style="background-image: url(<?php echo $testimonial['testimonial_image']; ?>)">   
 				<div class="w-11/12 mx-auto area max-w-screen-2xl">
 					<div class="flex flex-col justify-center max-w-screen-lg mx-auto text-center inner-area align-center">
-						<span class="block my-8 quote-content"><?php echo $testimonial['testimonial_content']; ?></span>
+						<span class="block quote-content"><?php echo $testimonial['testimonial_content']; ?></span>
 						<span class="block quote-name"><?php echo $testimonial['testimonial_name']; ?></span>
 						<span class="block quote-company"><?php echo $testimonial['testimonial_company']; ?></span>
 					</div>

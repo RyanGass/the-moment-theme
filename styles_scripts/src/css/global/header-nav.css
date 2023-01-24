@@ -202,6 +202,7 @@ header {
     transition: max-height 0.3s ease, height 0.3s ease;
     left: 999999px;
     position: relative;
+    background: #dedede;
   }
 
   .mobile-nav-checkbox:checked ~ ul.sub-menu,
@@ -221,8 +222,6 @@ header {
     left: -3px;
     z-index: 1;
   }
-
-  ul#menu-primary-menu > li.menu-item-has-children > ul.sub-menu {}
 
   ul#menu-primary-menu > li.menu-item-has-children > ul.sub-menu li {
     margin-left: 0 !important;
@@ -291,8 +290,10 @@ header {
 
     ul#menu-primary-menu > li.menu-item-has-children:hover > ul.sub-menu {
       display: block;
-      left: 0;
-      min-width: 250px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: fit-content;
+      white-space: nowrap;
     }
 
     ul#menu-primary-menu > li.menu-item-has-children:hover > a::after {

@@ -666,11 +666,6 @@ video {
   margin-bottom: 1.5rem;
 }
 
-.my-8 {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
 .mx-0 {
   margin-left: 0px;
   margin-right: 0px;
@@ -912,11 +907,6 @@ video {
 
 .p-0 {
   padding: 0px;
-}
-
-.px-12 {
-  padding-left: 3rem;
-  padding-right: 3rem;
 }
 
 .px-8 {
@@ -1564,6 +1554,7 @@ header .mobile-nav-checkbox ~ ul.sub-menu {
   transition: max-height 0.3s ease, height 0.3s ease;
   left: 999999px;
   position: relative;
+  background: #dedede;
 }
 
 header .mobile-nav-checkbox:checked ~ ul.sub-menu,
@@ -1582,9 +1573,6 @@ header ul#menu-primary-menu > li.menu-item-has-children input.mobile-nav-checkbo
   height: 25px;
   left: -3px;
   z-index: 1;
-}
-
-header ul#menu-primary-menu > li.menu-item-has-children > ul.sub-menu {
 }
 
 header ul#menu-primary-menu > li.menu-item-has-children > ul.sub-menu li {
@@ -1652,8 +1640,11 @@ header ul#menu-primary-menu > li.menu-item-has-children > ul.sub-menu > li > a {
 
   header ul#menu-primary-menu > li.menu-item-has-children:hover > ul.sub-menu {
     display: block;
-    left: 0;
-    min-width: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: -moz-fit-content;
+    width: fit-content;
+    white-space: nowrap;
   }
 
   header ul#menu-primary-menu > li.menu-item-has-children:hover > a::after {
@@ -2223,13 +2214,14 @@ section#card-testimonial-slides-container .button-nav.card-slide-navigation svg 
 }
 
 section#card-testimonial-slides-container .card-slide-inner-container {
+  padding: 0 var(--space-6);
   overflow: hidden;
 }
 
 section#card-testimonial-slides-container .card-slide-inner-container div#card-testimonials-repeater .card-section-block {
   display: inline-block;
   margin: 0 8px;
-  padding: 35px 25px 40px;
+  padding: var(--space-4) var(--space-3) 40px;
   max-width: none;
   background: rgb(215 215 215 / 15%);
 }
@@ -2269,9 +2261,24 @@ section#card-testimonial-slides-container .card-slide-navigation svg {
 }
 
 #testimonial-single-container .quote-content {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@media (min-width: 768px) {
+  #testimonial-single-container .quote-content {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+#testimonial-single-container .quote-content {
   font-size: 28px;
   font-weight: 500;
-  margin: 32px 0;
+  margin: var(--space-4) 0;
+  padding: var(--space-4) 0;
   line-height: 32px;
 }
 
@@ -2286,6 +2293,24 @@ section#card-testimonial-slides-container .card-slide-navigation svg {
 /***
 *** Section Image slider ***
 ***/
+
+section#testimonial-slides-container div.slide-block {
+  padding-bottom: 6rem;
+  padding-top: 5rem;
+}
+
+@media (min-width: 768px) {
+  section#testimonial-slides-container div.slide-block {
+    padding-bottom: 10rem;
+    padding-top: 10rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  section#testimonial-slides-container div.slide-block {
+    padding-top: 18rem;
+  }
+}
 
 /***
 *** Section Recent Posts ***
@@ -2855,11 +2880,6 @@ textarea {
     justify-content: space-between;
   }
 
-  .md\:px-0 {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-
   .md\:pb-40 {
     padding-bottom: 10rem;
   }
@@ -2978,10 +2998,6 @@ textarea {
 
   .lg\:p-0 {
     padding: 0px;
-  }
-
-  .lg\:pt-72 {
-    padding-top: 18rem;
   }
 
   .lg\:pb-28 {

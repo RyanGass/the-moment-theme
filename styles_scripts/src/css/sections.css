@@ -354,13 +354,14 @@ section#card-testimonial-slides-container {
   }
 
   .card-slide-inner-container {
+    padding: 0 var(--space-6);
     overflow: hidden;
 
     div#card-testimonials-repeater {
       .card-section-block {
         display: inline-block;
         margin: 0 8px;
-        padding: 35px 25px 40px;
+        padding: var(--space-4) var(--space-3) 40px;
         max-width: none;
         background: rgb(215 215 215 / 15%);
 
@@ -406,9 +407,12 @@ section#card-testimonial-slides-container {
   }
 
   .quote-content {
+    @apply px-8 mx-auto md:px-0;
+
     font-size: 28px;
     font-weight: 500;
-    margin: 32px 0;
+    margin: var(--space-4) 0;
+    padding: var(--space-4) 0;
     line-height: 32px;
   }
 
@@ -424,6 +428,12 @@ section#card-testimonial-slides-container {
 /***
 *** Section Image slider ***
 ***/
+
+section#testimonial-slides-container {
+  div.slide-block {
+    @apply pb-24 pt-20 md:pb-40 md:pt-40 lg:pt-72;
+  }
+}
 
 /***
 *** Section Recent Posts ***
