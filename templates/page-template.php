@@ -1,4 +1,4 @@
-<?php /* Template Name: Chapter Book */ 
+<?php /* Template Name: Name Goes Here */ 
 
 $sections = carbon_get_the_post_meta( 'ch_sections' );
 $ch_intro_content = carbon_get_the_post_meta( 'ch_intro_content' ); 
