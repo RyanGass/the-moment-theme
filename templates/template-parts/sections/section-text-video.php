@@ -12,7 +12,7 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
 ?>
 
 <section id="video-container" class="w-full<?php echo $bg_color; ?>">
-    <div class="w-11/12 mx-auto max-w-screen-2xl">
+    <div class="container-inner">
         <div id="video-repeater">
             <div class="section-block section-align-<?php echo esc_attr($video_alignment); ?>">
                 <div id="section-image" class="section-video">

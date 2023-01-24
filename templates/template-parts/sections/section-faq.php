@@ -9,7 +9,7 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
 ?>
 
 <section id="faq-container" class="w-full<?php echo $bg_color; ?>">
-    <div id="faq-inner" class="w-full md:w-11/12 mx-auto max-w-screen-2xl">
+    <div id="faq-inner" class="container-inner">
         <div id="section-header"<?php echo $subtext ?>>
             <h2 class="section-title"><?php echo $section['heading']; ?></h2>
             <?php if ($content) : echo '<p>' . $section['content'] . '</p>'; endif; ?>

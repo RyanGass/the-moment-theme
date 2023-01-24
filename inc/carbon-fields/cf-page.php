@@ -79,6 +79,7 @@ function crb_attach_post_options() {
                         'right' => 'Right',
                         'center' => 'Center',
                     ) ),
+                    Field::make( 'text', 'pre_heading', 'Pre Heading' ),
                     Field::make( 'text', 'heading', 'Heading' ),
                     Field::make( 'rich_text', 'content', 'Content' )
                     ->set_conditional_logic( array(

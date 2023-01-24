@@ -1,10 +1,6 @@
 <?php /* Template Name: Name Goes Here */ 
 
 $sections = carbon_get_the_post_meta( 'ch_sections' );
-$ch_intro_content = carbon_get_the_post_meta( 'ch_intro_content' ); 
-$ch_number = 0;
-$toc_ch_number = 0;
-$nav_ch_number = 1;
 get_header() ?>
 <?php get_template_part('templates/template-parts/banners/global', 'hero'); ?>
 	<main>

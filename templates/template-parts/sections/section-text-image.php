@@ -12,7 +12,7 @@ $image_title = get_the_title($imageID);
 ?>
 
 <section id="text-image-container" class="w-full<?php echo $bg_color; ?>">
-    <div class="w-full md:w-11/12 mx-auto max-w-screen-2xl">
+    <div class="container-inner">
         <div id="text-image-repeater" class="feature-wrapper">
             <div class="section-block section-align-<?php echo $image_alignment; ?>">
                 <div id="section-image" class="section-image">

@@ -1,12 +1,3 @@
-<!-- Without Numbers -->
-<!-- <nav class="pagination">
-	<ul class="nolist">
-		<li><?php previous_posts_link(); ?></li>
-		<li><?php next_posts_link(); ?></li>	
-	</ul>
-</nav> -->
-
-<!-- With Numbers -->
 <nav class="pagination">
 	<?php the_posts_pagination( array(
 	'screen_reader_text' => ' ', 

@@ -7,7 +7,7 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
 ?>
 
 <section id="blockquote-container" class="w-full<?php echo $bg_color; ?>">
-    <div class="w-11/12 mx-auto max-w-screen-2xl">
+    <div class="container-inner">
         <div class="max-w-screen-md mx-auto quote-inner">
             <blockquote class="quote-text">
                 <svg class="left-quote" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

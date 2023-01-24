@@ -9,7 +9,7 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
 
 <?php if ($form_type == 'mkto') : ?>
 <section id="mkto-form-container" class="form-container w-full<?php echo $bg_color; ?>">
-    <div class="form-inner-wrapper w-full md:w-11/12 mx-auto max-w-screen-2xl">
+    <div class="form-inner-wrapper container-inner">
         <h2 class="form-title"><?php echo $form_title ?></h2>
         <script src="//<?php echo $section['mkto-account-id']; ?>.mktoweb.com/js/forms2/js/forms2.min.js"></script> 
         <form class="mktoForm" id="mktoForm_<?php echo $section['mkto-form-id']; ?>"></form> <script>MktoForms2.loadForm("//<?php echo $section['mkto-account-id']; ?>.mktoweb.com", "<?php echo $section['mkto-account-id']; ?>", <?php echo $section['mkto-form-id']; ?>);
@@ -20,7 +20,7 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
 
 <?php if ($form_type == 'gravity') : ?>
 <section id="gravity-form-container" class="form-container w-full<?php echo $bg_color; ?>">
-    <div class="form-inner-wrapper w-full md:w-11/12 mx-auto max-w-screen-2xl">
+    <div class="form-inner-wrapper container-inner">
         <h2 class="form-title"><?php echo $form_title ?></h2>
         <?php echo do_shortcode('[gravityform id=" ' . $section['gf-form-id'] . ' " title="false" description="false" ajax="true" tabindex="49" field_values="check=First Choice,Second Choice"]') ?>
     </div>
@@ -29,7 +29,7 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
 
 <?php if ($form_type == 'cf7') : ?>
 <section id="contact-form-container" class="form-container w-full<?php echo $bg_color; ?>">
-    <div class="form-inner-wrapper w-full md:w-11/12 mx-auto max-w-screen-2xl">
+    <div class="form-inner-wrapper container-inner">
         <h2 class="form-title"><?php echo $form_title ?></h2>
         <?php echo do_shortcode('[contact-form-7 id=" ' . $section['cf-7-form-id'] . ' " title="Contact form 1"]') ?>
     </div>
@@ -38,7 +38,7 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
 
 <?php if ($form_type == 'embed') : ?>
 <section id="embed-code-container" class="form-container w-full<?php echo $bg_color; ?>">
-    <div class="form-inner-wrapper w-full md:w-11/12 mx-auto max-w-screen-2xl">
+    <div class="form-inner-wrapper container-inner">
         <h2 class="form-title"><?php echo $form_title ?></h2>
         <?php echo $section['embed_code'] ?>
     </div>

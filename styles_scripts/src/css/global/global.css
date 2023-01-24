@@ -30,6 +30,10 @@ main section {
   padding: var(--space-12) var(--space-6);
 }
 
+main section div.container-inner {
+  @apply w-full md:w-11/12 mx-auto max-w-screen-2xl;
+}
+
 @media (min-width: 1024px) {
   main section {
     @apply w-11/12 max-w-screen-2xl mx-auto;

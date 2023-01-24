@@ -10,7 +10,7 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
 ?>
 
 <section id="testimonial-single-container" class="w-full<?php echo $bg_color; ?>">
-    <div id="testimonial-single-inner" class="mx-auto max-w-screen-2xl">
+    <div id="testimonial-single-inner" class="container-inner">
         <div class="section-block">
             <div class="area">
                 <div class="flex flex-col justify-center text-center inner-area items-center">

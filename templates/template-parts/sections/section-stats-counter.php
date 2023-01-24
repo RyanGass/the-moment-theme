@@ -7,7 +7,7 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
 ?>
 
 <section id="stats-container" class="w-full stats-container<?php echo $bg_color; ?>">
-    <div id="stats-inner" class="flex flex-wrap justify-center w-11/12 mx-auto lg:flex-nowrap max-w-screen-2xl">
+    <div id="stats-inner" class="flex flex-wrap justify-center lg:flex-nowrap container-inner">
       <?php foreach ( $stats as $stat ) {  
           
         $stats_prefix = $stat['prefix'];

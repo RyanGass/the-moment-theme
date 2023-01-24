@@ -661,16 +661,6 @@ video {
   margin-right: auto;
 }
 
-.mx-0 {
-  margin-left: 0px;
-  margin-right: 0px;
-}
-
-.my-3 {
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
 .my-6 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
@@ -681,28 +671,17 @@ video {
   margin-bottom: 2rem;
 }
 
+.mx-0 {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
 
 .mb-12 {
   margin-bottom: 3rem;
-}
-
-.mb-28 {
-  margin-bottom: 7rem;
-}
-
-.mb-14 {
-  margin-bottom: 3.5rem;
-}
-
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
-.mb-6 {
-  margin-bottom: 1.5rem;
 }
 
 .mt-auto {
@@ -715,6 +694,10 @@ video {
 
 .ml-0 {
   margin-left: 0px;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
 
 .block {
@@ -889,11 +872,6 @@ video {
   border-radius: 0.25rem;
 }
 
-.rounded-r-xl {
-  border-top-right-radius: 0.75rem;
-  border-bottom-right-radius: 0.75rem;
-}
-
 .border {
   border-width: 1px;
 }
@@ -932,22 +910,8 @@ video {
   padding: 1rem;
 }
 
-.p-11 {
-  padding: 2.75rem;
-}
-
 .p-0 {
   padding: 0px;
-}
-
-.py-12 {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-.px-11 {
-  padding-left: 2.75rem;
-  padding-right: 2.75rem;
 }
 
 .px-12 {
@@ -962,14 +926,6 @@ video {
 
 .pt-24 {
   padding-top: 6rem;
-}
-
-.pt-6 {
-  padding-top: 1.5rem;
-}
-
-.pb-11 {
-  padding-bottom: 2.75rem;
 }
 
 .pb-24 {
@@ -1110,6 +1066,19 @@ main ul {
 
 main section {
   padding: var(--space-12) var(--space-6);
+}
+
+main section div.container-inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1536px;
+}
+
+@media (min-width: 768px) {
+  main section div.container-inner {
+    width: 91.666667%;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -2848,11 +2817,6 @@ textarea {
 }
 
 @media (min-width: 640px) {
-  .sm\:mx-4 {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
   .sm\:basis-1\/2 {
     flex-basis: 50%;
   }
@@ -2885,14 +2849,6 @@ textarea {
 
   .md\:flex-row {
     flex-direction: row;
-  }
-
-  .md\:items-end {
-    align-items: flex-end;
-  }
-
-  .md\:items-center {
-    align-items: center;
   }
 
   .md\:justify-between {
@@ -2946,10 +2902,6 @@ textarea {
 
   .lg\:mb-0 {
     margin-bottom: 0px;
-  }
-
-  .lg\:mb-14 {
-    margin-bottom: 3.5rem;
   }
 
   .lg\:block {
