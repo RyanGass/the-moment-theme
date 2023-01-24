@@ -2,22 +2,19 @@
 *** Site Footer ***
 ***/
 
-footer {
-    color: #303030;
-}
+footer#footer {
+  @apply bg-lightgrey;
 
-.this {
-    @apply bg-black;
+  color: #303030;
+  padding: var(--space-6);
 
-    &:hover {
-        color: blue;
-    }
-}
+  div#footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
 
-.that {
-    color: blue;
-}
-
-.that:hover {
-    color: green;
+  #footer-nav-row li:not(:last-child) {
+    margin-right: var(--space-2);
+  }
 }

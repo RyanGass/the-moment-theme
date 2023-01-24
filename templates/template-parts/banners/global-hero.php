@@ -7,7 +7,6 @@ $heading = carbon_get_post_meta( $page_id, 'heading' );
 $content = carbon_get_post_meta( $page_id, 'content' );
 $button_text = carbon_get_post_meta( $page_id, 'button_text' );
 $button_url = carbon_get_post_meta( $page_id, 'button_url' );
-$show_right_image = carbon_get_post_meta( $page_id, 'show_right_image' );
 $right_image = carbon_get_post_meta( $page_id, 'right_image' );
 $imageID = attachment_url_to_postid( $right_image );
 $alt = get_post_meta($imageID, '_wp_attachment_image_alt', TRUE);
@@ -27,7 +26,7 @@ $gf_form_id = carbon_get_post_meta( $page_id, 'gf-form-id');
 $cf7_form_id = carbon_get_post_meta( $page_id, 'cf-7-form-id');
 
 // Conditional Logic
-if ($alignment == 'center' && $show_right_image == 'no' || is_category() || is_single() || is_page_template('templates/page-chapters.php')) : 
+if ($alignment == 'center' && $content_type == 'none' || is_category() || is_single() || is_home() || is_page_template('templates/page-chapters.php')) : 
     $mx_auto = 'mx-auto';
     $text_center = ' text-center';
     $items_center = ' items-center';

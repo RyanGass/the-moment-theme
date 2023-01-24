@@ -24,6 +24,7 @@ function wpcc_allowed_block_types() {
 		'core/quote',
 		'core/list',
 		'core/list-item',
+		'core/shortcode'
 	);
 }
 add_filter( 'allowed_block_types', 'wpcc_allowed_block_types' );

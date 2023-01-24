@@ -38,13 +38,17 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
 					</div>
 					<div class="post-text">
 						<h3><?php the_title(); ?></h3>
-							<?php  
+						<div class="post-meta">
+							<span class="post-author">By <?php the_author(); ?></span>
+							<span class="post-date"> / <?php echo $post_date ?></span>
+						</div>
+						<?php  
 
-							$current_post_id = get_the_ID(); // id of current post in the loop
-							$permalink = get_permalink( $current_post_id );
-							$title = get_the_title( $current_post_id );  
+						$current_post_id = get_the_ID(); // id of current post in the loop
+						$permalink = get_permalink( $current_post_id );
+						$title = get_the_title( $current_post_id );  
 
-							echo '<p class="blog-excerpt">' . excerpt(15) . '</p><span class="read-more btn secondary">Keep Reading</span>' ?>
+						echo '<p class="blog-excerpt">' . excerpt(15) . '</p><span class="read-more btn secondary">Keep Reading</span>' ?>
 					</div>
 				</a>	
 			</article>

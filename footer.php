@@ -9,7 +9,7 @@ $fbutton2_url = carbon_get_theme_option('footer_button_2_url');
 </div>
 
 <footer id="footer" class="" role="contentinfo">
-	<div id="footer-inner" class="flex flex-col w-11/12 py-12 mx-auto max-w-screen-2xl site-footer lg:flex-row ">
+	<div id="footer-inner" class="flex flex-col items-center md:justify-between w-11/12 mx-auto max-w-screen-2xl site-footer md:flex-row ">
 		<div id="footer-left" class="lg:basis-1/3">	
 			<?php the_custom_logo(); ?>
 		</div>
@@ -17,20 +17,14 @@ $fbutton2_url = carbon_get_theme_option('footer_button_2_url');
 			<div id="footer-nav-row">
 				<?php wp_nav_menu
 						( array( 
-							'container_class' => 'mt-4 p-4 mt-0 p-0 bg-transparent',
-							'menu_class'      => 'flex flex-col sm:flex-wrap sm:flex-row w-full',
+							'container_class' => '',
+							'menu_class'      => 'flex w-full',
 							'theme_location' => 'footer',
-							'li_class'        => 'mr-8',
+							'li_class'        => '',
 						) ); ?>
 			</div>
-			
-				<div id="footer-buttons" class="flex flex-col justify-start sm:flex-row">
-					<a href="<?php echo $fbutton1_url; ?>" class="mr-4 button red"><?php echo $fbutton1_text; ?></a>
-					<a href="<?php echo $fbutton2_url; ?>" class="mr-4 button white"><?php echo $fbutton2_text; ?></a>
-				</div>
-			<div class="mx-auto mt-6">
+			<div class="footer-legal">
 				&copy; <?php echo date_i18n( 'Y' );?> - <?php echo get_bloginfo( 'name' );?>
-				<a href="/privacy-policy">| Privacy Policy</a>
 			</div>
 		</div>
 	</div>

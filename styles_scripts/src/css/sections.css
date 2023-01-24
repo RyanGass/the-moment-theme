@@ -438,6 +438,12 @@ section#posts-container {
     .post-image {
       margin: 0 0 var(--space-3) 0;
     }
+
+    article {
+      padding: var(--space-3);
+      box-shadow: 0 0 15px #dedede;
+      margin-bottom: var(--space-4);
+    }
   }
 }
 
