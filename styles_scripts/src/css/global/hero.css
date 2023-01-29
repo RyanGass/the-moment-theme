@@ -17,9 +17,17 @@ header.fixed + section#banner .banner-area {
 /*** Global Banner ***/
 
 html {
+  body:not(.home) section#banner {
+    @apply bg-lightgrey;
+
+    p.description {
+      font-size: 1.4rem;
+      line-height: 1.9rem;
+    }
+  }
+
   section#banner {
     background: none;
-    background-color: #efefef;
 
     &.overlay::after {
       content: none;

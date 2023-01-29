@@ -39,8 +39,8 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
 ?>
 
 <section id="banner" class="global-banner<?php echo $use_overlay . $light_text ?>">
-    <div class="flex items-center w-11/12 mx-auto banner-area max-w-screen-2xl<?php if (isset($text_center)) { echo $text_center; } ?>">  
-      <div id="banner-left" class="flex flex-col justify-center basis-full lg:basis-7/12<?php if (isset($items_center)) { echo $items_center; } ?>">    
+    <div class="flex items-center w-11/12 mx-auto banner-area max-w-screen-xl<?php if (isset($text_center)) { echo $text_center; } ?>">  
+      <div id="banner-left" class="flex flex-col justify-center basis-full lg:basis-6/12<?php if (isset($items_center)) { echo $items_center; } ?>">    
           <h1 class="w-full <?php if(isset($mx_auto)) { echo $mx_auto; } ?>">
           <?php  
           if( is_category() ) : single_term_title();
@@ -52,20 +52,20 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
           else : the_title();
           endif;
           ?></h1>
-          <?php if (is_single()) : $post_date = get_the_date('M j, Y') ?>
-          <span id="post-date"><?php echo $post_date ?></span>
-          <?php  endif; ?>
+          <!-- <?php // if (is_single()) : $post_date = get_the_date('M j, Y') ?>
+          <span id="post-date"><?php // echo $post_date ?></span>
+          <?php //  endif; ?> -->
           <?php if ($content && !is_category()) : ?>
           <p class="w-fullmd:w-4/5 lg:w-3/5 description <?php if(isset($mx_auto)) { echo $mx_auto; } ?>"><?php echo $content ?></p>
           <?php endif; ?>
           <?php if ($button_url && !is_category()) : ?>
           <div class="flex items-center hero-buttons">
-            <a href="<?php echo $button_url ?>" class="btn secondary<?php echo $light_text ?>"><?php echo $button_text ?></a> 
+            <a href="<?php echo $button_url ?>" class="btn primary<?php echo $light_text ?>"><?php echo $button_text ?></a> 
           </div>
           <?php endif; ?>
       </div>
       <?php if ($right_image) : ?>
-        <div id="banner-right" class="items-center justify-end hidden text-right lg:flex h-fit lg:basis-6/12 ">
+        <div id="banner-right" class="items-center justify-end hidden text-right lg:flex h-fit lg:basis-7/12 ">
           <?php if ($content_type == 'image') : ?>
             <!-- Image -->
             <img src="<?php echo $right_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" class="float-right" />

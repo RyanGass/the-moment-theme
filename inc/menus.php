@@ -17,7 +17,9 @@ function register_my_menus() {
   register_nav_menus(
     array(
         'primary' => __( 'Primary Menu', 'theme-name' ),
-        'footer' => __( 'Footer Menu', 'theme-name' ),
+        'footer-menu-1' => __( 'Footer Menu 1', 'theme-name' ),
+		'footer-menu-2' => __( 'Footer Menu 2', 'theme-name' ),
+		'footer-menu-3' => __( 'Footer Menu 3', 'theme-name' ),
         'utility' => __( 'Utility Menu', 'theme-name' ),
     )
   );

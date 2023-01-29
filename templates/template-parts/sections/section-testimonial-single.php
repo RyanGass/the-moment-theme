@@ -14,7 +14,7 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
         <div class="section-block">
             <div class="area">
                 <div class="flex flex-col justify-center text-center inner-area items-center">
-                    <img class="w-2/6 mx-auto" src="<?php echo $image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" />
+                    <img class="mx-auto" src="<?php echo $image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" />
                     <span class="block w-full md:w-1/2 quote-content"><?php echo $section['testimonial_content']; ?></span>
                     <span class="block quote-name-company"><?php echo $section['testimonial_name']; ?> - <?php echo $section['testimonial_company']; ?></span>
                 </div>

@@ -10,14 +10,17 @@ if ($navigation == 'dots' || $navigation == 'both') {
 }
 $text_below = $section['slider_text_location'];
 if ($text_below == 'yes') { $tb = ' text-below';} else { $tb = '';};
+$bg_overlay = $section['use_bg_overlay'];
+// BG Overlay
+if ($bg_overlay == 'yes') { $use_overlay = ' overlay'; } else { $use_overlay = ''; }
 ?>
 
 <section id="testimonial-slides-container" class="w-full p-0 mx-auto<?php echo $tb ?>">
-        <div id="testimonial-slide-repeater">
+        <div id="testimonial-slide-repeater" class="slide-repeater<?php echo $use_overlay . $tb ?>">
         <?php if ($navigation == 'arrows' || $navigation == 'both') : ?>
 			<button type="button" onclick="Prev()" class="button-nav slide-navigation previous"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M192 448c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l137.4 137.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448z"/></svg></button>
 		<?php endif; ?>
-		<?php $i = 1; foreach ( $testimonials as $testimonial ) { if ($i >= 2) { $closed = 'closed'; }; ?>    
+		<?php $i = 1; foreach ( $testimonials as $testimonial ) { if ($i >= 2) { $closed = 'closed'; } else { $closed = '';}; ?>    
 			<div id="slide-<?php echo $i ?>" class="slide-block <?php echo $closed ?>" style="background-image: url(<?php echo $testimonial['testimonial_image']; ?>)">   
 				<div class="w-11/12 mx-auto area max-w-screen-2xl">
 					<div class="flex flex-col justify-center max-w-screen-lg mx-auto text-center inner-area align-center">

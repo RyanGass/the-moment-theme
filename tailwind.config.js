@@ -30,14 +30,18 @@ module.exports = {
 		'./styles_scripts/src/css/**/*.css',
 		'./styles_scripts/src/js/*.js' ],
 	safelist: [
-		'bg-[#F15320]',
-		'bg-[#A7C9E7]',
-		'bg-[#D1D1D1]',
-		'bg-[#575757]',
+		'bg-[#960F0F]',
+		'bg-[#818285]',
+		'bg-[#EEEEEE]',
+		'bg-[#333333]',
+		'bg-[#101010]',
 	],
 	theme: {
 		extend: {
 			colors,
+			screens: {
+				'2xl': '1400px',
+			},
 		},
 	},
 	plugins: [ require( 'tailwindcss-debug-screens' ) ],

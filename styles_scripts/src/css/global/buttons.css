@@ -6,12 +6,11 @@
 
 .btn,
 input[type="submit"] {
-  border-radius: 2px;
-  padding: var(--space-1) var(--space-3);
-  font-size: 16px;
-  line-height: 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 0.5rem 1.25rem;
   letter-spacing: 0.05em;
-  font-weight: 600;
+  font-weight: 700;
   display: block;
   width: fit-content;
   background: transparent;
@@ -22,29 +21,51 @@ input[type="submit"] {
 
 .btn.primary,
 input[type="submit"] {
-  background-color: #f15320;
-  border: 2px solid #f15320;
+  background-color: #960f0f;
+  border: 2px solid #960f0f;
 }
 
 .btn.primary:hover,
 input[type="submit"]:hover {
-  @apply text-primary;
-
-  background: transparent;
+  @apply text-primary bg-white;
 }
 
 .btn.secondary {
-  background: #a7c9e7;
-  border: 2px solid #a7c9e7;
+  background: #818285;
+  border: 2px solid #818285;
 }
 
 .btn.secondary:hover {
   background: transparent;
-  color: #a7c9e7;
+  color: #818285;
+}
+
+.btn.tertiary {
+  background: #fff;
+  border: 2px solid #960f0f;
+  color: #960f0f;
+}
+
+.btn.tertiary:hover {
+  background: #960f0f;
+  border: 2px solid #960f0f;
+  color: #fff;
 }
 
 .btn.primary.light-text:hover,
 .btn.secondary.light-text:hover {
   color: #fff;
   border: 2px solid #fff;
+}
+
+main a:not(.btn):link,
+#footer-phone a,
+#footer-bottom a {
+  @apply text-primary;
+}
+
+main a:not(.btn):hover,
+#footer-phone a:hover,
+#footer-bottom a:hover {
+  @apply text-[#c54a40];
 }

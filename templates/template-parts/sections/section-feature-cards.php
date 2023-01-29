@@ -3,7 +3,7 @@ global $section;
 $features = $section['crb_features'];
 $image_size = $section['image_size'];
 $content = $section['content'];
-if ($content) { $subtext = ' class="has-subtext"'; };
+if ($content) { $subtext = ' class="has-subtext"'; } else { $subtext = ''; };
 $use_bg_color = $section['use_background_color'];
 $bg_color = $section['background_color'];
 if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $bg_color = '';};
@@ -44,7 +44,7 @@ foreach ( $features as $feature ) { if ($i <= 2) { $i++; } } ?>
             <?php }; ?>
         </div>
         <?php if ($section['button_url']) : ?>
-            <a href="<?php echo $section['button_url']; ?>" class="mx-auto btn primary"><?php echo $section['button_text']; ?></a>
+            <a href="<?php echo $section['button_url']; ?>" class="section-button mx-auto btn primary"><?php echo $section['button_text']; ?></a>
         <?php endif; ?>
     </div>
 </section>

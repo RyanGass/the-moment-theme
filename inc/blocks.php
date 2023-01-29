@@ -18,13 +18,17 @@ add_action( 'after_setup_theme', 'blocks_theme_setup' );
 
 function wpcc_allowed_block_types() {
 	return array(
-		'core/iamge',
+		'core/image',
 		'core/paragraph',
 		'core/heading',
 		'core/quote',
 		'core/list',
 		'core/list-item',
-		'core/shortcode'
+		'core/shortcode',
+		'core/video',
+		'core/separator',
+		'core/embed',
+		'core/table'
 	);
 }
 add_filter( 'allowed_block_types', 'wpcc_allowed_block_types' );

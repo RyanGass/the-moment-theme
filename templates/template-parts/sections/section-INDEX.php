@@ -11,6 +11,11 @@
 						get_template_part('templates/template-parts/sections/section', 'text-video');
 						
 						break;
+					case 'text-button':
+					
+						get_template_part('templates/template-parts/sections/section', 'text-button');
+						
+						break;
 					case 'feature-cards':
 						
 						get_template_part('templates/template-parts/sections/section', 'feature-cards');
@@ -46,14 +51,9 @@
 						get_template_part('templates/template-parts/sections/section', 'form');
 						
 						break;
-					case 'image-single':
-						
-						get_template_part('templates/template-parts/sections/section', 'image-single');
-						
-						break;
-					case 'image-double':
-						
-						get_template_part('templates/template-parts/sections/section', 'image-double');
+					case 'video-single':
+					
+						get_template_part('templates/template-parts/sections/section', 'video-single');
 						
 						break;
 					case 'faq-section':

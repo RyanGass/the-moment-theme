@@ -25,11 +25,14 @@ function crb_attach_theme_options() {
                 'yes' => 'Yes',
             ) )
         ) )
-        ->add_tab( __('Tab 2'), array(
-            Field::make( 'text', 'tab_2_field_name', 'Field Label' ),
+        ->add_tab( __('Site Footer'), array(
+            Field::make( 'text', 'footer_phone', 'Phone Number' ),
+            Field::make( 'text', 'footer_tagline', 'Tagline' ),
         ) )
-        ->add_tab( __('Tab 3'), array(
-            Field::make( 'text', 'tab_3_field_name', 'Field Label' ),
+        ->add_tab( __('Social Media'), array(
+            Field::make( 'text', 'facebook', 'Facebook URL' ),
+            Field::make( 'text', 'linkedin', 'LinkedIn URL' ),
+            Field::make( 'text', 'instagram', 'Instagram URL' ),
         ) );
 }
 

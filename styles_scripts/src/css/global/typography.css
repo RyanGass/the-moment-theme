@@ -98,18 +98,18 @@
 
 :root {
   /*** h1 - font-size ***/
-  --h1-f-min: 36;
-  --h1-f-max: 44;
+  --h1-f-min: 32;
+  --h1-f-max: 48;
   --h1-f: calc(((var(--h1-f-min) / 16) * 1rem) + (var(--h1-f-max) - var(--h1-f-min)) * var(--fluid-bp));
 
   /*** h1 - line-height ***/
   --h1-lh-min: 40;
-  --h1-lh-max: 48;
+  --h1-lh-max: 54;
   --h1-lh: calc(((var(--h1-lh-min) / 16) * 1rem) + (var(--h1-lh-max) - var(--h1-lh-min)) * var(--fluid-bp));
 
   /*** h2 - font-size ***/
-  --h2-f-min: 28;
-  --h2-f-max: 36;
+  --h2-f-min: 24;
+  --h2-f-max: 32;
   --h2-f: calc(((var(--h2-f-min) / 16) * 1rem) + (var(--h2-f-max) - var(--h2-f-min)) * var(--fluid-bp));
 
   /*** h2 - line-height ***/
@@ -118,28 +118,28 @@
   --h2-lh: calc(((var(--h2-lh-min) / 16) * 1rem) + (var(--h2-lh-max) - var(--h2-lh-min)) * var(--fluid-bp));
 
   /*** h3 - font-size ***/
-  --h3-f-min: 22;
-  --h3-f-max: 30;
+  --h3-f-min: 24;
+  --h3-f-max: 32;
   --h3-f: calc(((var(--h3-f-min) / 16) * 1rem) + (var(--h3-f-max) - var(--h3-f-min)) * var(--fluid-bp));
 
   /*** h3 - line-height ***/
-  --h3-lh-min: 28;
-  --h3-lh-max: 36;
+  --h3-lh-min: 32;
+  --h3-lh-max: 40;
   --h3-lh: calc(((var(--h3-lh-min) / 16) * 1rem) + (var(--h3-lh-max) - var(--h3-lh-min)) * var(--fluid-bp));
 
   /*** h4 - font-size ***/
-  --h4-f-min: 18;
-  --h4-f-max: 26;
+  --h4-f-min: 16;
+  --h4-f-max: 20;
   --h4-f: calc(((var(--h4-f-min) / 16) * 1rem) + (var(--h4-f-max) - var(--h4-f-min)) * var(--fluid-bp));
 
   /*** h4 - line-height ***/
-  --h4-lh-min: 24;
-  --h4-lh-max: 32;
+  --h4-lh-min: 22;
+  --h4-lh-max: 28;
   --h4-lh: calc(((var(--h4-lh-min) / 16) * 1rem) + (var(--h4-lh-max) - var(--h4-lh-min)) * var(--fluid-bp));
 
   /*** h5 - font-size ***/
   --h5-f-min: 20;
-  --h5-f-max: 24;
+  --h5-f-max: 20;
   --h5-f: calc(((var(--h5-f-min) / 16) * 1rem) + (var(--h5-f-max) - var(--h5-f-min)) * var(--fluid-bp));
 
   /*** h5 - line-height ***/
@@ -148,12 +148,12 @@
   --h5-lh: calc(((var(--h5-lh-min) / 16) * 1rem) + (var(--h5-lh-max) - var(--h5-lh-min)) * var(--fluid-bp));
 
   /*** h6 - font-size ***/
-  --h6-f-min: 12;
-  --h6-f-max: 18;
+  --h6-f-min: 20;
+  --h6-f-max: 20;
   --h6-f: calc(((var(--h6-f-min) / 16) * 1rem) + (var(--h6-f-max) - var(--h6-f-min)) * var(--fluid-bp));
 
   /*** h6 - line-height ***/
-  --h6-lh-min: 20;
+  --h6-lh-min: 24;
   --h6-lh-max: 28;
   --h6-lh: calc(((var(--h6-lh-min) / 16) * 1rem) + (var(--h6-lh-max) - var(--h6-lh-min)) * var(--fluid-bp));
 
@@ -171,10 +171,11 @@
 }
 
 * {
-  font-family: Karla, sans-serif;
+  @apply text-secondary;
+
+  font-family: Lato;
   font-size: 1rem;
-  line-height: 2rem;
-  color: #303030;
+  line-height: 1.7;
 }
 
 h1,
@@ -183,49 +184,80 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Poppins, sans-serif;
+  font-family: lato, sans-serif;
 }
 
-h1 {
+h1,
+h1 * {
+  @apply text-darkgrey;
+
   font-size: var(--h1-f);
   line-height: var(--h1-lh);
-  font-weight: 600;
+  font-weight: 700;
+  text-transform: capitalize;
+  font-style: normal;
 }
 
-h2 {
+h2,
+h2 * {
+  @apply text-darkgrey;
+
   font-size: var(--h2-f);
   line-height: var(--h2-lh);
-  font-weight: 600;
+  font-weight: 700;
+  text-transform: capitalize;
+  font-style: normal;
 }
 
-h3 {
+h3,
+h3 * {
+  @apply text-darkgrey;
+
   font-size: var(--h3-f);
   line-height: var(--h3-lh);
-  font-weight: 600;
+  font-weight: 700;
+  text-transform: capitalize;
+  font-style: normal;
 }
 
-h4 {
+h4,
+h4 * {
+  @apply text-darkgrey;
+
   font-size: var(--h4-f);
   line-height: var(--h4-lh);
-  font-weight: 600;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-style: normal;
 }
 
-h5 {
+h5,
+h5 * {
+  @apply text-darkgrey;
+
   font-size: var(--h5-f);
   line-height: var(--h5-lh);
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: var(--space-1);
+  text-transform: capitalize;
+  font-style: normal;
 }
 
-h6 {
+h6,
+h6 * {
+  @apply text-primary;
+
   font-size: var(--h6-f);
   line-height: var(--h6-lh);
-  font-weight: 600;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-style: normal;
 }
 
 main p,
 main p span,
 main p a,
+main a,
 main ul,
 main li,
 #banner p,
@@ -235,7 +267,11 @@ main li,
 #banner ol,
 #banner li {
   font-family: Karla, sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.6rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 400;
+}
+
+figure.wp-block-image {
+  margin-bottom: var(--space-3);
 }

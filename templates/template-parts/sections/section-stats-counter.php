@@ -15,6 +15,9 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
         $stats_postfix_percent = $stat['postfix_percent'];
         $stats_value_measure = $stat['value_measure'];
 
+        if($stats_prefix) : 
+          $stats_prefix = '$';
+        endif;
 
         if($stats_postfix_plus) : 
           $stats_post = '+';
@@ -48,13 +51,14 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
         } else {
           $stats_trimmed = '';
           $stats_counter_off = 's';
+          $stats_decimal = '';
         };
 
         ?>
 
         <div class="clearfix counter wpb_content_element basis-full sm:basis-1/2 lg:basis-1/4">
             <div class="text-center counter-value">
-                <span class="pre-post"><?php echo $stats_pre ?></span>
+                <span class="pre-post"><?php echo $stats_prefix ?></span>
                 <div class="countup pre-number"><?php echo $stats_num ?></div>
                 <span class="decimal"><?php echo $stats_decimal ?></span>
                 <div class="countup<?php echo $stats_counter_off ?> post-number"><?php echo $stats_trimmed ?></div>
@@ -66,7 +70,7 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
         <?php 
 
         // Reset variables
-        $stats_pre = '';
+        $stats_prefix = '';
         $stats_intpart = '';
         $stats_decimal = '';
         $stats_counter_off = '';

@@ -33,7 +33,7 @@ function crb_attach_post_options() {
                             'yes' => 'Yes'
                         )),
                     Field::make( 'color', 'background_color', 'Background Color' )
-                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
                         ->set_conditional_logic( array(
                         'relation' => 'OR',
                             array(
@@ -64,7 +64,7 @@ function crb_attach_post_options() {
                             'yes' => 'Yes'
                         )),
                     Field::make( 'color', 'background_color', 'Background Color' )
-                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
                         ->set_conditional_logic( array(
                         'relation' => 'OR',
                             array(
@@ -157,6 +157,30 @@ function crb_attach_post_options() {
                             )
                         ) ),
                 ) )
+
+                // Text w/ Button
+                ->add_fields( 'text-button', 'Text w/ Button', array(
+                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
+                        ->add_options(array(
+                            'no' => 'No',
+                            'yes' => 'Yes'
+                        )),
+                    Field::make( 'color', 'background_color', 'Background Color' )
+                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
+                        ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        ) ),
+                    Field::make( 'text', 'pre_heading', 'Pre Heading' ),
+                    Field::make( 'text', 'heading', 'Heading' ),
+                    Field::make( 'rich_text', 'content', 'Content' ),
+                    Field::make( 'text', 'button_text', 'Button Text' ),
+                    Field::make( 'text', 'button_url', 'Button URL' ),
+                ) )
                 
                 // Feature Cards
                 ->add_fields( 'feature-cards', 'Feature Cards', array(
@@ -166,7 +190,7 @@ function crb_attach_post_options() {
                             'yes' => 'Yes'
                         )),
                     Field::make( 'color', 'background_color', 'Background Color' )
-                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
                         ->set_conditional_logic( array(
                         'relation' => 'OR',
                             array(
@@ -205,7 +229,7 @@ function crb_attach_post_options() {
                             'yes' => 'Yes'
                         )),
                     Field::make( 'color', 'background_color', 'Background Color' )
-                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
                         ->set_conditional_logic( array(
                         'relation' => 'OR',
                             array(
@@ -236,7 +260,7 @@ function crb_attach_post_options() {
                             'yes' => 'Yes'
                         )),
                     Field::make( 'color', 'background_color', 'Background Color' )
-                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
                         ->set_conditional_logic( array(
                         'relation' => 'OR',
                             array(
@@ -269,6 +293,12 @@ function crb_attach_post_options() {
 
                 // Image/Text Slider
                 ->add_fields( 'testimonial-image-slider', 'Testimonial Image Slider', array(
+                    Field::make( 'radio', 'use_bg_overlay', 'Use Transparent Overlay?' )
+                    ->set_default_value( 'no' )    
+                    ->add_options( array(
+                            'no' => 'No',
+                            'yes' => 'Yes',
+                        ) ),
                     Field::make( 'radio', 'slider_navigation', 'Slider Navigation' )
                             ->add_options( array(
                                 'dots' => 'Dots',
@@ -300,7 +330,7 @@ function crb_attach_post_options() {
                             'yes' => 'Yes'
                         )),
                     Field::make( 'color', 'background_color', 'Background Color' )
-                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
                         ->set_conditional_logic( array(
                         'relation' => 'OR',
                             array(
@@ -324,7 +354,7 @@ function crb_attach_post_options() {
                             'yes' => 'Yes'
                         )),
                     Field::make( 'color', 'background_color', 'Background Color' )
-                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
                         ->set_conditional_logic( array(
                         'relation' => 'OR',
                             array(
@@ -397,7 +427,7 @@ function crb_attach_post_options() {
                             'yes' => 'Yes'
                         )),
                     Field::make( 'color', 'background_color', 'Background Color' )
-                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
                         ->set_conditional_logic( array(
                         'relation' => 'OR',
                             array(
@@ -414,6 +444,89 @@ function crb_attach_post_options() {
                     Field::make( 'text', 'button_url', 'Section Button URL' )
                 ) )
 
+                // Video Single
+                ->add_fields( 'video-single', 'Single Video', array(
+                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
+                        ->add_options(array(
+                            'no' => 'No',
+                            'yes' => 'Yes'
+                        )),
+                    Field::make( 'color', 'background_color', 'Background Color' )
+                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
+                        ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        ) ),
+                    Field::make('radio', 'video_service', 'Video Service')
+                        ->add_options(array(
+                            'youtube' => 'YouTube',
+                            'vimeo' => 'Vimeo',
+                            'hosted' => 'Hosted'
+                        )),
+                    Field::make( 'text', 'video_url', 'Video URL' )
+                    ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'video_service',
+                                'value' => 'hosted',
+                                'compare' => '=',
+                            )
+                        ) )
+                    ->set_help_text( 'Ex: /wp-content/themes/briostack/assets/videos/bbb.mp4' ),
+                    Field::make( 'text', 'vimeo_id', 'Vimeo ID' )
+                    ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'video_service',
+                                'value' => 'vimeo',
+                                'compare' => '=',
+                            )
+                        ) )
+                    ->set_help_text( 'Ex: aqz-KE-bpKQ' ),
+                    Field::make( 'text', 'youtube_id', 'Youtube ID')
+                    ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'video_service',
+                                'value' => 'youtube',
+                                'compare' => '=',
+                            )
+                        ) )
+                    ->set_help_text( 'Ex: aqz-KE-bpKQ' ),
+                    Field::make( 'text', 'button_text', 'Button Text' )
+                    ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'video_alignment',
+                                'value' => 'right',
+                                'compare' => '=',
+                            ),
+                            array(
+                                'field' => 'video_alignment',
+                                'value' => 'left',
+                                'compare' => '=',
+                            )
+                        ) ),
+                    Field::make( 'text', 'button_url', 'Button URL' )
+                    ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'video_alignment',
+                                'value' => 'right',
+                                'compare' => '=',
+                            ),
+                            array(
+                                'field' => 'video_alignment',
+                                'value' => 'left',
+                                'compare' => '=',
+                            )
+                        ) ),
+                ) )
+
                 // FAQ Section
                 ->add_fields( 'faq-section', 'FAQs', array(
                     Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
@@ -422,7 +535,7 @@ function crb_attach_post_options() {
                             'yes' => 'Yes'
                         )),
                     Field::make( 'color', 'background_color', 'Background Color' )
-                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
                         ->set_conditional_logic( array(
                         'relation' => 'OR',
                             array(
@@ -449,7 +562,7 @@ function crb_attach_post_options() {
                             'yes' => 'Yes'
                         )),
                     Field::make( 'color', 'background_color', 'Background Color' )
-                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
                         ->set_conditional_logic( array(
                         'relation' => 'OR',
                             array(
@@ -484,7 +597,7 @@ function crb_attach_post_options() {
                             'yes' => 'Yes'
                         )),
                     Field::make( 'color', 'background_color', 'Background Color' )
-                        ->set_palette( array( '#f15320', '#a7c9e7', '#D1D1D1', '#575757' ) )
+                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
                         ->set_conditional_logic( array(
                         'relation' => 'OR',
                             array(
@@ -496,7 +609,6 @@ function crb_attach_post_options() {
                     Field::make( 'text', 'quote_text', 'Quote Text' ),
                     Field::make( 'text', 'quote_cite', 'Quote Cite' ),
                 ) )
-
                 
         ) );
 

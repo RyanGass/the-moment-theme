@@ -2,7 +2,7 @@
 global $section;
 $features = $section['features-2'];
 $content = $section['content'];
-if ($content) { $subtext = ' class="has-subtext"'; };
+if ($content) { $subtext = ' class="has-subtext" '; } else { $subtext = '';};
 $use_bg_color = $section['use_background_color'];
 $bg_color = $section['background_color'];
 if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $bg_color = '';};

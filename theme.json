@@ -7,22 +7,27 @@
                 {
                     "name": "Primary",
                     "slug": "primary",
-                    "color": "#f15320"
+                    "color": "#960F0F"
                 },
                 {
                     "name": "Secondary",
                     "slug": "secondary",
-                    "color": "#a7c9e7"
+                    "color": "#818285"
                 },
                 {
                     "name": "Light Grey",
                     "slug": "lightgrey",
-                    "color": "#D1D1D1"
+                    "color": "#EEEEEE"
                 },
                 {
                     "name": "Dark Grey",
                     "slug": "darkgrey",
-                    "color": "#575757"
+                    "color": "#333333"
+                },
+                {
+                    "name": "Black",
+                    "slug": "black",
+                    "color": "#101010"
                 }
             ]
         }

@@ -22,7 +22,7 @@ global $i;
             $permalink = get_permalink( $current_post_id );
             $title = get_the_title( $current_post_id );  
 
-            echo '<p class="blog-excerpt">' . excerpt(15) . '</p><span class="read-more btn secondary">Keep Reading</span>' ?>
+            echo '<p class="blog-excerpt">' . excerpt(15) . '</p><span class="read-more btn primary">Keep Reading</span>' ?>
         </div>
     </a>	
 </article>
