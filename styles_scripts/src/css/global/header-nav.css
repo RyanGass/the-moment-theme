@@ -6,6 +6,11 @@
   top: 2.5rem;
 }
 
+img.custom-logo {
+  max-width: 250px;
+  width: 100%;
+}
+
 /***
 *** Site Navigation ***
 ***/

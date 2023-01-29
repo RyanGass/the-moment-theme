@@ -6,13 +6,6 @@ html {
   scroll-behavior: smooth;
 }
 
-img.custom-logo {
-  max-width: 250px;
-  width: 100%;
-  width: 175px;
-  height: 36px;
-}
-
 main p,
 #banner p {
   margin: var(--space-3) 0;

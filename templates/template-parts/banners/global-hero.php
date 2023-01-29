@@ -52,9 +52,9 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
           else : the_title();
           endif;
           ?></h1>
-          <!-- <?php // if (is_single()) : $post_date = get_the_date('M j, Y') ?>
-          <span id="post-date"><?php // echo $post_date ?></span>
-          <?php //  endif; ?> -->
+          <?php  if (is_single()) : $post_date = get_the_date('M j, Y') ?>
+          <span id="post-date"><?php  echo $post_date ?></span>
+          <?php  endif; ?>
           <?php if ($content && !is_category()) : ?>
           <p class="w-fullmd:w-4/5 lg:w-3/5 description <?php if(isset($mx_auto)) { echo $mx_auto; } ?>"><?php echo $content ?></p>
           <?php endif; ?>
