@@ -17,7 +17,8 @@ foreach ( $features as $feature ) { if ($i <= 2) { $i++; } } ?>
             <h2 class="section-title"><?php echo $section['heading']; ?></h2>
             <?php if ($content) : echo '<p>' . $section['content'] . '</p>'; endif; ?>
         </div>
-        <div id="features-repeater" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-<?php echo $i ?>">
+        <?php if ($i == 1) { $md_grid = 'md:grid-cols-1'; } else { $md_grid = 'md:grid-cols-2'; } ?>
+        <div id="features-repeater" class="grid grid-cols-1 <?php echo $md_grid ?> lg:grid-cols-<?php echo $i ?>">
             <?php foreach ( $features as $feature ) { 
                 $image = $feature['featured_image'];
                 $imageID = attachment_url_to_postid( $image );
@@ -36,7 +37,7 @@ foreach ( $features as $feature ) { if ($i <= 2) { $i++; } } ?>
                                 <span class="block feature-content"><?php echo $feature['featured_content']; ?></span>
                             <?php endif; ?>
                             <?php if ($feature['button_url']) : ?>
-                                <a href="<?php echo $feature['button_url']; ?>" class="block m-auto btn secondary" data-lity><?php echo $button_text ?></a>
+                                <a href="<?php echo $feature['button_url']; ?>" class="block m-auto btn primary" data-lity><?php echo $button_text ?></a>
                             <?php endif; ?>
                         </div>
                     </div>

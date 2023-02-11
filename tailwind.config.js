@@ -1,24 +1,4 @@
-// Use colors from theme.json to create TW classes
-const fs = require( 'fs' );
-
-const themeJson = fs.readFileSync( './theme.json' );
-const theme = JSON.parse( themeJson );
-
-const colors = theme.settings.color.palette.reduce( ( acc, item ) => {
-	const [ color, number ] = item.slug.split( '-' );
-
-	// If there is a number identifier, make this an object
-	if ( undefined !== number ) {
-		if ( ! acc[ color ] ) {
-			acc[ color ] = {};
-		}
-		acc[ color ][ number ] = item.color;
-	} else {
-		acc[ color ] = item.color;
-	}
-
-	return acc;
-}, {} );
+/** @type {import('tailwindcss').Config} */
 
 module.exports = {
 	content: [
@@ -38,7 +18,13 @@ module.exports = {
 	],
 	theme: {
 		extend: {
-			colors,
+			colors: {
+				primary: '#960F0F',
+				secondary: '#818285',
+				lightgrey: '#EEEEEE',
+				darkgrey: '#333333',
+				black: '#101010',
+			},
 			screens: {
 				'2xl': '1400px',
 			},

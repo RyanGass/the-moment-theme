@@ -56,6 +56,11 @@
 						get_template_part('templates/template-parts/sections/section', 'video-single');
 						
 						break;
+					case 'image-single':
+                    
+                        get_template_part('templates/template-parts/sections/section', 'image-single');
+                        
+                        break;
 					case 'faq-section':
 						
 						get_template_part('templates/template-parts/sections/section', 'faq');

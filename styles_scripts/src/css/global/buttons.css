@@ -21,8 +21,8 @@ input[type="submit"] {
 
 .btn.primary,
 input[type="submit"] {
-  background-color: #960f0f;
-  border: 2px solid #960f0f;
+  background-color: var(--wp--preset--color--primary);
+  border: 2px solid var(--wp--preset--color--primary);
 }
 
 .btn.primary:hover,
@@ -31,24 +31,24 @@ input[type="submit"]:hover {
 }
 
 .btn.secondary {
-  background: #818285;
-  border: 2px solid #818285;
+  background: var(--wp--preset--color--lightgrey);
+  border: 2px solid var(--wp--preset--color--lightgrey);
 }
 
 .btn.secondary:hover {
   background: transparent;
-  color: #818285;
+  color: var(--wp--preset--color--lightgrey);
 }
 
 .btn.tertiary {
   background: #fff;
-  border: 2px solid #960f0f;
-  color: #960f0f;
+  border: 2px solid var(--wp--preset--color--primary);
+  color: var(--wp--preset--color--primary);
 }
 
 .btn.tertiary:hover {
-  background: #960f0f;
-  border: 2px solid #960f0f;
+  background: var(--wp--preset--color--primary);
+  border: 2px solid var(--wp--preset--color--primary);
   color: #fff;
 }
 

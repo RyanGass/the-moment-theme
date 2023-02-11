@@ -7,12 +7,12 @@
                 {
                     "name": "Primary",
                     "slug": "primary",
-                    "color": "#960F0F"
+                    "color": "#a7c9e7"
                 },
                 {
                     "name": "Secondary",
                     "slug": "secondary",
-                    "color": "#818285"
+                    "color": "#4c6085"
                 },
                 {
                     "name": "Light Grey",

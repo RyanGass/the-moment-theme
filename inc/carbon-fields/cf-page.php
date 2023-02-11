@@ -101,6 +101,8 @@ function crb_attach_post_options() {
                             'vimeo' => 'Vimeo',
                             'hosted' => 'Hosted'
                         )),
+                    Field::make( 'image', 'video_image', 'Screenshot' )
+                        ->set_value_type( 'url' ),
                     Field::make( 'text', 'video_url', 'Video URL' )
                     ->set_conditional_logic( array(
                         'relation' => 'OR',
@@ -467,6 +469,8 @@ function crb_attach_post_options() {
                             'vimeo' => 'Vimeo',
                             'hosted' => 'Hosted'
                         )),
+                    Field::make( 'image', 'video_image', 'Screenshot' )
+                        ->set_value_type( 'url' ),
                     Field::make( 'text', 'video_url', 'Video URL' )
                     ->set_conditional_logic( array(
                         'relation' => 'OR',

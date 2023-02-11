@@ -48,7 +48,7 @@ function crb_attach_hero_options() {
                         'compare' => '=',
                     )
                 ) ),
-            Field::make( 'text', 'content', 'Content' )
+            Field::make( 'rich_text', 'content', 'Content' )
                 ->set_conditional_logic( array(
                     'relation' => 'AND',
                     array(
@@ -231,6 +231,16 @@ function crb_attach_hero_options() {
                         'vimeo' => 'Vimeo',
                         'hosted' => 'Hosted'
                     ) )
+                    ->set_conditional_logic( array(
+                    'relation' => 'AND',
+                        array(
+                            'field' => 'right_content_option',
+                            'value' => 'video',
+                            'compare' => '=',
+                        )
+                    ) ),
+                Field::make( 'image', 'video_image', 'Screenshot' )
+                    ->set_value_type( 'url' )
                     ->set_conditional_logic( array(
                     'relation' => 'AND',
                         array(

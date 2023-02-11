@@ -8,6 +8,7 @@ $content = carbon_get_post_meta( $page_id, 'content' );
 $button_text = carbon_get_post_meta( $page_id, 'button_text' );
 $button_url = carbon_get_post_meta( $page_id, 'button_url' );
 $right_image = carbon_get_post_meta( $page_id, 'right_image' );
+$video_image = carbon_get_post_meta( $page_id, 'video_image');
 $imageID = attachment_url_to_postid( $right_image );
 $alt = get_post_meta($imageID, '_wp_attachment_image_alt', TRUE);
 $image_title = get_the_title($imageID);
@@ -39,9 +40,9 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
 ?>
 
 <section id="banner" class="global-banner<?php echo $use_overlay . $light_text ?>">
-    <div class="flex items-center w-11/12 mx-auto banner-area max-w-screen-xl<?php if (isset($text_center)) { echo $text_center; } ?>">  
-      <div id="banner-left" class="flex flex-col justify-center basis-full lg:basis-6/12<?php if (isset($items_center)) { echo $items_center; } ?>">    
-          <h1 class="w-full <?php if(isset($mx_auto)) { echo $mx_auto; } ?>">
+    <div class="flex flex-wrap lg:flex-nowrap items-center w-11/12 mx-auto banner-area max-w-screen-xl<?php if (isset($text_center)) { echo $text_center; } ?>">  
+      <div id="banner-left" class="flex flex-col justify-center basis-full basis-full lg:basis-7/12<?php if (isset($items_center)) { echo $items_center; } ?>">    
+          <h1 class="w-full md:w-4/5 lg:w-3/5 <?php if(isset($mx_auto)) { echo $mx_auto; } ?>">
           <?php  
           if( is_category() ) : single_term_title();
           elseif ( is_search() ) : printf( esc_html__( 'Search Results for: %s', 'theme-name' ), get_search_query() );
@@ -52,11 +53,11 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
           else : the_title();
           endif;
           ?></h1>
-          <?php  if (is_single()) : $post_date = get_the_date('M j, Y') ?>
-          <span id="post-date"><?php  echo $post_date ?></span>
-          <?php  endif; ?>
+          <!-- <?php // if (is_single()) : $post_date = get_the_date('M j, Y') ?>
+          <span id="post-date"><?php // echo $post_date ?></span>
+          <?php //  endif; ?> -->
           <?php if ($content && !is_category()) : ?>
-          <p class="w-fullmd:w-4/5 lg:w-3/5 description <?php if(isset($mx_auto)) { echo $mx_auto; } ?>"><?php echo $content ?></p>
+          <div class="w-full md:w-4/5 lg:w-3/5 description <?php if(isset($mx_auto)) { echo $mx_auto; } ?>"><?php echo apply_filters( 'the_content', $content ) ?></div>
           <?php endif; ?>
           <?php if ($button_url && !is_category()) : ?>
           <div class="flex items-center hero-buttons">
@@ -64,11 +65,11 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
           </div>
           <?php endif; ?>
       </div>
-      <?php if ($right_image) : ?>
-        <div id="banner-right" class="items-center justify-end hidden text-right lg:flex h-fit lg:basis-7/12 ">
+      <?php if ($content_type != 'none') : ?>
+        <div id="banner-right" class="items-center justify-end basis-full text-right lg:flex h-fit lg:basis-6/12 ">
           <?php if ($content_type == 'image') : ?>
             <!-- Image -->
-            <img src="<?php echo $right_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" class="float-right" />
+            <img src="<?php echo $right_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" />
           <?php endif; ?>
 
           <?php if ($content_type == 'video') : ?>
@@ -76,18 +77,33 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
             <?php if ($video_url) : ?> 
               <div id="video-container" class="w-full hero-video"> 
                 <div class="section-video">
-                  <video class="responsive-iframe" controls>
-                      <source src="<?php echo $video_url ?>" type="video/mp4">
-                      Your browser does not support HTML video.
-                  </video>
+                  <a id="banner-form-init" href="#banner-popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>
                 </div>  
+              </div>
+
+              <div id="banner-popup-form" data-hidden>
+                <div id="banner-form-close"></div>
+                <div id="form-outer-wrapper">
+                    <div id="form-container" class="popover-form">
+                        <iframe id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="<?php echo $video_url ?>" sandbox></iframe>
+                    </div>
+                </div>
               </div>
             <?php endif; ?>
 
             <?php if ($vimeo_id) : ?> 
               <div id="video-container" class="w-full hero-video"> 
                 <div class="section-video">
-                  <iframe class="responsive-iframe" src="https://player.vimeo.com/video/<?php echo $vimeo_id ?>"></iframe>
+                  <a id="banner-form-init" href="#banner-popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>                
+                </div>
+              </div>
+
+              <div id="banner-popup-form" data-hidden>
+                <div id="banner-form-close"></div>
+                <div id="form-outer-wrapper">
+                  <div id="form-container" class="popover-form">
+                      <iframe id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="https://player.vimeo.com/video/<?php echo $vimeo_id ?>"></iframe>
+                  </div>
                 </div>
               </div>
             <?php endif; ?>
@@ -95,7 +111,16 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
             <?php if ($youtube_id) : ?>
               <div id="video-container" class="w-full hero-video"> 
                 <div class="section-video">
-                  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/<?php echo $youtube_id ?>"></iframe>
+                  <a id="banner-form-init" href="#banner-popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>
+                </div>
+              </div>
+
+              <div id="banner-popup-form" data-hidden>
+                <div id="banner-form-close"></div>
+                <div id="form-outer-wrapper">
+                  <div id="form-container" class="popover-form">
+                    <iframe id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="https://www.youtube.com/embed/<?php echo $youtube_id ?>"></iframe>
+                  </div>
                 </div>
               </div>
             <?php endif; ?>
@@ -150,4 +175,25 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
         }
     }
     </style>
+<?php endif; ?>
+
+<?php if ($content_type == 'video') : ?>
+<script>
+let popButton = document.querySelector('#banner-form-init');
+let popForm = document.querySelector('#banner-popup-form');
+let popClose = document.querySelector('#banner-form-close');
+popButton.addEventListener("click", popoverInit);
+popClose.addEventListener("click", popoverClose);
+function popoverInit() {
+	popForm.removeAttribute('data-hidden');
+}
+function popoverClose<?php echo $section_multiples ?>() {
+	popForm.setAttribute('data-hidden', '');
+  stopAllVideos<?php echo $section_multiples ?>();
+}
+var stopAllVideos<?php echo $section_multiples ?> = () => { 
+  var iframe<?php echo $section_multiples ?> = document.getElementById('video-player<?php echo $section_multiples ?>');
+  iframe<?php echo $section_multiples ?>.src = iframe<?php echo $section_multiples ?>.src;
+}
+</script>
 <?php endif; ?>
