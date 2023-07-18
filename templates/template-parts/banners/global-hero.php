@@ -141,14 +141,14 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
             <?php if ($form_type == 'gravity') : ?>
                 <div class="form-inner-wrapper w-11/12 mx-auto max-w-screen-2xl">
                     <h3 class="form-title"><?php echo $form_title ?></h3>
-                    <?php echo do_shortcode('[gravityform id=" ' . $gf_form_id . ' " title="false" description="false" ajax="true" tabindex="49" field_values="check=First Choice,Second Choice"]') ?>
+                    <?php echo do_shortcode('[gravityform id="' . $gf_form_id . '" title="false" description="false" ajax="true" tabindex="49" field_values="check=First Choice,Second Choice"]') ?>
                 </div>
             <?php endif; ?>
 
             <?php if ($form_type == 'cf7') : ?>
                 <div class="form-inner-wrapper w-11/12 mx-auto max-w-screen-2xl">
                     <h3 class="form-title"><?php echo $form_title ?></h3>
-                    <?php echo do_shortcode('[contact-form-7 id=" ' . $cf7_form_id . ' " title="Contact form 1"]') ?>
+                    <?php echo do_shortcode('[contact-form-7 id="' . $cf7_form_id . '" title="Contact form 1"]') ?>
                 </div>
             <?php endif; ?>
 

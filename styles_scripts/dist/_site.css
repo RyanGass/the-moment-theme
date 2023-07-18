@@ -3124,6 +3124,7 @@ section#single-image-container div#section-button {
 .section-video .form-init,
 .section-video #banner-form-init {
   position: relative;
+  display: block;
 }
 
 .section-video .form-init::after,

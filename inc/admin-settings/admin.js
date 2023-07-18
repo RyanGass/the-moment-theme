@@ -46,3 +46,17 @@ function rmv_Image( _which ) {
 	// remove the element
 	jQuery( '[data-id="' + _which + '"]' ).remove();
 }
+
+// Limit core/embed variations available in Gutenberg
+
+wp.domReady( function() {
+      const allowedEmbedBlocks = [
+          'vimeo',
+          'youtube',
+      ];
+      wp.blocks.getBlockVariations( 'core/embed' ).forEach( function( blockVariation ) {
+          if ( -1 === allowedEmbedBlocks.indexOf( blockVariation.name ) ) {
+              wp.blocks.unregisterBlockVariation( 'core/embed', blockVariation.name );
+          }
+      } );
+  } );

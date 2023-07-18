@@ -27,8 +27,12 @@ function wpcc_allowed_block_types() {
 		'core/shortcode',
 		'core/video',
 		'core/separator',
+		'core/spacer',
 		'core/embed',
-		'core/table'
+		'core/table',
+		'gravityforms/form',
+		'core/buttons',
+		'core/html',
 	);
 }
 add_filter( 'allowed_block_types', 'wpcc_allowed_block_types' );

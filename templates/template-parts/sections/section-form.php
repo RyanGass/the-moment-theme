@@ -22,7 +22,7 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
 <section id="gravity-form-container" class="form-container w-full<?php echo $bg_color; ?>">
     <div class="form-inner-wrapper container-inner">
         <h2 class="form-title"><?php echo $form_title ?></h2>
-        <?php echo do_shortcode('[gravityform id=" ' . $section['gf-form-id'] . ' " title="false" description="false" ajax="true" tabindex="49" field_values="check=First Choice,Second Choice"]') ?>
+        <?php echo do_shortcode('[gravityform id="' . $section['gf-form-id'] . '" title="false" description="false" ajax="true" tabindex="49" field_values="check=First Choice,Second Choice"]') ?>
     </div>
 </section>
 <?php endif; ?>
@@ -31,7 +31,7 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
 <section id="contact-form-container" class="form-container w-full<?php echo $bg_color; ?>">
     <div class="form-inner-wrapper container-inner">
         <h2 class="form-title"><?php echo $form_title ?></h2>
-        <?php echo do_shortcode('[contact-form-7 id=" ' . $section['cf-7-form-id'] . ' " title="Contact form 1"]') ?>
+        <?php echo do_shortcode('[contact-form-7 id="' . $section['cf-7-form-id'] . '" title="Contact form 1"]') ?>
     </div>
 </section>
 <?php endif; ?>
