@@ -38,7 +38,7 @@ $ npm install
 $ composer require htmlburger/carbon-fields
 ```
 
-If you use VS code, then create a new workspace folder and drop this into the .vscode/setting.json file located in the root of the folder.
+If you use VS code, copy/paste the below settings into your Workspace Settings (JSON) file. command + shift + p / Preferences: Workspace Settings (JSON) and replace all settings.
 
 ```sh
 {

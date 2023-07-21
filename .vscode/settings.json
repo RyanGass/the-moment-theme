@@ -1,3 +1,6 @@
+// Copy/paste the below settings into your Workspace Settings (JSON) file. 
+// command + shift + p / Preferences: Workspace Settings (JSON)
+// Replace all settings.
 {
     "workbench.editor.untitled.hint": "hidden",
     "css.validate": false,
