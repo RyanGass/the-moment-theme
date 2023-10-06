@@ -179,3 +179,16 @@ add_action('get_header', 'remove_admin_login_header');
 ***/
 
 add_filter('wpcf7_autop_or_not', '__return_false');
+
+/***
+ * Disable img srcset
+ */
+
+function remove_max_srcset_image_width( $max_width ) {
+	return false;
+}
+add_filter( 'max_srcset_image_width', 'remove_max_srcset_image_width' );
+	function wdo_disable_srcset( $sources ) {
+	return false;
+}
+add_filter( 'wp_calculate_image_srcset', 'wdo_disable_srcset' );

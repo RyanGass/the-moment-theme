@@ -108,10 +108,15 @@ ul.blog-topics.active ul {
   }
 
   #post-toc {
-    @apply order-1 w-full lg:w-auto;
-
+    #post-toc {
+      @apply order-1 w-full lg:w-auto;
+      
+      width: 350px !important;
+  
     #post-toc-inner {
       @apply w-full lg:w-auto;
+
+      width: 350px;
     }
 
     #toc-list {

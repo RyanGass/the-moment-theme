@@ -191,7 +191,4 @@ window.onresize = socialShareButtonsResize;
 		-webkit-transition: top .5s;
 		transition: top .5s;
 	}
-	#post-toc li {
-		white-space: nowrap;
-	}
 </style>
