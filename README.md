@@ -21,6 +21,7 @@ Some things that make `The Moment` special:
 
 - [Node.js](https://nodejs.org/)
 - [Composer](https://getcomposer.org/)
+- [Tailwind Intellisense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 
 ### Quick Start
 
