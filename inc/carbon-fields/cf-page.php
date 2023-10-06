@@ -58,78 +58,26 @@ function crb_attach_post_options() {
 
                 // Text w/ Video
                 ->add_fields( 'text-video', 'Text w/ Video', array(
-                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
+                    Field::make('radio', 'grey_background', 'Grey Background?')
                         ->add_options(array(
                             'no' => 'No',
                             'yes' => 'Yes'
                         )),
-                    Field::make( 'color', 'background_color', 'Background Color' )
-                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
-                        ->set_conditional_logic( array(
-                        'relation' => 'OR',
-                            array(
-                                'field' => 'use_background_color',
-                                'value' => 'yes',
-                                'compare' => '=',
-                            )
-                        ) ),
                     Field::make( 'radio', 'video_alignment', 'Set Video Alignment' )
                     ->add_options( array(
                         'left' => 'Left',
                         'right' => 'Right',
                         'center' => 'Center',
                     ) ),
-                    Field::make( 'text', 'pre_heading', 'Pre Heading' ),
+                    Field::make( 'radio', 'video_placement', 'Set Video Placement' )
+                    ->add_options( array(
+                        'above' => 'Above Text',
+                        'below' => 'Below Text',
+                    ) ),
                     Field::make( 'text', 'heading', 'Heading' ),
-                    Field::make( 'rich_text', 'content', 'Content' )
-                    ->set_conditional_logic( array(
-                        'relation' => 'OR',
-                            array(
-                                'field' => 'video_alignment',
-                                'value' => 'right',
-                                'compare' => '=',
-                            ),
-                            array(
-                                'field' => 'video_alignment',
-                                'value' => 'left',
-                                'compare' => '=',
-                            )
-                        ) ),
-                    Field::make('radio', 'video_service', 'Video Service')
-                        ->add_options(array(
-                            'youtube' => 'YouTube',
-                            'vimeo' => 'Vimeo',
-                            'hosted' => 'Hosted'
-                        )),
-                    Field::make( 'image', 'video_image', 'Screenshot' )
-                        ->set_value_type( 'url' ),
-                    Field::make( 'text', 'video_url', 'Video URL' )
-                    ->set_conditional_logic( array(
-                        'relation' => 'OR',
-                            array(
-                                'field' => 'video_service',
-                                'value' => 'hosted',
-                                'compare' => '=',
-                            )
-                        ) ),
-                    Field::make( 'text', 'vimeo_id', 'Vimeo ID' )
-                    ->set_conditional_logic( array(
-                        'relation' => 'OR',
-                            array(
-                                'field' => 'video_service',
-                                'value' => 'vimeo',
-                                'compare' => '=',
-                            )
-                        ) ),
-                    Field::make( 'text', 'youtube_id', 'Youtube ID')
-                    ->set_conditional_logic( array(
-                        'relation' => 'OR',
-                            array(
-                                'field' => 'video_service',
-                                'value' => 'youtube',
-                                'compare' => '=',
-                            )
-                        ) ),
+                    Field::make( 'rich_text', 'content', 'Content' ),
+                    Field::make( 'text', 'video', 'Video URL' ),
+                    Field::make( 'text', 'video_id', 'Video ID' ),
                     Field::make( 'text', 'button_text', 'Button Text' )
                     ->set_conditional_logic( array(
                         'relation' => 'OR',
