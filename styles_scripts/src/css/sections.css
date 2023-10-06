@@ -252,6 +252,11 @@ section#faq-container {
 ***/
 
 section#feature-container {
+  background-image: url(/wp-content/uploads/2023/07/services-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   #features-repeater {
     margin: var(--space-8) 0;
     grid-gap: var(--space-6);
@@ -263,10 +268,6 @@ section#feature-container {
     background-color: #fff;
   }
 
-  #features-repeater .section-block:last-child {
-    grid-column: 1;
-  }
-
   @media (min-width: 768px) {
     #features-repeater {
       grid-gap: var(--space-3);
@@ -274,10 +275,6 @@ section#feature-container {
 
     #features-repeater .section-block {
       padding: var(--space-4) var(--space-3);
-    }
-
-    #features-repeater .section-block:last-child {
-      grid-column: 1 / span 2;
     }
   }
 
@@ -314,8 +311,9 @@ section#feature-container {
 
     .feature-heading {
       font-size: 21px !important;
-      font-weight: 700 !important;
+      font-weight: 500 !important;
       line-height: 26px;
+      color: #666;
     }
 
     .feature-content {
@@ -1063,4 +1061,66 @@ iframe.responsive-iframe {
 
 .section-video {
   padding-top: 0;
+}
+
+section#contact-form-container {
+  background-image: url(/wp-content/uploads/2023/07/contact-section-bg.jpg);
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  .container-inner {
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 0 75px 5px rgb(0 0 0 / 13%);
+    width: 100%;
+    max-width: 800px;
+  }
+
+  form.wpcf7-form {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .input-group {
+    text-align: left;
+    padding: 1%;
+  }
+
+  .input-group:not(.textarea) {
+    flex-basis: 50%;
+  }
+
+  .input-group.textarea {
+    flex-basis: 100%;
+  }
+
+  .input-group input,
+  .input-group textarea {
+    background-color: #f1f1f1;
+    border: 1px solid rgb(183 183 183 / 75%);
+  }
+
+  textarea {
+    max-height: 200px;
+  }
+
+  span.required-fields {
+    text-align: center;
+    font-family: Karla;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 43px;
+  }
+
+  .btn-input {
+    margin: 0 auto;
+  }
+
+  @media (max-width: 480px) {
+    .input-group:not(.textarea) {
+      flex-basis: 100%;
+    }
+  }
 }
