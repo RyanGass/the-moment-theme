@@ -110,35 +110,36 @@ ul.blog-topics.active ul {
   #post-toc {
     #post-toc {
       @apply order-1 w-full lg:w-auto;
-      
+
       width: 350px !important;
-  
-    #post-toc-inner {
-      @apply w-full lg:w-auto;
 
-      width: 350px;
-    }
+      #post-toc-inner {
+        @apply w-full lg:w-auto;
 
-    #toc-list {
-      @apply list-none p-0;
-    }
+        width: 350px;
+      }
 
-    li {
-      margin-bottom: var(--space-1);
-      border-radius: 4px;
-      background-color: #fff;
-      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);
-    }
+      #toc-list {
+        @apply list-none p-0;
+      }
 
-    a {
-      @apply block transition-colors ;
+      li {
+        margin-bottom: var(--space-1);
+        border-radius: 4px;
+        background-color: #fff;
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);
+      }
 
-      padding: 0.75rem 1rem;
-      background-color: #fff;
-    }
+      a {
+        @apply block transition-colors;
 
-    a:hover {
-      @apply bg-primary text-white;
+        padding: 0.75rem 1rem;
+        background-color: #fff;
+      }
+
+      a:hover {
+        @apply bg-primary text-white;
+      }
     }
   }
 
