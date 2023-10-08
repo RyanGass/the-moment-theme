@@ -33,7 +33,7 @@ Clone or download this repository, change its name to something else (i.e. `bag-
 
 ```sh 
 $ // Find/Replace text in all files
-$ find ./ -name \*.php -exec sed -i "s/theme-name/fla-legal-funding/g" {} \;
+$ find ./ -name \*.php -exec sed -i "s/theme-name/new-theme-name/g" {} \;
 ```
 
 ### Setup
