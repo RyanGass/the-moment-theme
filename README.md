@@ -31,6 +31,11 @@ Clone or download this repository, change its name to something else (i.e. `bag-
 1. Search for `theme-name` to capture the text domain and replace with: `bag-of-snakes`.
 2. Search for `theme_name` to capture all the functions names and replace with: `bag_of_snakes`.
 
+```sh 
+$ // Find/Replace text in all files
+$ find ./ -name \*.php -exec sed -i "s/theme-name/fla-legal-funding/g" {} \;
+```
+
 ### Setup
 
 To start using all the tools that come with `The Moment` you need to install Node.js dependencies, Tailwindcss, and Carbon Fields.

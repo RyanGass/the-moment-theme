@@ -9,7 +9,9 @@ $video = $section['video'];
 $imageID = attachment_url_to_postid( $video );
 $alt = get_post_meta($imageID, '_wp_attachment_image_alt', TRUE);
 $image_title = get_the_title($imageID);
-$video_id = $section['video_id'];
+$vimeo_id = $section['vimeo_id'];
+$youtube_id = $section['youtube_id'];
+$video_image = $section['video_image'];
 $bg_color = $section['grey_background'];
 if ($bg_color === 'yes') { $bg_color = ' bg-sectionbg'; };
 ?>
@@ -18,9 +20,56 @@ if ($bg_color === 'yes') { $bg_color = ' bg-sectionbg'; };
     <div class="w-11/12 mx-auto max-w-screen-2xl">
         <div id="video-repeater">
             <div class="section-block section-align-<?php echo esc_attr($video_alignment); ?> video-placement-<?php echo esc_attr($video_placement); ?>">
-                <div id="section-image" class="section-image">
-                    <img  style="width: 100%; margin: auto; display: block;"  class="mx-auto vidyard-player-embed"  src="<?php echo $video ?>"  data-uuid="<?php echo $video_id ?>"  data-v="4"  data-type="lightbox" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" />
+            <?php if ($video_url) : ?> 
+                <div id="video-container" class="w-full hero-video"> 
+                    <div class="section-video">
+                    <a id="form-init<?php echo '-' . $section_multiples ?>" class="form-init" href="#popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>
+                    </div>  
                 </div>
+
+                <div id="popup-form<?php echo '-' . $section_multiples ?>" class="popup-form" data-hidden>
+                    <div id="form-close<?php echo '-' . $section_multiples ?>" class="form-close"></div>
+                    <div id="form-outer-wrapper">
+                        <div id="form-container" class="popover-form">
+                            <iframe id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="<?php echo $video_url ?>" sandbox></iframe>
+                        </div>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                <?php if ($vimeo_id) : ?> 
+                <div id="video-container" class="w-full hero-video"> 
+                    <div class="section-video">
+                    <a id="form-init<?php echo '-' . $section_multiples ?>" class="form-init" href="#popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>                
+                    </div>
+                </div>
+
+                <div id="popup-form<?php echo '-' . $section_multiples ?>" class="popup-form" data-hidden>
+                    <div id="form-close<?php echo '-' . $section_multiples ?>" class="form-close"></div>
+                    <div id="form-outer-wrapper">
+                        <div id="form-container" class="popover-form">
+                            <iframe id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="https://player.vimeo.com/video/<?php echo $vimeo_id ?>?enablejsapi=1"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if ($youtube_id) : ?>
+                <div id="video-container" class="w-full"> 
+                    <div class="section-video">
+                    <a id="form-init<?php echo '-' . $section_multiples ?>" class="form-init" href="#popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>
+                    </div>
+                </div>
+
+                <div id="popup-form<?php echo '-' . $section_multiples ?>" class="popup-form" data-hidden>
+                    <div id="form-close<?php echo '-' . $section_multiples ?>" class="form-close"></div>
+                    <div id="form-outer-wrapper">
+                        <div id="form-container" class="popover-form">
+                        <iframe id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="https://www.youtube.com/embed/<?php echo $youtube_id ?>"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <?php endif; ?>
                 <div id="section-content"  class="section-content" >
                     <?php if ($section['pre_heading']) : ?>
                     <h3><?php echo $section['pre_heading']; ?></h3>

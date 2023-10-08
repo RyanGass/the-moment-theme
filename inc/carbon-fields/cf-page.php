@@ -63,6 +63,44 @@ function crb_attach_post_options() {
                             'no' => 'No',
                             'yes' => 'Yes'
                         )),
+                        Field::make('radio', 'video_service', 'Video Service')
+                        ->add_options(array(
+                            'youtube' => 'YouTube',
+                            'vimeo' => 'Vimeo',
+                            'hosted' => 'Hosted'
+                        )),
+                    Field::make( 'image', 'video_image', 'Screenshot' )
+                        ->set_value_type( 'url' ),
+                    Field::make( 'text', 'video_url', 'Video URL' )
+                    ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'video_service',
+                                'value' => 'hosted',
+                                'compare' => '=',
+                            )
+                        ) )
+                    ->set_help_text( 'Ex: /wp-content/themes/briostack/assets/videos/bbb.mp4' ),
+                    Field::make( 'text', 'vimeo_id', 'Vimeo ID' )
+                    ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'video_service',
+                                'value' => 'vimeo',
+                                'compare' => '=',
+                            )
+                        ) )
+                    ->set_help_text( 'Ex: aqz-KE-bpKQ' ),
+                    Field::make( 'text', 'youtube_id', 'Youtube ID')
+                    ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'video_service',
+                                'value' => 'youtube',
+                                'compare' => '=',
+                            )
+                        ) )
+                    ->set_help_text( 'Ex: aqz-KE-bpKQ' ),
                     Field::make( 'radio', 'video_alignment', 'Set Video Alignment' )
                     ->add_options( array(
                         'left' => 'Left',
@@ -76,8 +114,6 @@ function crb_attach_post_options() {
                     ) ),
                     Field::make( 'text', 'heading', 'Heading' ),
                     Field::make( 'rich_text', 'content', 'Content' ),
-                    Field::make( 'text', 'video', 'Video URL' ),
-                    Field::make( 'text', 'video_id', 'Video ID' ),
                     Field::make( 'text', 'button_text', 'Button Text' )
                     ->set_conditional_logic( array(
                         'relation' => 'OR',
