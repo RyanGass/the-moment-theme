@@ -236,6 +236,7 @@ function crb_attach_post_options() {
                                 ->set_value_type( 'url' ),
                             Field::make( 'text', 'featured_heading', 'Heading' ),
                             Field::make( 'textarea', 'featured_content', 'Content' ),
+                            Field::make( 'rich_text', 'add_featured_content', 'Additional Content' ),
                             Field::make( 'text', 'button_url', 'Button URL' ),
                             Field::make( 'text', 'button_text', 'Button Text' )
                         ) ),

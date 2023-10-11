@@ -40,8 +40,8 @@ foreach ( $features as $feature ) { if ($i <= 3) { $i++; } } ?>
                         <div id="popup-form-<?php echo $p; ?>" class="popup-form" data-hidden>
                             <div id="form-close-<?php echo $p; ?>" class="form-close"></div>
                             <div id="mkto-form-container" class="popover-form">
-                                <?php if ($feature['featured_content']) : ?>
-                                    <span class="block feature-content"><?php echo $feature['featured_content']; ?></span>
+                                <?php if ($feature['add_featured_content']) : ?>
+                                    <span class="block feature-content"><?php echo $feature['add_featured_content']; ?></span>
                                 <?php endif; ?>
                             </div>
                         </div>
