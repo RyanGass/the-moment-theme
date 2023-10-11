@@ -1,12 +1,15 @@
 <?php 
 
 global $section;
+$use_bg_image = $section['use_background_image'];
+$bg_image = $section['cta_bg_image'];
+if ($use_bg_image === 'yes') { $bg_image = ' style="background-image:url( ' . $bg_image . ');" '; } else { $bg_image = '';};
 $use_bg_color = $section['use_background_color'];
 $bg_color = $section['background_color'];
 if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $bg_color = '';};
 ?>
 
-<section id="text-container" class="w-full<?php echo $bg_color; ?>">
+<section id="text-container" class="w-full<?php echo $bg_color; ?> flex <?php echo $section['section_layout']; ?>"<?php echo $bg_image; ?>>
     <div class="container-inner">
         <div id="text-image-repeater" class="feature-wrapper">
             <div class="section-block>">

@@ -143,7 +143,7 @@ function crb_attach_post_options() {
                             )
                         ) ),
                 ) )
-
+                
                 // Text w/ Button
                 ->add_fields( 'text-button', 'Text w/ Button', array(
                     Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
@@ -161,6 +161,42 @@ function crb_attach_post_options() {
                                 'compare' => '=',
                             )
                         ) ),
+                    Field::make('radio', 'use_background_image', 'Use Background Image?')
+                        ->set_default_value( 'no' )
+                        ->add_options(array(
+                            'no' => 'No',
+                            'yes' => 'Yes'
+                        ))
+                        ->set_conditional_logic( array(
+                            'relation' => 'AND',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'no',
+                                'compare' => '=',
+                            )
+                        ) ),
+                       
+                    Field::make( 'image', 'cta_bg_image', 'Image' )
+                        ->set_value_type( 'url' )
+                        ->set_conditional_logic( array(
+                            'relation' => 'AND',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'no',
+                                'compare' => '=',
+                            ),
+                            array(
+                                'field' => 'use_background_image',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        ) ),
+                        
+                    Field::make('radio', 'section_layout', 'Choose Layout')
+                        ->add_options(array(
+                            'flex-col md:flex-row' => 'Row',
+                            'flex-col' => 'Column'
+                        )),
                     Field::make( 'text', 'pre_heading', 'Pre Heading' ),
                     Field::make( 'text', 'heading', 'Heading' ),
                     Field::make( 'rich_text', 'content', 'Content' ),
