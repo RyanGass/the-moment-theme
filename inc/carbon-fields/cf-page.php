@@ -203,6 +203,75 @@ function crb_attach_post_options() {
                     Field::make( 'text', 'button_text', 'Button Text' ),
                     Field::make( 'text', 'button_url', 'Button URL' ),
                 ) )
+
+                // Data Table
+                ->add_fields( 'data-table', 'Data Table', array(
+                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
+                        ->add_options(array(
+                            'no' => 'No',
+                            'yes' => 'Yes'
+                        )),
+                    Field::make( 'color', 'background_color', 'Background Color' )
+                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
+                        ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        ) ),
+                    Field::make('radio', 'use_background_image', 'Use Background Image?')
+                        ->set_default_value( 'no' )
+                        ->add_options(array(
+                            'no' => 'No',
+                            'yes' => 'Yes'
+                        ))
+                        ->set_conditional_logic( array(
+                            'relation' => 'AND',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'no',
+                                'compare' => '=',
+                            )
+                        ) ),
+                    Field::make( 'image', 'data_table_bg_image', 'Image' )
+                        ->set_value_type( 'url' )
+                        ->set_conditional_logic( array(
+                            'relation' => 'AND',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'no',
+                                'compare' => '=',
+                            ),
+                            array(
+                                'field' => 'use_background_image',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        ) ),
+                    Field::make( 'text', 'heading', 'Heading' ),
+                    Field::make( 'rich_text', 'content', 'Content' ),
+                    Field::make( 'complex', 'table_heading', 'Table Heading' )
+                        ->set_collapsed( true )
+                        ->add_fields( 'row', 'Row', array(
+                            Field::make( 'complex', 'table_heading_items', 'Table Items' )
+                                ->set_collapsed( true )
+                                ->add_fields( 'row-items', 'Row Items', array(
+                                    Field::make( 'text', 'item', 'Item' ),
+                                ) ),
+                        ) ),
+                    Field::make( 'complex', 'table_data', 'Table Data' )
+                        ->set_collapsed( true )
+                        ->add_fields( 'row', 'Row', array(
+                            Field::make( 'complex', 'table_data_items', 'Table Items' )
+                                ->set_collapsed( true )
+                                ->add_fields( 'row-items', 'Row Items', array(
+                                    Field::make( 'text', 'item', 'Item' ),
+                                ) ),
+                        ) ),
+                    Field::make( 'rich_text', 'bottom_content', 'Bottom Content' ),
+                ) )
                 
                 // Feature Cards
                 ->add_fields( 'feature-cards', 'Feature Cards', array(

@@ -76,6 +76,11 @@
 						get_template_part('templates/template-parts/sections/section', 'blockquote');
 						
 						break;
+					case 'data-table':
+					
+						get_template_part('templates/template-parts/sections/section', 'data-table');
+						
+						break;
 				}
 			
 			?>
