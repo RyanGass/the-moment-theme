@@ -2,7 +2,6 @@
 // command + shift + p / Preferences: Workspace Settings (JSON)
 // Replace all settings.
 {
-    "workbench.editor.untitled.hint": "hidden",
     "css.validate": false,
     "less.validate": false,
     "scss.validate": false,
@@ -34,5 +33,6 @@
     "editor.formatOnPaste": true,
     "editor.quickSuggestions": {
         "strings": true
-    }
+    },
+    "workbench.editor.empty.hint": "hidden"
 }

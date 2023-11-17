@@ -24,7 +24,7 @@ add_action( 'wp_enqueue_scripts', 'theme_name_enqueue_scripts' );
 ***/
 
 function admin_scripts() {
-  wp_enqueue_script('admin-scripts', get_template_directory_uri().'/inc/admin-settings/admin.js');
+  wp_enqueue_script('admin-scripts', get_template_directory_uri().'/inc/admin-settings/admin.js', array(), null);
   wp_enqueue_style('admin-styles', get_template_directory_uri().'/inc/admin-settings/admin.css');
 }
 add_action('admin_enqueue_scripts', 'admin_scripts');
