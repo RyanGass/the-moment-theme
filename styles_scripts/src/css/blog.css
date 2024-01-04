@@ -64,8 +64,16 @@ ul.blog-topics.active ul {
 
 /*** Single Post ***/
 
-#blog-post-wrapper {
+#blog-post-wrapper.toc-width {
   @apply left-0 max-w-full lg:max-w-[40vw] lg:left-[4vw];
+}
+
+#blog-post-wrapper {
+  @apply left-0 max-w-full lg:max-w-[40vw] lg:left-[0];
+}
+
+#post-toc:not(.toc-width) {
+  display: none;
 }
 
 .single {
@@ -83,63 +91,45 @@ ul.blog-topics.active ul {
     img.featured-image {
       width: 100%;
     }
+  }
 
-    .post-author img {
-      display: none;
+  #posts-container {
+    #post-block-wrapper {
+      margin-top: var(--space-4)
     }
 
-    #post-meta a,
-    .meta-author {
-      font-size: 18px;
-      text-transform: capitalize;
-      text-decoration: none;
-    }
-
-    @media (min-width: 40rem) {
-      .post-author img {
-        display: block;
-      }
-
-      #post-meta a,
-      .meta-author {
-        font-size: 22px;
-      }
+    .post-meta {
+      margin: var(--space-2) 0;
     }
   }
 
   #post-toc {
-    #post-toc {
-      @apply order-1 w-full lg:w-auto;
+    @apply order-1 w-full lg:w-auto;
 
-      width: 350px !important;
+    #post-toc-inner {
+      width: 350px;
+    }
 
-      #post-toc-inner {
-        @apply w-full lg:w-auto;
+    #toc-list {
+      @apply list-none p-0;
+    }
 
-        width: 350px;
-      }
+    li {
+      margin-bottom: var(--space-1);
+      border-radius: 4px;
+      background-color: #fff;
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);
+    }
 
-      #toc-list {
-        @apply list-none p-0;
-      }
+    a {
+      @apply block transition-colors;
 
-      li {
-        margin-bottom: var(--space-1);
-        border-radius: 4px;
-        background-color: #fff;
-        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);
-      }
+      padding: 0.75rem 1rem;
+      background-color: #fff;
+    }
 
-      a {
-        @apply block transition-colors;
-
-        padding: 0.75rem 1rem;
-        background-color: #fff;
-      }
-
-      a:hover {
-        @apply bg-primary text-white;
-      }
+    a:hover {
+      @apply bg-primary text-white;
     }
   }
 
@@ -179,6 +169,10 @@ ul.blog-topics.active ul {
   @media (min-width: 1024px) {
     span.toc-anchor {
       top: -65px;
+    }
+
+    #post-toc-inner {
+      width: 100%;
     }
   }
 }

@@ -21,6 +21,11 @@
 						get_template_part('templates/template-parts/sections/section', 'feature-cards');
 						
 						break;
+					case 'feature-cards-slider':
+						
+						get_template_part('templates/template-parts/sections/section', 'feature-cards-slider');
+						
+						break;
 					case 'features-2':
 						
 						get_template_part('templates/template-parts/sections/section', 'feature-cards-2');

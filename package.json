@@ -40,7 +40,7 @@
     "watch:css": "tailwindcss -i ./styles_scripts/src/css/global/_site.css -o ./styles_scripts/dist/_site.css --postcss --watch",
     "watch:js": "esbuild ./styles_scripts/src/js/scripts.js --outfile=./styles_scripts/dist/scripts.js --watch",
     "watch": "concurrently \"npm run watch:css\" \"npm run watch:js\"",
-    "browser-sync": "browser-sync start --proxy \"https://briostack.local\" --host=\"briostack.local\" --no-inject-changes --files=\"./\"",
+    "browser-sync": "browser-sync start --proxy \"http://tm-theme.local\" --host=\"tm-theme.local\" --no-inject-changes --files=\"./\"",
     "watch-sync": "concurrently \"npm run browser-sync\" \"npm run watch\""
   }
 }

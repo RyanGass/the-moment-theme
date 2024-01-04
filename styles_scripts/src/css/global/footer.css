@@ -3,8 +3,9 @@
 ***/
 
 footer#footer {
-  @apply bg-lightgrey;
-
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
   color: #303030;
   padding: var(--space-9) 0 0 0;
 

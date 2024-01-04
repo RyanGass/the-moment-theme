@@ -24,8 +24,8 @@
         "scss"
     ],
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true,
-        "source.fixAll.stylelint": true
+        "source.fixAll.eslint": "explicit",
+        "source.fixAll.stylelint": "explicit"
     },
     "editor.formatOnSave": true,
     "editor.fontLigatures": false,

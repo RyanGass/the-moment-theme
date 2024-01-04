@@ -17,7 +17,7 @@ function crb_attach_hero_options() {
                     'no' => 'No',
                 )),
             Field::make( 'radio', 'alignment', 'Align Hero Text' )
-                ->set_default_value( 'left' )
+                ->set_default_value( 'center' )
                 ->add_options( array(
                     'left' => 'Left',
                     'center' => 'Center',

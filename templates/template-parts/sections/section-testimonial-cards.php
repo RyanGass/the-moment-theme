@@ -42,14 +42,11 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
 		<button type="button" onclick="cardNext()" class="button-nav card-slide-navigation next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"/></svg></button>
 		</div>
 </section>
-<style>
-    
-</style>
 <script>
 // Slider variables setup
 let cardslides = document.querySelectorAll('.card-slide-block'); // Create an array of slides
-let cardslideid = document.querySelector('.card-slide-block').id // Create an array of slide ids
-let cardslideButtons = document.getElementsByClassName("card-slide-button"); // Create an array of slide nav buttons
+// let cardslideid = document.querySelector('.card-slide-block').id // Create an array of slide ids
+// let cardslideButtons = document.getElementsByClassName("card-slide-button"); // Create an array of slide nav buttons
 let cardsliderPosition = 0; 
 let cardposition = 0;
 
@@ -164,7 +161,7 @@ function cardREsizeSlides() {
 		if (medium == true && large == true) {
 			let newCardSlideCount = document.querySelectorAll('.save-card-count');
 			if (cardslideCount.length != newCardSlideCount.length) {
-				for (k = 0; k <= cardslideCount.length; k++) {
+				for (k = 0; k <= cardslideCount.length - 1; k++) {
 					cardslideCount[k].nextElementSibling.classList.add('card-show-slide', 'card-slide-initial');;
 				}
 			}

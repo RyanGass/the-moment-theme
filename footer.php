@@ -1,22 +1,61 @@
 <?php 
+/* Footer Contact */
+$phone_number = carbon_get_theme_option('footer_phone');
+$tagline = carbon_get_theme_option('footer_tagline');
+
+/* Footer Branding */
+$logo = carbon_get_theme_option('footer_logo');
+
+/* Footer Social */
+$social_text = carbon_get_theme_option('social_text');
 $facebook = carbon_get_theme_option('facebook');
 $instagram = carbon_get_theme_option('instagram');
 $linkedin = carbon_get_theme_option('linkedin');
-$phone_number = carbon_get_theme_option('footer_phone');
-$tagline = carbon_get_theme_option('footer_tagline');
+
+/* Footer Menus */
+$footer_menu_1_headline = carbon_get_theme_option('footer_menu_1_headline');
+$footer_menu_2_headline = carbon_get_theme_option('footer_menu_2_headline');
+$footer_menu_3_headline = carbon_get_theme_option('footer_menu_3_headline');
+
+/* Footer Background */
+$use_bg_image = carbon_get_theme_option('use_background_image');
+$bg_image = 'background-image: url(' . carbon_get_theme_option('footer_bg_image') . ');';
+$use_bg_color = carbon_get_theme_option('use_background_color');
+$bg_color = carbon_get_theme_option('background_color');
+if ($use_bg_color === 'yes') { $bg_color = 'background-color:' . $bg_color . ';'; } else { $bg_color = '';};
+
+/* Legal */
+$footer_legal = carbon_get_theme_option('footer_legal');
 ?>
 </main>
 
 </div>
 
-<footer id="footer" class="" role="contentinfo">
+<footer id="footer" class="" style="<?php echo $bg_image; ?><?php echo $bg_color; ?>" role="contentinfo">
 	<div id="footer-inner" class="flex flex-col items-center md:justify-between w-11/12 mx-auto max-w-screen-2xl site-footer md:flex-row ">
 		<div id="footer-left">	
-			<div id="footer-logo"><?php the_custom_logo(); ?></div>
+			<div id="footer-logo"><?php if ( $logo ) { ?>
+					<div class="text-lg uppercase">
+						<a href="<?php echo get_bloginfo( 'url' ); ?>" class="text-lg font-extrabold uppercase">
+							<img src="<?php echo $logo; ?>" alt="Footer Logo">
+						</a>
+					</div>
+				<?php } else { ?>
+					<div class="text-lg uppercase">
+						<a href="<?php echo get_bloginfo( 'url' ); ?>" class="text-lg font-extrabold uppercase">
+							<?php echo get_bloginfo( 'name' ); ?>
+						</a>
+					</div>
+
+					<p class="text-sm font-light">
+						<?php echo get_bloginfo( 'description' ); ?>
+					</p>
+
+				<?php } ?></div>
 			<div id="footer-tagline"><?php echo $tagline ?></div>
 			<div id="footer-phone"><a href="tel:<?php echo $phone_number ?>"><?php echo $phone_number ?></a></div>
 			<div id="footer-socials">
-				<h4>Follow Us!</h4>
+				<h4><?php echo $social_text ?></h4>
 				<a href="<?php echo $facebook; ?>" class="facebook" title="facebook">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
 				</a>
@@ -30,7 +69,7 @@ $tagline = carbon_get_theme_option('footer_tagline');
 		</div>
 		<div id="footer-right">
 			<div id="footer-nav-row" class="products-nav">
-				<h4>Footer Menu 1</h4>
+				<h4><?php echo $footer_menu_1_headline ?></h4>
 				<?php wp_nav_menu
 						( array( 
 							'container_class' => '',
@@ -40,7 +79,7 @@ $tagline = carbon_get_theme_option('footer_tagline');
 						) ); ?>
 			</div>
 			<div id="footer-nav-row" class="resources-nav">
-				<h4>Footer Menu 2</h4>
+				<h4><?php echo $footer_menu_2_headline ?></h4>
 				<?php wp_nav_menu
 						( array( 
 							'container_class' => '',
@@ -50,7 +89,7 @@ $tagline = carbon_get_theme_option('footer_tagline');
 						) ); ?>
 			</div>
 			<div id="footer-nav-row" class="company-nav">
-				<h4>Footer Menu 3</h4>
+				<h4><?php echo $footer_menu_3_headline ?></h4>
 				<?php wp_nav_menu
 						( array( 
 							'container_class' => '',
@@ -63,7 +102,7 @@ $tagline = carbon_get_theme_option('footer_tagline');
 	</div>
 	<div id="footer-bottom">
 		<div class="footer-legal">
-			&copy; <?php echo date_i18n( 'Y' );?> - <?php echo get_bloginfo( 'name' );?> | All rights reserved.<br>
+			&copy; <?php echo date_i18n( 'Y' );?> - <span class="primary"><?php echo get_bloginfo( 'name' );?></span>. <?php echo $footer_legal; ?><br>
 		</div>
 	</div>
 </footer>

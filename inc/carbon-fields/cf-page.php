@@ -313,6 +313,44 @@ function crb_attach_post_options() {
                     Field::make( 'text', 'button_url', 'Section Button URL' )
                 ) )
 
+                // Feature Cards (w/Slider)
+                ->add_fields( 'feature-cards-slider', 'Feature Cards (w/ Slider)', array(
+                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
+                        ->add_options(array(
+                            'no' => 'No',
+                            'yes' => 'Yes'
+                        )),
+                    Field::make( 'color', 'background_color', 'Background Color' )
+                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
+                        ->set_conditional_logic( array(
+                        'relation' => 'OR',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        ) ),
+                    Field::make( 'text', 'heading', 'Section Heading' ),
+                    Field::make( 'text', 'content', 'Section Content' ),
+                    Field::make( 'radio', 'image_size', 'Image Size' )
+                        ->add_options( array(
+                            'sm' => 'Small',
+                            'md' => 'Medium',
+                            'full' => 'Full',
+                        ) ),
+                    Field::make( 'complex', 'crb_features', 'Feature Cards' )
+                        ->set_collapsed( true )
+                        ->add_fields( 'feature-card', 'Feature Card', array(
+                            Field::make( 'image', 'featured_image', 'Image' )
+                                ->set_value_type( 'url' ),
+                            Field::make( 'image', 'featured_image_hover', 'Image (hover)' )
+                                ->set_value_type( 'url' ),
+                            Field::make( 'text', 'featured_heading', 'Heading' ),
+                            Field::make( 'textarea', 'featured_content', 'Content' ),
+                            Field::make( 'rich_text', 'add_featured_content', 'Additional Content' )
+                        ) )
+                ) )
+
                 // Feature Cards Style 2
                 ->add_fields( 'features-2', 'Feature Cards 2', array(
                     Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
@@ -591,34 +629,6 @@ function crb_attach_post_options() {
                             )
                         ) )
                     ->set_help_text( 'Ex: aqz-KE-bpKQ' ),
-                    Field::make( 'text', 'button_text', 'Button Text' )
-                    ->set_conditional_logic( array(
-                        'relation' => 'OR',
-                            array(
-                                'field' => 'video_alignment',
-                                'value' => 'right',
-                                'compare' => '=',
-                            ),
-                            array(
-                                'field' => 'video_alignment',
-                                'value' => 'left',
-                                'compare' => '=',
-                            )
-                        ) ),
-                    Field::make( 'text', 'button_url', 'Button URL' )
-                    ->set_conditional_logic( array(
-                        'relation' => 'OR',
-                            array(
-                                'field' => 'video_alignment',
-                                'value' => 'right',
-                                'compare' => '=',
-                            ),
-                            array(
-                                'field' => 'video_alignment',
-                                'value' => 'left',
-                                'compare' => '=',
-                            )
-                        ) ),
                 ) )
 
                 // FAQ Section
@@ -644,7 +654,7 @@ function crb_attach_post_options() {
                         ->set_collapsed( true )
                         ->add_fields( 'faq-card', 'Q & A', array(
                             Field::make( 'text', 'faq_question', 'Question' ),
-                            Field::make( 'textarea', 'faq_answer', 'Answer' )
+                            Field::make( 'rich_text', 'faq_answer', 'Answer' )
                         ) )
                 ) )
 

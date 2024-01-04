@@ -107,6 +107,16 @@
   --h1-lh-max: 54;
   --h1-lh: calc(((var(--h1-lh-min) / 16) * 1rem) + (var(--h1-lh-max) - var(--h1-lh-min)) * var(--fluid-bp));
 
+  /*** h1 (large) - font-size ***/
+  --h1-large-f-min: 40;
+  --h1-large-f-max: 65;
+  --h1-large-f: calc(((var(--h1-large-f-min) / 16) * 1rem) + (var(--h1-large-f-max) - var(--h1-large-f-min)) * var(--fluid-bp));
+
+  /*** h1 (large) - line-height ***/
+  --h1-large-lh-min: 50;
+  --h1-large-lh-max: 71;
+  --h1-large-lh: calc(((var(--h1-large-lh-min) / 16) * 1rem) + (var(--h1-large-lh-max) - var(--h1-large-lh-min)) * var(--fluid-bp));
+
   /*** h2 - font-size ***/
   --h2-f-min: 24;
   --h2-f-max: 32;
@@ -118,13 +128,13 @@
   --h2-lh: calc(((var(--h2-lh-min) / 16) * 1rem) + (var(--h2-lh-max) - var(--h2-lh-min)) * var(--fluid-bp));
 
   /*** h3 - font-size ***/
-  --h3-f-min: 24;
-  --h3-f-max: 32;
+  --h3-f-min: 22;
+  --h3-f-max: 24;
   --h3-f: calc(((var(--h3-f-min) / 16) * 1rem) + (var(--h3-f-max) - var(--h3-f-min)) * var(--fluid-bp));
 
   /*** h3 - line-height ***/
-  --h3-lh-min: 32;
-  --h3-lh-max: 40;
+  --h3-lh-min: 30;
+  --h3-lh-max: 32;
   --h3-lh: calc(((var(--h3-lh-min) / 16) * 1rem) + (var(--h3-lh-max) - var(--h3-lh-min)) * var(--fluid-bp));
 
   /*** h4 - font-size ***/

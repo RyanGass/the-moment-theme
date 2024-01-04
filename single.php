@@ -3,11 +3,13 @@ $facebook = carbon_get_theme_option( 'facebook' );
 $twitter = carbon_get_theme_option( 'twitter' );
 $instagram = carbon_get_theme_option( 'instagram' );
 $linkedin = carbon_get_theme_option( 'linkedin' );
+$toc = carbon_get_the_post_meta('show_toc');
+if ($toc == 'yes') { $toc_on = ' toc-width'; } else { $toc_on = '';};
 ?>
 <?php get_header(); ?> 
 <?php get_template_part('templates/template-parts/banners/global', 'hero'); ?>
 <main>
-	<section id="blog-post-wrapper" class="relative flex flex-col items-center w-full mx-auto lg:max-w-3xl lg:block scroll-setter">
+	<section id="blog-post-wrapper" class="relative flex flex-col items-center w-full mx-auto lg:max-w-3xl lg:block scroll-setter<?php echo $toc_on ?>">
 		<div id="social-sharing" class="lg:absolute">
 			<div id="social-sharing-inner" class="social-sharing-wrapper lg:block" style="position: relative; top: 0px;">
 				<div class="flex lg:block social-icon-wrapper">
@@ -23,22 +25,26 @@ $linkedin = carbon_get_theme_option( 'linkedin' );
 				</div>
 			</div>
     	</div>
-		<div id="post-content" class="float-right max-w-full lg:max-w-3xl">
+		<div id="post-content" class="float-right max-w-full">
 			<?php if ( has_post_thumbnail() ) { ?>
 				<img src="<?php the_post_thumbnail_url(); ?>" alt="Featured Image" class="featured-image">
 			<?php } ?>
 			<?php the_content();?>
 			<div id="post-meta" class="flex">
-				<div class="uppercase post-categories basis-1/2 meta-heading">Topic</span>
+				<div class="uppercase post-categories basis-1/2 meta-heading">
 					<span class="block text-light-gray">
-					<?php $category = get_the_category(); 
-						for	($c = 0; $c < count($category); $c++) {
-						echo '<a href="'.get_category_link( $category[$c]->term_id ).'" title="'.$category[$c]->cat_name.'"">'.$category[$c]->cat_name.'</a>,' ?>
-					<?php } ?>
+					<?php
+					$post_tags = get_the_tags();
+					if ( ! empty( $post_tags ) ) {
+						foreach( $post_tags as $post_tag ) {
+							echo '<a href="' . get_tag_link( $post_tag ) . '">#' . $post_tag->name . ' </a>';
+						}
+					}
+					?>
 				</div>
 			</div>
 		</div>
-		<div id="post-toc" class="lg:absolute">
+		<div id="post-toc" class="lg:absolute<?php echo $toc_on; ?>">
 			<div id="post-toc-inner">
 				<h5>Navigation</h5>
 				<ul id="toc-list">
@@ -76,12 +82,12 @@ $linkedin = carbon_get_theme_option( 'linkedin' );
 						</div>
 						
 						
-						<div class="post-categories">
-							<?php $category = get_the_category(); 
-								for	($c = 0; $c < count($category); $c++) {
-								echo '<a class="inline-block" href="'.get_category_link( $category[$c]->term_id ).'" title="'.$category[$c]->cat_name.'"">'.$category[$c]->cat_name.'</a>' ?>
-							<?php } ?>
-						</div>
+						<!-- <div class="post-categories">
+							<?php //$category = get_the_category(); 
+								//for	($c = 0; $c < count($category); $c++) {
+								//echo '<a class="inline-block" href="'.get_category_link( $category[$c]->term_id ).'" title="'.$category[$c]->cat_name.'"">'.$category[$c]->cat_name.'</a>' ?>
+							<?php //} ?>
+						</div> -->
 
 						<div class="post-text">
 							<h3><?php the_title(); ?></h3>
@@ -179,6 +185,7 @@ window.onresize = socialShareButtonsResize;
 		right: 105%;
     	display: flex;
     	justify-content: end;
+		width: 350px!important;
 	}
 	#social-sharing {
 		left: 105%;

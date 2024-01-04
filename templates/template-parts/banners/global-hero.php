@@ -80,15 +80,6 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
                   <a id="banner-form-init" href="#banner-popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>
                 </div>  
               </div>
-
-              <div id="banner-popup-form" data-hidden>
-                <div id="banner-form-close"></div>
-                <div id="form-outer-wrapper">
-                    <div id="form-container" class="popover-form">
-                        <iframe id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="<?php echo $video_url ?>" sandbox></iframe>
-                    </div>
-                </div>
-              </div>
             <?php endif; ?>
 
             <?php if ($vimeo_id) : ?> 
@@ -97,30 +88,12 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
                   <a id="banner-form-init" href="#banner-popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>                
                 </div>
               </div>
-
-              <div id="banner-popup-form" data-hidden>
-                <div id="banner-form-close"></div>
-                <div id="form-outer-wrapper">
-                  <div id="form-container" class="popover-form">
-                      <iframe id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="https://player.vimeo.com/video/<?php echo $vimeo_id ?>"></iframe>
-                  </div>
-                </div>
-              </div>
             <?php endif; ?>
             
             <?php if ($youtube_id) : ?>
               <div id="video-container" class="w-full hero-video"> 
                 <div class="section-video">
                   <a id="banner-form-init" href="#banner-popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>
-                </div>
-              </div>
-
-              <div id="banner-popup-form" data-hidden>
-                <div id="banner-form-close"></div>
-                <div id="form-outer-wrapper">
-                  <div id="form-container" class="popover-form">
-                    <iframe id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="https://www.youtube.com/embed/<?php echo $youtube_id ?>"></iframe>
-                  </div>
                 </div>
               </div>
             <?php endif; ?>
@@ -164,6 +137,25 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
         </div>
       <?php endif; ?>
     </div>
+    <?php if ($content_type == 'video') : ?>
+        
+          <div id="banner-popup-form" data-hidden>
+            <div id="banner-form-close"></div>
+            <div id="form-outer-wrapper">
+                <div id="form-container" class="popover-form">
+                  <?php if ($video_url) : ?>
+                    <iframe id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="<?php echo $video_url ?>" sandbox></iframe>
+                  <?php endif; ?>
+                  <?php if ($vimeo_id) : ?>
+                    <iframe id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="https://player.vimeo.com/video/<?php echo $vimeo_id ?>"></iframe>
+                  <?php endif; ?>
+                  <?php if ($youtube_id) : ?>
+                    <iframe id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="https://www.youtube.com/embed/<?php echo $youtube_id ?>"></iframe>
+                  <?php endif; ?>
+                </div>
+            </div>
+          </div>
+      <?php endif; ?>
 </section>
 
 <?php if ($bg_image) : ?>
