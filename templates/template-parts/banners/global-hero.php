@@ -77,7 +77,7 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
             <?php if ($video_url) : ?> 
               <div id="video-container" class="w-full hero-video"> 
                 <div class="section-video">
-                  <a id="banner-form-init" href="#banner-popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>
+                  <a id="banner-form-init" href="#banner-popup-form" aria-label="Video Popup Button"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>
                 </div>  
               </div>
             <?php endif; ?>
@@ -85,7 +85,7 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
             <?php if ($vimeo_id) : ?> 
               <div id="video-container" class="w-full hero-video"> 
                 <div class="section-video">
-                  <a id="banner-form-init" href="#banner-popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>                
+                  <a id="banner-form-init" href="#banner-popup-form" aria-label="Video Popup Button"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>                
                 </div>
               </div>
             <?php endif; ?>
@@ -93,7 +93,7 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
             <?php if ($youtube_id) : ?>
               <div id="video-container" class="w-full hero-video"> 
                 <div class="section-video">
-                  <a id="banner-form-init" href="#banner-popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>
+                  <a id="banner-form-init" href="#banner-popup-form" aria-label="Video Popup Button"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>
                 </div>
               </div>
             <?php endif; ?>

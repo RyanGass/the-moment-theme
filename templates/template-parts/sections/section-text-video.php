@@ -23,7 +23,7 @@ if ($bg_color === 'yes') { $bg_color = ' bg-sectionbg'; };
             <?php if ($video_url) : ?> 
                 <div id="video-container" class="w-fit hero-video"> 
                     <div class="section-video">
-                    <a id="form-init<?php echo '-' . $section_multiples ?>" class="form-init" href="#popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>
+                    <a id="form-init<?php echo '-' . $section_multiples ?>" class="form-init" href="#popup-form" aria-label="Video Popup Button"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>
                     </div>  
                 </div>
 
@@ -40,7 +40,7 @@ if ($bg_color === 'yes') { $bg_color = ' bg-sectionbg'; };
                 <?php if ($vimeo_id) : ?> 
                 <div id="video-container" class="w-fit hero-video"> 
                     <div class="section-video">
-                    <a id="form-init<?php echo '-' . $section_multiples ?>" class="form-init" href="#popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>                
+                    <a id="form-init<?php echo '-' . $section_multiples ?>" class="form-init" href="#popup-form" aria-label="Video Popup Button"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>                
                     </div>
                 </div>
 
@@ -57,7 +57,7 @@ if ($bg_color === 'yes') { $bg_color = ' bg-sectionbg'; };
                 <?php if ($youtube_id) : ?>
                 <div id="video-container" class="w-fit"> 
                     <div class="section-video">
-                    <a id="form-init<?php echo '-' . $section_multiples ?>" class="form-init" href="#popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>
+                    <a id="form-init<?php echo '-' . $section_multiples ?>" class="form-init" href="#popup-form" aria-label="Video Popup Button"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>
                     </div>
                 </div>
 

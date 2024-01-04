@@ -9,7 +9,7 @@ $bg_color = $section['background_color'];
 if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $bg_color = '';};
 ?>
 
-<?php $i = 0; $p = 1;
+<?php $i = 0; $p = 10;
 foreach ( $features as $feature ) { if ($i <= 3) { $i++; } } ?>
 <section id="feature-container" class="w-full<?php echo $bg_color; ?>">
     <div class="container-inner feature-inner">
@@ -92,7 +92,7 @@ foreach ( $features as $feature ) { if ($i <= 3) { $i++; } } ?>
 	}
 </style>
 
-<?php $q = 1; foreach ( $features as $feature ) { ?>
+<?php $q = 10; foreach ( $features as $feature ) { ?>
 <script>
 let popButton<?php echo $q; ?> = document.querySelector('#form-init-<?php echo $q; ?>');
 let popForm<?php echo $q; ?> = document.querySelector('#popup-form-<?php echo $q; ?>');

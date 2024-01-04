@@ -53,7 +53,7 @@ $footer_legal = carbon_get_theme_option('footer_legal');
 
 				<?php } ?></div>
 			<div id="footer-tagline"><?php echo $tagline ?></div>
-			<div id="footer-phone"><a href="tel:<?php echo $phone_number ?>"><?php echo $phone_number ?></a></div>
+			<div id="footer-phone"><a href="tel:<?php echo $phone_number ?>" aria-label="Click to call phone number"><?php echo $phone_number ?></a></div>
 			<div id="footer-socials">
 				<h4><?php echo $social_text ?></h4>
 				<?php if ($facebook) : ?>

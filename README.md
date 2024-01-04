@@ -16,6 +16,11 @@ Some things that make `The Moment` special:
 ## Demo Site
 [The Moment Demo Site](https://theme.themoment.dev/)
 
+## Site Performance
+
+[Google Page Speed Insights](https://pagespeed.web.dev/analysis/https-theme-themoment-dev/7m13kn5yib?form_factor=mobile)
+[GT Metrix](https://gtmetrix.com/reports/theme.themoment.dev/C2mdAqO7/)
+
 ## Installation
 
 ### Requirements

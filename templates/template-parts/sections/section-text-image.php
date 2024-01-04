@@ -20,7 +20,7 @@ $image_title = get_the_title($imageID);
                 </div>
                 <div id="section-content"  class="section-content" >
                     <?php if ($section['pre_heading']) : ?>
-                    <h5><?php echo $section['pre_heading']; ?></h5>
+                    <div class="h5"><?php echo $section['pre_heading']; ?></div>
                     <?php endif; ?>    
                     <h2 class="section-title"><?php echo $section['heading']; ?></h2>
                     <?php if ($section['content']) : ?>

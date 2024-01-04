@@ -15,7 +15,7 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
             <div class="section-block flex <?php echo $section['section_layout']; ?>">
                 <div id="section-content"  class="section-content" >
                     <?php if ($section['pre_heading']) : ?>
-                    <h5><?php echo $section['pre_heading']; ?></h5>
+                    <div class="h5"><?php echo $section['pre_heading']; ?></div>
                     <?php endif; ?>    
                     <h2 class="section-title"><?php echo $section['heading']; ?></h2>
                     <?php if ($section['content']) : ?>
