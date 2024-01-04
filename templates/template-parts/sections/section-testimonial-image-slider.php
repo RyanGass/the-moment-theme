@@ -18,7 +18,7 @@ if ($bg_overlay == 'yes') { $use_overlay = ' overlay'; } else { $use_overlay = '
 <section id="testimonial-slides-container" class="w-full p-0 mx-auto<?php echo $tb ?>">
         <div id="testimonial-slide-repeater" class="slide-repeater<?php echo $use_overlay . $tb ?>">
         <?php if ($navigation == 'arrows' || $navigation == 'both') : ?>
-			<button type="button" onclick="Prev()" class="button-nav slide-navigation previous"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M192 448c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l137.4 137.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448z"/></svg></button>
+			<button type="button" onclick="Prev()" class="button-nav slide-navigation previous" aria-label="Previous"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M192 448c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l137.4 137.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448z"/></svg></button>
 		<?php endif; ?>
 		<?php $i = 1; foreach ( $testimonials as $testimonial ) { if ($i >= 2) { $closed = 'closed'; } else { $closed = '';}; ?>    
 			<div id="slide-<?php echo $i ?>" class="slide-block <?php echo $closed ?>" style="background-image: url(<?php echo $testimonial['testimonial_image']; ?>)">   
@@ -32,9 +32,9 @@ if ($bg_overlay == 'yes') { $use_overlay = ' overlay'; } else { $use_overlay = '
             </div>
         <?php $i++; }; ?>
 		<?php if ($navigation == 'arrows' || $navigation == 'both') : ?>
-			<button type="button" onclick="Next()" class="button-nav slide-navigation next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"/></svg></button>
+			<button type="button" onclick="Next()" class="button-nav slide-navigation next" aria-label="Next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"/></svg></button>
 		<?php endif; ?>
-		<ul id="slide-nav" class="slide-nav" style="display: <?php echo $slide_display ?>;" role="tablist"></ul>
+		<ul id="slide-nav" class="slide-nav" style="display: <?php echo $slide_display ?>;"></ul>
         </div>
 		
 
@@ -51,7 +51,7 @@ let position = 0;
 for(let i = 1; i <= slides.length; i++) {
 	let slideWrapper = document.getElementById('slide-nav'); // Get the nav parent element
 	if (i == 1) { slideActive = 'class="button-active slide-button"';} else { slideActive = 'class="slide-button"'; } // Add classes for initial active slide
-	slideWrapper.insertAdjacentHTML('beforeend', '<li><button ' + slideActive + ' id="slide-button-' + i + '" aria-controls="slide-' + i + '" onClick="slideToggle(this)"></button></li>'); // Create the button elements inside the slide-nav
+	slideWrapper.insertAdjacentHTML('beforeend', '<li><button ' + slideActive + ' id="slide-button-' + i + '" aria-controls="slide-' + i + '" onClick="slideToggle(this)" aria-label="Slide Toggle"></button></li>'); // Create the button elements inside the slide-nav
 	slideActive = ''; // Reset the active slide variable to stop from adding the active class to all elements in the loop
 }
 

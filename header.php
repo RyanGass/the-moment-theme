@@ -29,7 +29,7 @@
     <!-- End Google Tag Manager -->
 </head>
 
-<body <?php body_class( 'bg-white antialiased debug-screens' ); ?>>
+<body <?php body_class( 'bg-white antialiased' ); ?>>
 <?php if(is_page_template('templates/page-front.php')) : $wrapper_class='homepage'; else : $wrapper_class='internal'; endif; ?>
 <?php // Fixed Header Options
 $fixed_header = carbon_get_theme_option('fixed_header');

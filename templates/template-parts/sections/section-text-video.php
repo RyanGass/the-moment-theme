@@ -21,7 +21,7 @@ if ($bg_color === 'yes') { $bg_color = ' bg-sectionbg'; };
         <div id="video-repeater">
             <div class="section-block section-align-<?php echo esc_attr($video_alignment); ?> video-placement-<?php echo esc_attr($video_placement); ?>">
             <?php if ($video_url) : ?> 
-                <div id="video-container" class="w-full hero-video"> 
+                <div id="video-container" class="w-fit hero-video"> 
                     <div class="section-video">
                     <a id="form-init<?php echo '-' . $section_multiples ?>" class="form-init" href="#popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>
                     </div>  
@@ -31,14 +31,14 @@ if ($bg_color === 'yes') { $bg_color = ' bg-sectionbg'; };
                     <div id="form-close<?php echo '-' . $section_multiples ?>" class="form-close"></div>
                     <div id="form-outer-wrapper">
                         <div id="form-container" class="popover-form">
-                            <iframe id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="<?php echo $video_url ?>" sandbox></iframe>
+                            <iframe loading="lazy" id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="<?php echo $video_url ?>" sandbox></iframe>
                         </div>
                     </div>
                 </div>
                 <?php endif; ?>
 
                 <?php if ($vimeo_id) : ?> 
-                <div id="video-container" class="w-full hero-video"> 
+                <div id="video-container" class="w-fit hero-video"> 
                     <div class="section-video">
                     <a id="form-init<?php echo '-' . $section_multiples ?>" class="form-init" href="#popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>                
                     </div>
@@ -48,14 +48,14 @@ if ($bg_color === 'yes') { $bg_color = ' bg-sectionbg'; };
                     <div id="form-close<?php echo '-' . $section_multiples ?>" class="form-close"></div>
                     <div id="form-outer-wrapper">
                         <div id="form-container" class="popover-form">
-                            <iframe id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="https://player.vimeo.com/video/<?php echo $vimeo_id ?>?enablejsapi=1"></iframe>
+                            <iframe loading="lazy" id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="https://player.vimeo.com/video/<?php echo $vimeo_id ?>?enablejsapi=1"></iframe>
                         </div>
                     </div>
                 </div>
                 <?php endif; ?>
                 
                 <?php if ($youtube_id) : ?>
-                <div id="video-container" class="w-full"> 
+                <div id="video-container" class="w-fit"> 
                     <div class="section-video">
                     <a id="form-init<?php echo '-' . $section_multiples ?>" class="form-init" href="#popup-form"><img src="<?php echo $video_image ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" /></a>
                     </div>
@@ -65,7 +65,7 @@ if ($bg_color === 'yes') { $bg_color = ' bg-sectionbg'; };
                     <div id="form-close<?php echo '-' . $section_multiples ?>" class="form-close"></div>
                     <div id="form-outer-wrapper">
                         <div id="form-container" class="popover-form">
-                        <iframe id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="https://www.youtube.com/embed/<?php echo $youtube_id ?>"></iframe>
+                        <iframe loading="lazy" id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="https://www.youtube.com/embed/<?php echo $youtube_id ?>"></iframe>
                         </div>
                     </div>
                 </div>

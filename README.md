@@ -13,6 +13,9 @@ Some things that make `The Moment` special:
 - `The Moment` is 99% jQuery free. jQuery is dequeued from the front-end, and is only used throughout the wp-admin pages. All included features are written purely with vanilla js and are loaded only as needed. 
 - `The Moment` is designed for speed and optimization. As long as you keep your code lean and mean you can easily achieve PSI scores of 90+ on mobile and desktop. You're SEOs are going to love you.
 
+## Demo Site
+[The Moment Demo Site](https://theme.themoment.dev/)
+
 ## Installation
 
 ### Requirements

@@ -150,7 +150,7 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
                     <iframe id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="https://player.vimeo.com/video/<?php echo $vimeo_id ?>"></iframe>
                   <?php endif; ?>
                   <?php if ($youtube_id) : ?>
-                    <iframe id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="https://www.youtube.com/embed/<?php echo $youtube_id ?>"></iframe>
+                    <iframe loading="lazy" id="video-player<?php echo $section_multiples ?>" class="responsive-iframe" src="https://www.youtube.com/embed/<?php echo $youtube_id ?>"></iframe>
                   <?php endif; ?>
                 </div>
             </div>
