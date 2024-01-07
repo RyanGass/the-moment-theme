@@ -16,7 +16,9 @@ get_header() ?>
 	<main>
 		<?php if( '' !== get_post()->post_content ) : ?>
 		<section id="gutenberg-content">
-			<div class="gutenberg-content"><?php the_content();?></div>
+			<div class="container-inner">
+				<div class="gutenberg-content"><?php the_content();?></div>
+			</div>
 		</section>
 		<?php endif; ?>
 		<?php $section_multiples = 0; while ( have_posts() ) : the_post();

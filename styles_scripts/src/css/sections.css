@@ -440,21 +440,23 @@ section#custom-feature-container.slider {
         box-shadow: 5px 5px 35px #eee;
         border-radius: 15px;
 
-        &:hover {
-          background: rgb(180 85 247);
-          background: linear-gradient(324deg, rgb(180 85 247 / 100%) 0%, rgb(114 51 252 / 100%) 100%);
-        }
+        @media (min-width: 1024px) {
+          &:hover {
+            background: rgb(180 85 247);
+            background: linear-gradient(324deg, rgb(180 85 247 / 100%) 0%, rgb(114 51 252 / 100%) 100%);
+          }
 
-        &:hover * {
-          color: #fff;
-        }
+          &:hover * {
+            color: #fff;
+          }
 
-        &:hover img:not(.custom-image-hover) {
-          display: none;
-        }
+          &:hover img:not(.custom-image-hover) {
+            display: none;
+          }
 
-        &:hover img.custom-image-hover {
-          display: block;
+          &:hover img.custom-image-hover {
+            display: block;
+          }
         }
 
         picture {
@@ -482,8 +484,8 @@ section#custom-feature-container.slider {
 
   @media (max-width: 768px) {
     .button-nav.custom-card-slide-navigation.previous {
-      right: 53%;
-      bottom: -75px;
+      right: 52%;
+      bottom: -10px;
       top: unset;
       transform: none;
       width: 50px;
@@ -491,8 +493,8 @@ section#custom-feature-container.slider {
     }
 
     .button-nav.custom-card-slide-navigation.next {
-      left: 53%;
-      bottom: -75px;
+      left: 52%;
+      bottom: -10px;
       top: unset;
       transform: none;
       width: 50px;
@@ -502,6 +504,12 @@ section#custom-feature-container.slider {
     .button-nav.custom-card-slide-navigation svg {
       height: 30px;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  section#custom-feature-container.slider {
+    padding-bottom: var(--space-12);
   }
 }
 

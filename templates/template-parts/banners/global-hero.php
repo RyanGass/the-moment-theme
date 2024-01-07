@@ -53,9 +53,26 @@ if ($bg_theme == 'light') { $light_text = ' light-text'; } else { $light_text = 
           else : the_title();
           endif;
           ?></h1>
-          <!-- <?php // if (is_single()) : $post_date = get_the_date('M j, Y') ?>
-          <span id="post-date"><?php // echo $post_date ?></span>
-          <?php //  endif; ?> -->
+          <?php if (is_single()) : $post_date = get_the_date('M j, Y'); $post_author = get_the_author(); $post_excerpt = get_the_excerpt(); ?>
+          <div id="excerpt" class="w-full md:w-4/5"><?php echo $post_excerpt; ?></div>
+          <div id="post-meta" class="w-full md:w-4/5">
+            <?php 
+                $author_id = get_the_author_meta('ID');
+                $headshot = carbon_get_user_meta( $author_id, 'headshot' );
+            ?>
+            <div id="post-author-hero">
+              <div id="headshot" class="block">
+                <img src="<?php echo $headshot; ?>" alt="Author Headshot">
+              </div>
+              <div id="author-text">
+                <span class="block font-semibold">Author:</span> <?php echo $post_author; ?>
+              </div>
+            </div>
+            <div id="post-date">
+              <span class="block font-semibold">Last updated:</span> <?php echo $post_date; ?>
+            </div>
+          </div>
+          <?php endif; ?>
           <?php if ($content && !is_category()) : ?>
           <div class="w-full md:w-4/5 lg:w-3/5 description <?php if(isset($mx_auto)) { echo $mx_auto; } ?>"><?php echo apply_filters( 'the_content', $content ) ?></div>
           <?php endif; ?>

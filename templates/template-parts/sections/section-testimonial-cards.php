@@ -16,7 +16,7 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
 	</div>
 	<div class="container-inner">
 		<button type="button" onclick="cardPrev()" class="button-nav card-slide-navigation previous" aria-label="Previous"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M192 448c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l137.4 137.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448z"/></svg></button>
-		<div class="w-full md:w-11/12 m-auto card-slide-inner-container">
+		<div id="inner-container" class="w-full md:w-11/12 m-auto card-slide-inner-container">
 			<div id="card-testimonials-repeater" class="flex card-slide-track">
 				<?php $i = 1; foreach ( $testimonials as $testimonial ) {
 					$image = $testimonial['testimonial_image'];
@@ -43,6 +43,29 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
 		</div>
 </section>
 <script>
+// swipe functionality
+let $t_body = document.querySelector('body');
+var t_customElem = document.getElementById('inner-container');
+var t_startX = 0;
+var t_endX = 0;
+
+t_customElem.addEventListener('touchstart', function (e) {
+t_startX = e.touches[0].clientX;
+});
+
+t_customElem.addEventListener('touchmove', function (e) {
+t_endX = e.touches[0].clientX;
+});
+
+t_customElem.addEventListener('touchend', function () {
+var t_deltaX = t_endX - t_startX;
+
+if (t_deltaX > 50) {
+    cardNext(); // Swipe right
+} else if (t_deltaX < -50) {
+    cardPrev(); // Swipe left
+}
+});
 // Slider variables setup
 let cardslides = document.querySelectorAll('.card-slide-block'); // Create an array of slides
 // let cardslideid = document.querySelector('.card-slide-block').id // Create an array of slide ids
@@ -133,162 +156,168 @@ function cardsizeSlides() {
 }
 
 function cardREsizeSlides() {
-	const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-	
-	let cardslideContainer = document.querySelector('.card-slide-inner-container');
-	let cardslideTrack = document.querySelector('.card-slide-track');
-	let cardslideContainerWidth = cardslideContainer.offsetWidth;
-	let cardslideInitial = document.querySelectorAll('.card-slide-initial');
-	let cardslideCount = document.querySelectorAll('.card-show-slide');
-	let cloneBefore = document.querySelectorAll('.clone-before');
-	let cardslideWidth = cardslideContainerWidth / cardslideCount.length;
-	let cardslideBlock = document.querySelectorAll('.card-slide-block');
+	var prevWidth = window.innerWidth;
+	window.addEventListener('resize', function() {
+		if (window.innerWidth !== prevWidth ) {	 // don't trigger if height is resized, only width
 
-	for (let i = 0; i <= cardslideBlock.length - 1; i++) {
-		cardslideBlock[i].style.width = cardslideWidth + "px";
-	}
-
-	cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
-	cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
-	
-	if (vw >= 1024) {
-		large = true;
-		
-		if (large == true) {
-			document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)";
-		}; 
-
-		if (medium == true && large == true) {
-			let newCardSlideCount = document.querySelectorAll('.save-card-count');
-			if (cardslideCount.length != newCardSlideCount.length) {
-				for (k = 0; k <= cardslideCount.length - 1; k++) {
-					cardslideCount[k].nextElementSibling.classList.add('card-show-slide', 'card-slide-initial');;
-				}
-			}
-
-			cardslideContainer = document.querySelector('.card-slide-inner-container');
-			cardslideContainerWidth = cardslideContainer.offsetWidth;
-			cardslideCount = document.querySelectorAll('.card-show-slide');
-			cardslideWidth = cardslideContainerWidth / cardslideCount.length;
-			cardslideInitial = document.querySelectorAll('.card-slide-initial');
-			document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)"; 
-			for (let l = 0; l <= cardslideBlock.length - 1; l++) {
-				cardslideBlock[l].style.width = cardslideWidth + "px";
-
-			}
-
-			cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
-			cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
-
-			medium = false;
-		}; 
-
-		if (small == true) {
-			small = false;
-		};
-	}
-
-	
-	if (vw >= 769 && vw <= 1023) {
-		medium = true;
-		
-		if (large == true && medium == true) {
-
-			cardslideCount = document.querySelectorAll('.card-show-slide');
-			last = cardslideCount.length - 1;
-			for (let c = 0; c <= last; c++) {
-				if (c > 1 && c <= last ) {
-					cardslideCount[c].classList.remove('card-show-slide', 'card-slide-initial');
-				}
-			}
-
-			cardslideContainer = document.querySelector('.card-slide-inner-container');
-			cardslideContainerWidth = cardslideContainer.offsetWidth;
-			cardslideCount = document.querySelectorAll('.card-show-slide');
-			cardslideWidth = cardslideContainerWidth / cardslideCount.length;
-			cardslideInitial = document.querySelectorAll('.card-slide-initial');
-			document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)"; 
-			for (let l = 0; l <= cardslideBlock.length - 1; l++) {
-				cardslideBlock[l].style.width = cardslideWidth + "px";
-
-			}
-
-			cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
-			cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
-
-			large = false;
-		}; 
-
-		if (medium == true) {
-			document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)";
-		}; 
-
-		if (small == true && medium == true) {
-
-			cardslideCount = document.querySelectorAll('.card-show-slide');
-			let newCardSlideCount = document.querySelectorAll('.save-card-count');
-			if (cardslideCount.length != newCardSlideCount.length) {
-				for (k = 0; k <= cardslideCount.length; k++) {
-					if (k == cardslideCount.length - 1 || k == cardslideCount.length - 2) {
-						cardslideCount[k].nextElementSibling.classList.add('card-show-slide', 'card-slide-initial');;
-					}
-				}
-			}
-
-			cardslideContainer = document.querySelector('.card-slide-inner-container');
-			cardslideContainerWidth = cardslideContainer.offsetWidth;
-			cardslideCount = document.querySelectorAll('.card-show-slide');
-			cardslideWidth = cardslideContainerWidth / cardslideCount.length;
-			cardslideInitial = document.querySelectorAll('.card-slide-initial');
-			document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)"; 
-			for (let l = 0; l <= cardslideBlock.length - 1; l++) {
-				cardslideBlock[l].style.width = cardslideWidth + "px";
-
-			}
-
-			cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
-			cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
-
-			small = false;
-		};
-	}
-
-	if (vw <= 768) {
-		small = true;
-		
-		if (large == true) {
-			large = false;
-		}; 
-
-		if (medium == true && small == true) {
-
-			cardslideCount = document.querySelectorAll('.card-show-slide');
-			last = cardslideCount.length - 1;
-			for (let c = 0; c <= last; c++) {
-				if (c > 0 && c <= last ) {
-					cardslideCount[c].classList.remove('card-show-slide', 'card-slide-initial');
-				}
-			}
+			const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 			
+			let cardslideContainer = document.querySelector('.card-slide-inner-container');
+			let cardslideTrack = document.querySelector('.card-slide-track');
+			let cardslideContainerWidth = cardslideContainer.offsetWidth;
+			let cardslideInitial = document.querySelectorAll('.card-slide-initial');
+			let cardslideCount = document.querySelectorAll('.card-show-slide');
+			let cloneBefore = document.querySelectorAll('.clone-before');
+			let cardslideWidth = cardslideContainerWidth / cardslideCount.length;
+			let cardslideBlock = document.querySelectorAll('.card-slide-block');
 
-			cardslideContainer = document.querySelector('.card-slide-inner-container');
-			cardslideContainerWidth = cardslideContainer.offsetWidth;
-			cardslideCount = document.querySelectorAll('.card-show-slide');
-			cardslideWidth = cardslideContainerWidth / cardslideCount.length;
-			document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)"; 
 			for (let i = 0; i <= cardslideBlock.length - 1; i++) {
 				cardslideBlock[i].style.width = cardslideWidth + "px";
 			}
+
 			cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
 			cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
+			
+			if (vw >= 1024) {
+				large = true;
+				
+				if (large == true) {
+					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)";
+				}; 
 
-			medium = false;
-		}; 
+				if (medium == true && large == true) {
+					let newCardSlideCount = document.querySelectorAll('.save-card-count');
+					if (cardslideCount.length != newCardSlideCount.length) {
+						for (k = 0; k <= cardslideCount.length - 1; k++) {
+							cardslideCount[k].nextElementSibling.classList.add('card-show-slide', 'card-slide-initial');;
+						}
+					}
 
-		if (small == true) {
-			document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)";
-		};
-	}
+					cardslideContainer = document.querySelector('.card-slide-inner-container');
+					cardslideContainerWidth = cardslideContainer.offsetWidth;
+					cardslideCount = document.querySelectorAll('.card-show-slide');
+					cardslideWidth = cardslideContainerWidth / cardslideCount.length;
+					cardslideInitial = document.querySelectorAll('.card-slide-initial');
+					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)"; 
+					for (let l = 0; l <= cardslideBlock.length - 1; l++) {
+						cardslideBlock[l].style.width = cardslideWidth + "px";
+
+					}
+
+					cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
+					cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
+
+					medium = false;
+				}; 
+
+				if (small == true) {
+					small = false;
+				};
+			}
+
+			
+			if (vw >= 769 && vw <= 1023) {
+				medium = true;
+				
+				if (large == true && medium == true) {
+
+					cardslideCount = document.querySelectorAll('.card-show-slide');
+					last = cardslideCount.length - 1;
+					for (let c = 0; c <= last; c++) {
+						if (c > 1 && c <= last ) {
+							cardslideCount[c].classList.remove('card-show-slide', 'card-slide-initial');
+						}
+					}
+
+					cardslideContainer = document.querySelector('.card-slide-inner-container');
+					cardslideContainerWidth = cardslideContainer.offsetWidth;
+					cardslideCount = document.querySelectorAll('.card-show-slide');
+					cardslideWidth = cardslideContainerWidth / cardslideCount.length;
+					cardslideInitial = document.querySelectorAll('.card-slide-initial');
+					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)"; 
+					for (let l = 0; l <= cardslideBlock.length - 1; l++) {
+						cardslideBlock[l].style.width = cardslideWidth + "px";
+
+					}
+
+					cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
+					cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
+
+					large = false;
+				}; 
+
+				if (medium == true) {
+					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)";
+				}; 
+
+				if (small == true && medium == true) {
+
+					cardslideCount = document.querySelectorAll('.card-show-slide');
+					let newCardSlideCount = document.querySelectorAll('.save-card-count');
+					if (cardslideCount.length != newCardSlideCount.length) {
+						for (k = 0; k <= cardslideCount.length; k++) {
+							if (k == cardslideCount.length - 1 || k == cardslideCount.length - 2) {
+								cardslideCount[k].nextElementSibling.classList.add('card-show-slide', 'card-slide-initial');;
+							}
+						}
+					}
+
+					cardslideContainer = document.querySelector('.card-slide-inner-container');
+					cardslideContainerWidth = cardslideContainer.offsetWidth;
+					cardslideCount = document.querySelectorAll('.card-show-slide');
+					cardslideWidth = cardslideContainerWidth / cardslideCount.length;
+					cardslideInitial = document.querySelectorAll('.card-slide-initial');
+					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)"; 
+					for (let l = 0; l <= cardslideBlock.length - 1; l++) {
+						cardslideBlock[l].style.width = cardslideWidth + "px";
+
+					}
+
+					cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
+					cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
+
+					small = false;
+				};
+			}
+
+			if (vw <= 768) {
+				small = true;
+				
+				if (large == true) {
+					large = false;
+				}; 
+
+				if (medium == true && small == true) {
+
+					cardslideCount = document.querySelectorAll('.card-show-slide');
+					last = cardslideCount.length - 1;
+					for (let c = 0; c <= last; c++) {
+						if (c > 0 && c <= last ) {
+							cardslideCount[c].classList.remove('card-show-slide', 'card-slide-initial');
+						}
+					}
+					
+
+					cardslideContainer = document.querySelector('.card-slide-inner-container');
+					cardslideContainerWidth = cardslideContainer.offsetWidth;
+					cardslideCount = document.querySelectorAll('.card-show-slide');
+					cardslideWidth = cardslideContainerWidth / cardslideCount.length;
+					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)"; 
+					for (let i = 0; i <= cardslideBlock.length - 1; i++) {
+						cardslideBlock[i].style.width = cardslideWidth + "px";
+					}
+					cardslideBlockWithClones = document.querySelectorAll('.card-slide-block');
+					cardslideTrack.style.width = (cardslideWidth * cardslideBlockWithClones.length) + "px";
+
+					medium = false;
+				}; 
+
+				if (small == true) {
+					document.querySelector('.card-slide-track').style.transform = "translate(" + (cardslideWidth * -(cloneBefore.length) - 48) + "px)";
+				};
+			}
+		}
+	});
 }
 let large;
 let medium;

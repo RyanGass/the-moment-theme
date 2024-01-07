@@ -30,19 +30,23 @@ if ($toc == 'yes') { $toc_on = ' toc-width'; } else { $toc_on = '';};
 				<img src="<?php the_post_thumbnail_url(); ?>" alt="Featured Image" class="featured-image">
 			<?php } ?>
 			<?php the_content();?>
-			<div id="post-meta" class="flex">
-				<div class="uppercase post-categories basis-1/2 meta-heading">
-					<span class="block text-light-gray">
-					<?php
-					$post_tags = get_the_tags();
-					if ( ! empty( $post_tags ) ) {
-						foreach( $post_tags as $post_tag ) {
-							echo '<a href="' . get_tag_link( $post_tag ) . '">#' . $post_tag->name . ' </a>';
-						}
-					}
-					?>
+			<!-- Post Author Box -->
+            <?php 
+                $author_id = get_the_author_meta('ID');
+                $headshot = carbon_get_user_meta( $author_id, 'headshot' );
+                $bio_content = carbon_get_user_meta( $author_id, 'bio_content' );
+                $display_name = carbon_get_user_meta( $author_id, 'display_name' );
+            ?>
+            <div id="post-author" class="grid-container-12">
+				<div id="author-image">
+                	<img src="<?php echo $headshot; ?>" alt="Author Photo" />
 				</div>
-			</div>
+				<div id="author-content">
+					<h4 id="author-name"><?php echo $display_name; ?></h4>
+					<?php echo $bio_content; ?>
+				</div>
+            </div>
+            <!-- End Post Author Box -->
 		</div>
 		<div id="post-toc" class="lg:absolute<?php echo $toc_on; ?>">
 			<div id="post-toc-inner">
