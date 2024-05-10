@@ -16,6 +16,11 @@
 						get_template_part('templates/template-parts/sections/section', 'text-button');
 						
 						break;
+					case 'free-form':
+					
+						get_template_part('templates/template-parts/sections/section', 'free-form');
+						
+						break;
 					case 'feature-cards':
 						
 						get_template_part('templates/template-parts/sections/section', 'feature-cards');

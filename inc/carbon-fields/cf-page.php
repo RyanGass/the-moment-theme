@@ -204,6 +204,11 @@ function crb_attach_post_options() {
                     Field::make( 'text', 'button_url', 'Button URL' ),
                 ) )
 
+                // Free Form content
+                ->add_fields( 'free-form', 'Free Form Content', array(
+                    Field::make( 'rich_text', 'content', 'Content' ),
+                ) )
+
                 // Data Table
                 ->add_fields( 'data-table', 'Data Table', array(
                     Field::make('radio', 'use_background_color', 'Use Backgrond Color?')

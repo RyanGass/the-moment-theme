@@ -33,6 +33,7 @@ function wpcc_allowed_block_types() {
 		'gravityforms/form',
 		'core/buttons',
 		'core/html',
+		'core/columns',
 	);
 }
 add_filter( 'allowed_block_types', 'wpcc_allowed_block_types' );

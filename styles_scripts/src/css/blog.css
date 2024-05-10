@@ -57,9 +57,34 @@ ul.blog-topics.active ul {
   transform: scaleY(1);
 }
 
+/* Pagination */
+
+.nav-links {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px
+}
+
 .nav-links * {
   font-size: 22px !important;
   font-weight: bold;
+}
+
+.nav-links > * {
+  border: 2px solid inherit;
+  border: 2px solid;
+  border-color: inherit;
+  padding: 5px 10px 4px;
+  height: 35px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 14px !important;
+}
+
+span.page-numbers.dots {
+  display: none;
 }
 
 /*** Single Post ***/
