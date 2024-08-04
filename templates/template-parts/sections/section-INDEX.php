@@ -21,6 +21,16 @@
 						get_template_part('templates/template-parts/sections/section', 'free-form');
 						
 						break;
+					case 'tabs':
+
+						get_template_part('templates/template-parts/sections/section', 'tabs');
+
+						break;
+					case 'accolades':
+
+						get_template_part('templates/template-parts/sections/section', 'accolades');
+
+						break;
 					case 'feature-cards':
 						
 						get_template_part('templates/template-parts/sections/section', 'feature-cards');

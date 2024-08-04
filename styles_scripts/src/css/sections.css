@@ -82,6 +82,30 @@ section#text-container {
 ***/
 
 section#faq-container {
+  .container-inner {
+    gap: var(--space-12);
+
+    &>div {
+      flex-basis: 50%;
+    }
+
+    h2 {
+      margin-bottom: var(--space-6);
+      max-width: 800px;
+      width: 100%;
+    }
+
+    strong {
+      @apply block;
+
+      margin-top: var(--space-3);
+    }
+
+    div.faq-wrapper.no-heading {
+      flex-basis: 100% !important;
+    }
+  }
+
   #faqa {
     margin-top: var(--space-4);
   }
@@ -89,11 +113,12 @@ section#faq-container {
   .question-answer {
     border: 1px solid #d0d0d0;
     border-radius: 4px;
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-2);
 
     .question {
+      @apply text-secondary;
+
       appearance: none;
-      color: #444;
       cursor: pointer;
       font-size: 1.15rem;
       font-weight: 600;
@@ -119,11 +144,11 @@ section#faq-container {
       transform: translateY(-50%);
       transition: all 0.3s;
       width: 1.75em;
-      background-color: #444;
     }
 
     .icon::before {
-      background-color: #fff;
+      @apply bg-secondary;
+
       content: "";
       left: 50%;
       position: absolute;
@@ -134,7 +159,8 @@ section#faq-container {
     }
 
     .icon::after {
-      background-color: #fff;
+      @apply bg-secondary;
+
       content: "";
       left: 50%;
       position: absolute;
@@ -145,30 +171,29 @@ section#faq-container {
     }
 
     .answer {
+      @apply text-primary;
+
       max-height: 0;
       overflow: hidden;
-      padding: 0;
-      margin: 0 0 0 1.4rem;
-      transition: max-height 0.3s, margin 0.3s;
+      margin: 0;
+      padding-left: var(--space-3);
+      padding-right: var(--space-3);
+      transition: max-height 0.75s, padding 0.75s;
     }
 
     .answer-transition {
       max-height: 1500px;
-      margin: 0 0 var(--space-3) var(--space-3);
+      padding: var(--space-3);
+      padding-top: 0;
     }
   }
 
   .question-answer:hover {
     border: 1px solid #d0d0d0;
     border-radius: 4px;
-    margin-bottom: var(--space-3);
 
     .question {
       @apply text-primary;
-    }
-
-    .icon {
-      @apply bg-primary;
     }
   }
 
@@ -178,8 +203,6 @@ section#faq-container {
     }
 
     .icon {
-      @apply bg-primary;
-
       transform: translateY(-50%) rotate(135deg);
     }
   }
@@ -1338,6 +1361,236 @@ section#contact-form-container {
   @media (max-width: 480px) {
     .input-group:not(.textarea) {
       flex-basis: 100%;
+    }
+  }
+}
+
+/***
+*** Tabs ***
+***/
+
+section#tabs-container {
+  div#section-heading {
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+  }
+
+  div#section-heading * {
+    @apply text-white;
+  }
+
+  h2.heading {
+    margin: auto;
+  }
+
+  div#tab-content {
+    display: flex;
+    gap: 8vw;
+    margin-top: var(--space-12);
+    justify-content: center;
+  }
+
+  div#tab-content * {
+    @apply text-white;
+  }
+
+  div#addon-menu {
+    flex-basis: 26%;
+    padding-right: 2vw;
+    border-right: 1px solid #3783fa;
+  }
+
+  div#slides {
+    flex-basis: 43%;
+  }
+
+  div#myDropdown {
+    align-items: flex-start;
+    display: flex;
+    gap: var(--space-4);
+    text-align: left;
+    flex-direction: column;
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+      text-align: left;
+    }
+
+    button img {
+      width: 35px;
+    }
+  }
+
+  .tabcontent {
+    display: none;
+    visibility: visible;
+  }
+
+  .tab-heading {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .tab-heading h3 {
+    font-size: 25px;
+  }
+
+  @media (max-width: 1298px) {
+    div#addon-menu {
+      flex-basis: 40%;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    div#tab-content {
+      flex-direction: column;
+      gap: 5vw;
+    }
+
+    div#addon-menu {
+      padding-bottom: var(--space-8);
+      border-right: 0;
+      border-bottom: 1px solid #3783fa;
+    }
+  }
+}
+
+/***
+*** Accolades ***
+***/
+
+section#accolades-container {
+  .section-content {
+    @apply max-w-[800px];
+  }
+
+  h2.heading {
+    max-width: unset;
+  }
+
+  .content,
+  .content p {
+    margin-top: 0;
+  }
+
+  div#accolades {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 0 15px rgb(0 0 0 / 10%);
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-4);
+  }
+
+  #accolades div.image {
+    flex-basis: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+  }
+
+  .image {
+    position: relative;
+  }
+
+  .image:nth-child(2)::before,
+  .image:nth-child(5)::before,
+  .image:nth-child(2)::after,
+  .image:nth-child(5)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    height: 55%;
+    width: 1px;
+    background: #e2e2e2;
+    transform: translate(-50%, -50%);
+  }
+
+  .image:nth-child(2)::before,
+  .image:nth-child(5)::before {
+    left: 0;
+  }
+
+  .image:nth-child(2)::after,
+  .image:nth-child(5)::after {
+    right: 0;
+  }
+
+  .image img {
+    max-height: 100px;
+  }
+
+  #accolades div.image:nth-child(-n+3) {
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: var(--space-8);
+  }
+
+  #accolades div.image:nth-last-child(-n+3) {
+    padding-top: var(--space-8);
+  }
+
+  @media (max-width: 1024px) {
+    #accolades div.image {
+      flex-basis: 50%;
+    }
+
+    #accolades div.image:nth-child(2)::after {
+      content: none;
+    }
+
+    #accolades div.image:nth-child(3) {
+      padding-top: 4vw;
+    }
+
+    #accolades div.image:nth-child(3)::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      bottom: 50%;
+      height: 55%;
+      width: 1px;
+      background: #e2e2e2;
+      transform: translate(-50%, -50%);
+      right: 0;
+    }
+
+    #accolades div.image:nth-child(4) {
+      padding-bottom: 4vw;
+      border-bottom: 1px solid #e2e2e2;
+    }
+
+    #accolades div.image:nth-child(5)::before {
+      content: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #accolades div.image {
+      border-bottom: 1px solid #e2e2e2;
+      padding-bottom: var(--space-8) !important;
+      padding-top: var(--space-8) !important;
+      flex-basis: 100%;
+    }
+
+    #accolades div.image::before,
+    #accolades div.image::after {
+      content: none;
+    }
+
+    #accolades div.image:last-child {
+      border-bottom: 0;
+    }
+
+    .image img {
+      max-height: 150px;
     }
   }
 }

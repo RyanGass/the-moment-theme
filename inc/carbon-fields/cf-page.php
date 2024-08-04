@@ -277,6 +277,57 @@ function crb_attach_post_options() {
                         ) ),
                     Field::make( 'rich_text', 'bottom_content', 'Bottom Content' ),
                 ) )
+
+                // Tabs
+                ->add_fields('tabs', 'Content Tabs', array(
+                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
+                        ->add_options(array(
+                            'no' => 'No',
+                            'yes' => 'Yes'
+                        )),
+                    Field::make('color', 'background_color', 'Background Color')
+                        ->set_palette(array('#960F0F', '#818285', '#EEEEEE', '#333333', '#101010'))
+                        ->set_conditional_logic(array(
+                            'relation' => 'OR',
+                            array(
+                                'field' => 'use_background_color',
+                                'value' => 'yes',
+                                'compare' => '=',
+                            )
+                        )),
+                    Field::make('text', 'tabs_pre_heading', 'Pre heading'),
+                    Field::make('text', 'tabs_heading', 'heading'),
+                    Field::make('rich_text', 'tabs_content', 'Content'),
+                    Field::make('complex', 'tab', 'Content Tab Buttons')
+                        ->set_collapsed(true)
+                        ->add_fields('tab-card', 'Tab Card', array(
+
+                            Field::make('text', 'tab_url', 'Tab URL'),
+                            Field::make('text', 'tab_text', 'Tab Text'),
+                            Field::make('text', 'tab_heading', 'Section Heading'),
+                            Field::make('text', 'tab_content', 'Section Content'),
+                            Field::make('image', 'tab_icon', 'Tab Icon')
+                                ->set_value_type('url'),
+                            Field::make('image', 'tab_image', 'Tab Image')
+                                ->set_value_type('url'),
+                        )),
+                ))
+
+                // Accolades
+                ->add_fields('accolades', 'Accolades', array(
+                    Field::make('separator', 'text_settings', 'Heading Content'),
+                    Field::make('text', 'acc_pre_heading', 'Pre heading'),
+                    Field::make('text', 'acc_heading', 'heading'),
+                    Field::make('rich_text', 'acc_content', 'Content'),
+
+                    Field::make('separator', 'acc_images', 'Images'),
+                    Field::make('complex', 'accolade_images', 'Content Tab Buttons')
+                        ->set_collapsed(true)
+                        ->add_fields('images', 'Images', array(
+                            Field::make('image', 'acc_image', 'Image')
+                                ->set_value_type('url'),
+                        )),
+                ))
                 
                 // Feature Cards
                 ->add_fields( 'feature-cards', 'Feature Cards', array(
