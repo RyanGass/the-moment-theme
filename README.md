@@ -41,7 +41,7 @@ Clone or download this repository, change its name to something else (i.e. `bag-
 
 ```sh 
 $ // Find/Replace text in all files
-$ find ./ -name \*.php -exec sed -i "s/theme-name/new-theme-name" {} \;
+$ find ./ -name \*.php -exec sed -i "s/theme-name/new-theme-name/g" {} \;
 $ find ./ -name \*.php -exec sed -i "s/theme_name/new_theme_name/g" {} \;
 $ find ./ -name \*.css -exec sed -i "s/theme-name/new-theme-name/g" {} \;
 $ find ./ -name \*.css -exec sed -i "s/ Theme Name/ New Theme Name/g" {} \;

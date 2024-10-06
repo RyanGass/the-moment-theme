@@ -30,7 +30,7 @@ header {
   .hamb-line {
     background: #303030;
     display: block;
-    height: 2px;
+    height: 3px;
     position: relative;
     width: 24px;
   }
@@ -92,7 +92,7 @@ header {
   .side-menu:not(:checked) ~ div#primary-menu {
     top: 100%;
     position: absolute;
-    right: -999999px;
+    right: 100%;
     max-height: 0;
     opacity: 1;
     visibility: visible;
