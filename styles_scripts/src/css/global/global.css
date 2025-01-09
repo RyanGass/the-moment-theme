@@ -1,0 +1,84 @@
+/***
+*** Global Styles ***
+***/
+
+html {
+  scroll-behavior: smooth;
+}
+
+main p,
+#banner p {
+  margin: var(--space-3) 0;
+}
+
+main ol,
+main ul {
+  list-style: disc;
+  padding: 0 0 0 var(--space-3);
+  margin: var(--space-3) 0;
+}
+
+/*** Flexible Content ***/
+
+main section {
+  padding: var(--space-8) var(--space-7);
+}
+
+main section:first-child {
+  padding-top: var(--space-8);
+}
+
+main section:last-child {
+  padding-bottom: var(--space-8);
+}
+
+main section.use-bg {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+  max-width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+main section div.container-inner,
+main section #category-wrapper,
+main section #post-block-wrapper {
+  @apply w-full md:w-11/12 mx-auto max-w-screen-2xl;
+}
+
+main section div.container-inner .gutenberg-content {
+  @apply max-w-screen-lg mx-auto;
+}
+
+@media (min-width: 1024px) {
+  main section {
+    padding: var(--space-8) 0;
+  }
+}
+
+/*** Return to Top ***/
+
+.scroll-top {
+  @apply bg-primary;
+
+  opacity: 0.6;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+  border-radius: 35px;
+  transition: all 0.3s;
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.scroll-top svg {
+  width: 15px;
+  fill: #fff;
+}

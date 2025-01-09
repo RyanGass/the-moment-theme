@@ -1,0 +1,76 @@
+/***
+*** Global Hero ***
+***/
+
+#header-top:not(.lg\:block) + section#banner .banner-area {
+  @apply pb-20 pt-32 md:pt-36 lg:pb-28 lg:pt-40 ;
+}
+
+header + section#banner .banner-area {
+  @apply pb-10 pt-16 md:pt-16 lg:pb-20 lg:pt-20  ;
+}
+
+header.fixed + section#banner .banner-area {
+  @apply pb-20 pt-32 md:pt-36 lg:pb-28 lg:pt-52;
+}
+
+/*** Global Banner ***/
+
+html {
+  body:not(.home) section#banner {
+    @apply bg-lightgrey;
+
+    p.description {
+      font-size: 1.4rem;
+      line-height: 1.9rem;
+    }
+  }
+
+  section#banner {
+    background: none;
+
+    &.overlay::after {
+      content: none;
+    }
+
+    &.light-text {
+      @apply bg-darkgrey;
+    }
+
+    &.light-text h1,
+    &.light-text p {
+      @apply text-white;
+    }
+
+    .banner-area {
+      position: relative;
+      z-index: 1;
+
+      &.text-center div#banner-left {
+        flex-basis: 100% !important;
+      }
+
+      &.text-center div#banner-right {
+        display: none !important;
+      }
+    }
+  }
+
+  @media screen and (min-width: 64rem) {
+    section#banner {
+      background-size: cover;
+      position: relative;
+
+      &.overlay::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(0 0 0 / 40%);
+        z-index: 0;
+      }
+    }
+  }
+}
