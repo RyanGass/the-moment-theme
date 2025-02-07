@@ -183,7 +183,7 @@
 * {
   @apply text-secondary;
 
-  font-family: Lato;
+  font-family: Karla, sans-serif;
   font-size: 1rem;
   line-height: 1.7;
 }
@@ -195,7 +195,6 @@ h4,
 h5,
 div.h5,
 h6 {
-  font-family: lato, sans-serif;
 }
 
 h1,
@@ -278,7 +277,6 @@ main li,
 #banner ul,
 #banner ol,
 #banner li {
-  font-family: Karla, sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 400;

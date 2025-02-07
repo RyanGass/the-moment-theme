@@ -39,7 +39,8 @@ function crb_attach_post_options() {
                                 ->set_value_type( 'url' ),
                             Field::make( 'text', 'heading', 'Heading' ),
                             Field::make( 'text', 'content', 'Content' ),
-                        ) ),
+                        ) )
+                        ->set_header_template( '<%- heading %>' ),
                     Field::make( 'text', 'button_text', 'Button Text' ),
                     Field::make( 'text', 'button_url', 'Button URL' ),
                 ) )

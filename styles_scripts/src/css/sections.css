@@ -780,7 +780,6 @@ section#card-testimonial-slides-container {
   .quote-name-company {
     @apply text-darkgrey;
 
-    font-family: Larsseit, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     font-weight: 500;
@@ -883,7 +882,6 @@ section#posts-container {
 
       font-size: var(--h4-f);
       line-height: calc(var(--h4-lh) + 0.5);
-      font-family: LarsseitBold, sans-serif;
       margin: 0 0 5px;
     }
 
@@ -892,7 +890,6 @@ section#posts-container {
 
       font-size: var(--h5-f);
       line-height: var(--h5-lh);
-      font-family: LarsseitLight, sans-serif;
       margin: 0;
     }
 
@@ -1359,7 +1356,6 @@ section#contact-form-container {
 
   span.required-fields {
     text-align: center;
-    font-family: Karla;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
