@@ -57,7 +57,7 @@ function crb_attach_hero_options() {
                         'compare' => '=',
                     )
                 ) ),
-            Field::make( 'text', 'button_text', 'Button Text' )
+            Field::make( 'text', 'banner_button_text', 'Button Text' )
                 ->set_conditional_logic( array(
                     'relation' => 'AND',
                     array(
@@ -66,7 +66,7 @@ function crb_attach_hero_options() {
                         'compare' => '=',
                     )
                 ) ),
-            Field::make( 'text', 'button_url', 'Button URL' )
+            Field::make( 'text', 'banner_button_url', 'Button URL' )
                 ->set_conditional_logic( array(
                     'relation' => 'AND',
                     array(
