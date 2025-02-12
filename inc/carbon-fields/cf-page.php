@@ -18,9 +18,7 @@ function crb_attach_post_options() {
     Container::make( 'post_meta', __( 'Page Sections', 'crb' ) )
         ->where( 'post_type', '=', 'page' )
         ->where( 'post_template', '=', 'default')
-        ->or_where( 'post_template', '=', 'templates/page-pricing.php')
-        ->or_where( 'post_template', '=', 'templates/page-resources.php')
-        ->or_where( 'post_template', '=', 'templates/page-industries.php')
+        // ->where( 'post_template', '=', 'templates/page-pricing.php') // Include or exclude additional templates
         ->add_fields( array(
             Field::make( 'complex', 'crb_sections', 'Sections' )
                 ->set_collapsed( true )

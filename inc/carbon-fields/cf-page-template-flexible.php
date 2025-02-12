@@ -3,16 +3,15 @@
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
-// Custom Fields (page-template.php)
+// Custom Fields (page-template-flexible.php)
 
-add_action( 'carbon_fields_register_fields', 'page_template_options_template' );
-function page_template_options_template() {
-    Container::make( 'post_meta', __( 'Template Options', 'crb' ) )
+add_action( 'carbon_fields_register_fields', 'page_template_flexible_options_template' );
+function page_template_flexible_options_template() {
+    Container::make( 'post_meta', __( 'Page Sections', 'crb' ) )
+        ->where( 'post_type', '=', 'page' )
         ->where( 'post_template', '=', 'templates/page-template.php')
-
-        // Fields // Copy entire tab to create new tabs
-        ->add_tab( __('Content'), array(
-            Field::make( 'text', 'pre_heading', 'Pre Heading' ),
+        ->add_fields(array(
+                Field::make( 'text', 'pre_heading', 'Pre Heading' ),
                 Field::make( 'text', 'heading', 'Heading' ),
                 Field::make( 'rich_text', 'header_content', 'Content' ),
                 Field::make( 'image', 'image', 'Image' )
@@ -27,5 +26,5 @@ function page_template_options_template() {
                     ) ),
                 Field::make( 'text', 'button_text', 'Button Text' ),
                 Field::make( 'text', 'button_url', 'Button URL' ),
-        ) );        
+            ) );
 }

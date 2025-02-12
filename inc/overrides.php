@@ -192,3 +192,15 @@ add_filter( 'max_srcset_image_width', 'remove_max_srcset_image_width' );
 	return false;
 }
 add_filter( 'wp_calculate_image_srcset', 'wdo_disable_srcset' );
+
+/***
+ * Disable Gutenberg on Pages
+ */
+
+function disable_gutenberg_for_pages($use_block_editor, $post) {
+    if ($post && $post->post_type === 'page') {
+        return false; // Disable Gutenberg for pages
+    }
+    return $use_block_editor; // Keep Gutenberg for other post types
+}
+add_filter('use_block_editor_for_post', 'disable_gutenberg_for_pages', 10, 2);
