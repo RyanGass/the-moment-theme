@@ -12,7 +12,7 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
 <section id="text-container" class="w-full<?php echo $bg_color; ?>"<?php echo $bg_image; ?>>
     <div class="container-inner">
         <div id="text-image-repeater" class="feature-wrapper">
-            <div class="section-block flex <?php echo $section['section_layout']; ?>">
+            <div class="section-block flex flex-col items-center">
                 <div id="section-content"  class="section-content" >
                     <?php if ($section['pre_heading']) : ?>
                     <div class="h5"><?php echo $section['pre_heading']; ?></div>

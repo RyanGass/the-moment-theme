@@ -39,3 +39,70 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
     </div>
 </div>
 </section>
+
+<style>
+/***
+*** Section Feature Cards (style 2) ***
+***/
+section#feature-2-container {
+  #feature-2-repeater {
+    margin: var(--space-8) auto;
+    column-gap: var(--space-4);
+    row-gap: var(--space-8);
+  }
+
+  .inner-area {
+    justify-content: center;
+  }
+
+  img.icon {
+    max-width: 50px;
+    margin-right: 0;
+    margin-bottom: var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    img.icon {
+      margin-bottom: 0;
+      margin-right: var(--space-2);
+    }
+  }
+
+  .value-heading {
+    @apply text-primary;
+  }
+}
+</style>
+
+<?php
+// Feature Cards Style 2
+->add_fields( 'features-2', 'Feature Cards 2', array(
+    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
+        ->add_options(array(
+            'no' => 'No',
+            'yes' => 'Yes'
+        )),
+    Field::make( 'color', 'background_color', 'Background Color' )
+        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
+        ->set_conditional_logic( array(
+        'relation' => 'OR',
+            array(
+                'field' => 'use_background_color',
+                'value' => 'yes',
+                'compare' => '=',
+            )
+        ) ),
+    Field::make( 'text', 'heading', 'Section Heading' ),
+    Field::make( 'text', 'content', 'Section Content' ),
+    Field::make( 'complex', 'features-2', 'Features' )
+        ->set_collapsed( true )
+        ->set_min('3')
+        ->set_max('6')
+        ->add_fields( 'feature', 'Feature', array(
+            Field::make( 'image', 'image', 'Image' )
+                ->set_value_type( 'url' ),
+            Field::make( 'text', 'heading', 'Heading' ),
+            Field::make( 'text', 'link_url', 'Button URL' )
+        ) )
+) )
+?>

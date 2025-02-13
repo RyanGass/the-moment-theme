@@ -209,12 +209,6 @@ function crb_attach_post_options() {
                                 'compare' => '=',
                             )
                         ) ),
-                        
-                    Field::make('radio', 'section_layout', 'Choose Layout')
-                        ->add_options(array(
-                            'flex-col md:flex-row' => 'Row',
-                            'flex-col' => 'Column'
-                        )),
                     Field::make( 'text', 'pre_heading', 'Pre Heading' ),
                     Field::make( 'text', 'heading', 'Heading' ),
                     Field::make( 'rich_text', 'content', 'Content' ),
@@ -226,110 +220,6 @@ function crb_attach_post_options() {
                 ->add_fields( 'free-form', 'Free Form Content', array(
                     Field::make( 'rich_text', 'content', 'Content' ),
                 ) )
-
-                // Data Table
-                ->add_fields( 'data-table', 'Data Table', array(
-                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
-                        ->add_options(array(
-                            'no' => 'No',
-                            'yes' => 'Yes'
-                        )),
-                    Field::make( 'color', 'background_color', 'Background Color' )
-                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
-                        ->set_conditional_logic( array(
-                        'relation' => 'OR',
-                            array(
-                                'field' => 'use_background_color',
-                                'value' => 'yes',
-                                'compare' => '=',
-                            )
-                        ) ),
-                    Field::make('radio', 'use_background_image', 'Use Background Image?')
-                        ->set_default_value( 'no' )
-                        ->add_options(array(
-                            'no' => 'No',
-                            'yes' => 'Yes'
-                        ))
-                        ->set_conditional_logic( array(
-                            'relation' => 'AND',
-                            array(
-                                'field' => 'use_background_color',
-                                'value' => 'no',
-                                'compare' => '=',
-                            )
-                        ) ),
-                    Field::make( 'image', 'data_table_bg_image', 'Image' )
-                        ->set_value_type( 'url' )
-                        ->set_conditional_logic( array(
-                            'relation' => 'AND',
-                            array(
-                                'field' => 'use_background_color',
-                                'value' => 'no',
-                                'compare' => '=',
-                            ),
-                            array(
-                                'field' => 'use_background_image',
-                                'value' => 'yes',
-                                'compare' => '=',
-                            )
-                        ) ),
-                    Field::make( 'text', 'heading', 'Heading' ),
-                    Field::make( 'rich_text', 'content', 'Content' ),
-                    Field::make( 'complex', 'table_heading', 'Table Heading' )
-                        ->set_collapsed( true )
-                        ->add_fields( 'row', 'Row', array(
-                            Field::make( 'complex', 'table_heading_items', 'Table Items' )
-                                ->set_collapsed( true )
-                                ->add_fields( 'row-items', 'Row Items', array(
-                                    Field::make( 'text', 'item', 'Item' ),
-                                ) ),
-                        ) ),
-                    Field::make( 'complex', 'table_data', 'Table Data' )
-                        ->set_collapsed( true )
-                        ->add_fields( 'row', 'Row', array(
-                            Field::make( 'complex', 'table_data_items', 'Table Items' )
-                                ->set_collapsed( true )
-                                ->add_fields( 'row-items', 'Row Items', array(
-                                    Field::make( 'text', 'item', 'Item' ),
-                                ) ),
-                        ) ),
-                    Field::make( 'rich_text', 'bottom_content', 'Bottom Content' ),
-                ) )
-
-                // Tabs
-                ->add_fields('tabs', 'Content Tabs', array(
-                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
-                        ->add_options(array(
-                            'no' => 'No',
-                            'yes' => 'Yes'
-                        )),
-                    Field::make('color', 'background_color', 'Background Color')
-                        ->set_palette(array('#960F0F', '#818285', '#EEEEEE', '#333333', '#101010'))
-                        ->set_conditional_logic(array(
-                            'relation' => 'OR',
-                            array(
-                                'field' => 'use_background_color',
-                                'value' => 'yes',
-                                'compare' => '=',
-                            )
-                        )),
-                    Field::make('text', 'tabs_pre_heading', 'Pre heading'),
-                    Field::make('text', 'tabs_heading', 'heading'),
-                    Field::make('rich_text', 'tabs_content', 'Content'),
-                    Field::make('complex', 'tab', 'Content Tab Buttons')
-                        ->set_collapsed(true)
-                        ->add_fields('tab-card', 'Tab Card', array(
-
-                            Field::make('text', 'tab_url', 'Tab URL'),
-                            Field::make('text', 'tab_text', 'Tab Text'),
-                            Field::make('text', 'tab_heading', 'Section Heading'),
-                            Field::make('text', 'tab_content', 'Section Content'),
-                            Field::make('image', 'tab_icon', 'Tab Icon')
-                                ->set_value_type('url'),
-                            Field::make('image', 'tab_image', 'Tab Image')
-                                ->set_value_type('url'),
-                        )),
-                ))
 
                 // Accolades
                 ->add_fields('accolades', 'Accolades', array(
@@ -378,152 +268,14 @@ function crb_attach_post_options() {
                             Field::make( 'image', 'featured_image', 'Image' )
                                 ->set_value_type( 'url' ),
                             Field::make( 'text', 'featured_heading', 'Heading' ),
-                            Field::make( 'textarea', 'featured_content', 'Content' ),
-                            Field::make( 'rich_text', 'add_featured_content', 'Additional Content' ),
-                            Field::make( 'text', 'button_url', 'Button URL' ),
-                            Field::make( 'text', 'button_text', 'Button Text' )
-                        ) ),
-                    Field::make( 'text', 'button_text', 'Section Button Text' ),
-                    Field::make( 'text', 'button_url', 'Section Button URL' )
-                ) )
-
-                // Feature Cards (w/Slider)
-                ->add_fields( 'feature-cards-slider', 'Feature Cards (w/ Slider)', array(
-                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
-                        ->add_options(array(
-                            'no' => 'No',
-                            'yes' => 'Yes'
-                        )),
-                    Field::make( 'color', 'background_color', 'Background Color' )
-                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
-                        ->set_conditional_logic( array(
-                        'relation' => 'OR',
-                            array(
-                                'field' => 'use_background_color',
-                                'value' => 'yes',
-                                'compare' => '=',
-                            )
-                        ) ),
-                    Field::make( 'text', 'heading', 'Section Heading' ),
-                    Field::make( 'text', 'content', 'Section Content' ),
-                    Field::make( 'radio', 'image_size', 'Image Size' )
-                        ->add_options( array(
-                            'sm' => 'Small',
-                            'md' => 'Medium',
-                            'full' => 'Full',
-                        ) ),
-                    Field::make( 'complex', 'crb_features', 'Feature Cards' )
-                        ->set_collapsed( true )
-                        ->add_fields( 'feature-card', 'Feature Card', array(
-                            Field::make( 'image', 'featured_image', 'Image' )
-                                ->set_value_type( 'url' ),
-                            Field::make( 'image', 'featured_image_hover', 'Image (hover)' )
-                                ->set_value_type( 'url' ),
-                            Field::make( 'text', 'featured_heading', 'Heading' ),
-                            Field::make( 'textarea', 'featured_content', 'Content' ),
+                            Field::make( 'rich_text', 'featured_content', 'Content' ),
                             Field::make( 'rich_text', 'add_featured_content', 'Additional Content' )
-                        ) )
-                ) )
-
-                // Feature Cards Style 2
-                ->add_fields( 'features-2', 'Feature Cards 2', array(
-                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
-                        ->add_options(array(
-                            'no' => 'No',
-                            'yes' => 'Yes'
-                        )),
-                    Field::make( 'color', 'background_color', 'Background Color' )
-                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
-                        ->set_conditional_logic( array(
-                        'relation' => 'OR',
-                            array(
-                                'field' => 'use_background_color',
-                                'value' => 'yes',
-                                'compare' => '=',
-                            )
+                                ->set_help_text( 'Use this editor to add a popup with additional content. Do not set buttons if this is used.' ),
+                            Field::make( 'text', 'button_text', 'Button Text' ),
+                            Field::make( 'text', 'button_url', 'Button URL' )
                         ) ),
-                    Field::make( 'text', 'heading', 'Section Heading' ),
-                    Field::make( 'text', 'content', 'Section Content' ),
-                    Field::make( 'complex', 'features-2', 'Features' )
-                        ->set_collapsed( true )
-                        ->set_min('3')
-                        ->set_max('6')
-                        ->add_fields( 'feature', 'Feature', array(
-                            Field::make( 'image', 'image', 'Image' )
-                                ->set_value_type( 'url' ),
-                            Field::make( 'text', 'heading', 'Heading' ),
-                            Field::make( 'text', 'link_url', 'Button URL' )
-                        ) )
-                ) )
-
-                // Testimonial Cards
-                ->add_fields( 'testimonial-cards', 'Testimonial Cards', array(
-                    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
-                        ->add_options(array(
-                            'no' => 'No',
-                            'yes' => 'Yes'
-                        )),
-                    Field::make( 'color', 'background_color', 'Background Color' )
-                        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
-                        ->set_conditional_logic( array(
-                        'relation' => 'OR',
-                            array(
-                                'field' => 'use_background_color',
-                                'value' => 'yes',
-                                'compare' => '=',
-                            )
-                        ) ),
-                    Field::make( 'text', 'heading', 'Section Heading' ),
-                    Field::make( 'text', 'content', 'Section Content' ),
-                    Field::make( 'radio', 'testimonial_number', 'How Many Testimonials to Show' )
-                            ->add_options( array(
-                                '1' => '1',
-                                '2' => '2',
-                                '3' => '3',
-                                '4' => '4',
-                                '5' => '5',
-                            ) ),
-                    Field::make( 'complex', 'crb_testimonials', 'Testimonial Cards' )
-                        ->set_collapsed( true )
-                        ->set_min('2')
-                        ->add_fields( 'testimonial-card', 'Testimonial Card', array(
-                            Field::make( 'image', 'testimonial_image', 'Image' )
-                                ->set_value_type( 'url' ),
-                            Field::make( 'textarea', 'testimonial_content', 'Content' ),
-                            Field::make( 'text', 'testimonial_name', 'Name' ),
-                            Field::make( 'text', 'testimonial_company', 'Company' )
-                        ) )
-                ) )
-
-                // Image/Text Slider
-                ->add_fields( 'testimonial-image-slider', 'Testimonial Image Slider', array(
-                    Field::make( 'radio', 'use_bg_overlay', 'Use Transparent Overlay?' )
-                    ->set_default_value( 'no' )    
-                    ->add_options( array(
-                            'no' => 'No',
-                            'yes' => 'Yes',
-                        ) ),
-                    Field::make( 'radio', 'slider_navigation', 'Slider Navigation' )
-                            ->add_options( array(
-                                'dots' => 'Dots',
-                                'arrows' => 'Arrows',
-                                'both' => 'Both',
-                            ) ),
-                    Field::make( 'radio', 'slider_text_location', 'Text Below Images?' )
-                            ->add_options( array(
-                                'no' => 'No',
-                                'yes' => 'Yes',
-                            ) ),
-                    Field::make( 'text', 'slide_duration', 'Slide Duration (Seconds)' ),
-                    Field::make( 'complex', 'crb_testimonial_slider', 'Testimonial Slider' )
-                        ->set_collapsed( true )
-                        ->add_fields( 'testimonial-slide', 'Testimonial Slide', array(
-                            Field::make( 'image', 'testimonial_image', 'Image' )
-                                ->set_value_type( 'url' ),
-                            Field::make( 'textarea', 'testimonial_content', 'Quote' ),
-                            Field::make( 'text', 'testimonial_name', 'Name' ),
-                            Field::make( 'text', 'testimonial_company', 'Company' ),
-                        ) )
+                    Field::make( 'text', 'button_text', 'Button Text' ),
+                    Field::make( 'text', 'button_url', 'Button URL' )
                 ) )
 
                 // Testimonial Single
@@ -603,15 +355,15 @@ function crb_attach_post_options() {
                                     'compare' => '=',
                                 )
                             ) ),
-                            Field::make( 'text', 'gf-form-id', 'Gravity Forms ID' )
-                            ->set_conditional_logic( array(
-                            'relation' => 'OR',
-                                array(
-                                    'field' => 'form_type',
-                                    'value' => 'gravity',
-                                    'compare' => '=',
-                                )
-                            ) ),
+                            Field::make( 'gravity_form', 'gf-form-id', 'Select a Form' )
+                                ->set_conditional_logic( array(
+                                'relation' => 'OR',
+                                    array(
+                                        'field' => 'form_type',
+                                        'value' => 'gravity',
+                                        'compare' => '=',
+                                    )
+                                ) ),
                             Field::make( 'text', 'cf-7-form-id', 'Contact Form 7 ID' )
                             ->set_conditional_logic( array(
                             'relation' => 'OR',

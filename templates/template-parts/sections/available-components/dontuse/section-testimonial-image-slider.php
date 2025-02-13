@@ -143,3 +143,48 @@ source.addEventListener("mouseover", function(){ clearInterval(myTimer)});
 source.addEventListener("mouseout", function(){ myTimer = setInterval(Next, <?php echo $duration ?>);});
 </script>
 </section>
+
+<style>
+/***
+*** Section Image slider ***
+***/
+
+section#testimonial-slides-container {
+  div.slide-block {
+    @apply pb-24 pt-20 md:pb-40 md:pt-40 lg:pt-72;
+  }
+}
+</style>
+
+<?php
+// Image/Text Slider
+->add_fields( 'testimonial-image-slider', 'Testimonial Image Slider', array(
+	Field::make( 'radio', 'use_bg_overlay', 'Use Transparent Overlay?' )
+	->set_default_value( 'no' )    
+	->add_options( array(
+			'no' => 'No',
+			'yes' => 'Yes',
+		) ),
+	Field::make( 'radio', 'slider_navigation', 'Slider Navigation' )
+			->add_options( array(
+				'dots' => 'Dots',
+				'arrows' => 'Arrows',
+				'both' => 'Both',
+			) ),
+	Field::make( 'radio', 'slider_text_location', 'Text Below Images?' )
+			->add_options( array(
+				'no' => 'No',
+				'yes' => 'Yes',
+			) ),
+	Field::make( 'text', 'slide_duration', 'Slide Duration (Seconds)' ),
+	Field::make( 'complex', 'crb_testimonial_slider', 'Testimonial Slider' )
+		->set_collapsed( true )
+		->add_fields( 'testimonial-slide', 'Testimonial Slide', array(
+			Field::make( 'image', 'testimonial_image', 'Image' )
+				->set_value_type( 'url' ),
+			Field::make( 'textarea', 'testimonial_content', 'Quote' ),
+			Field::make( 'text', 'testimonial_name', 'Name' ),
+			Field::make( 'text', 'testimonial_company', 'Company' ),
+		) )
+) )
+?>

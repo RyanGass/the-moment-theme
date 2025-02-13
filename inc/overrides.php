@@ -204,3 +204,19 @@ function disable_gutenberg_for_pages($use_block_editor, $post) {
     return $use_block_editor; // Keep Gutenberg for other post types
 }
 add_filter('use_block_editor_for_post', 'disable_gutenberg_for_pages', 10, 2);
+
+/***
+ * Disable meta boxes on pages with Gutenberg disabled
+ */
+
+function disable_unused_metaboxes() {
+    remove_meta_box('postcustom', 'page', 'normal'); // Custom Fields (Pages)
+    remove_meta_box('commentstatusdiv', 'page', 'normal'); // Discussion (Allow Comments - Pages)
+    remove_meta_box('commentsdiv', 'page', 'normal'); // Comments
+	remove_meta_box('trackbacksdiv', 'page', 'normal'); // Trackbacks
+    remove_meta_box('revisionsdiv', 'page', 'normal'); // Revisions
+	remove_meta_box('slugdiv', 'page', 'normal'); // Slug
+    remove_meta_box('authordiv', 'page', 'normal'); // Remove from main editor
+    add_meta_box('authordiv', __('Author'), 'post_author_meta_box', 'page', 'side', 'default'); // Add to sidebar
+}
+add_action('admin_menu', 'disable_unused_metaboxes');

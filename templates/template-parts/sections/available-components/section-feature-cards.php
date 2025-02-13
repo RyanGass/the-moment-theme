@@ -27,11 +27,18 @@ foreach ( $features as $feature ) { if ($i <= 3) { $i++; } } ?>
                 $button_text = $feature['button_text'];
                 ?>
                 <div class="section-block">
-                    <div class="area h-full">   
+                    <div class="area h-full">  
+                    <?php if ($feature['add_featured_content']) : ?>
                     <div id="form-init-<?php echo $p; ?>" class="cursor-pointer flex flex-col justify-evenly text-center inner-area align-center h-full image-size-<?php echo $image_size; ?>">
+                    <?php else : ?>
+                    <div id="no-form-init" class="flex flex-col justify-evenly text-center inner-area align-center h-full image-size-<?php echo $image_size; ?>">
+                    <?php endif; ?> 
                             <img class="mx-auto" src="<?php echo $image; ?>" alt="<?php echo $alt ?>" title="<?php echo $image_title ?>" />
                             <?php if ($feature['featured_heading']) : ?>
                                 <h3 class="block font-black feature-heading"><?php echo $feature['featured_heading']; ?></h3>
+                            <?php endif; ?>
+                            <?php if ($feature['featured_content']) : ?>
+                                <p class="block feature-content"><?php echo $feature['featured_content']; ?></p>
                             <?php endif; ?>
                             <?php if ($feature['button_url']) : ?>
                                 <a href="<?php echo $feature['button_url']; ?>" class="block m-auto btn primary" data-lity><?php echo $button_text ?></a>

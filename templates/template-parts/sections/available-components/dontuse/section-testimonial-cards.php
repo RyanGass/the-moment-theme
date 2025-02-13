@@ -417,4 +417,133 @@ function cardNext() {
 }
 
 </script>
-        
+
+<style>
+/***
+*** Home Testimonials (card slider) ***
+***/
+
+section#card-testimonial-slides-container {
+  @apply relative;
+
+  .container-inner {
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-8);
+    position: relative;
+  }
+
+  .button-nav.card-slide-navigation {
+    position: absolute;
+    z-index: 1;
+    padding-top: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: 0;
+  }
+
+  .button-nav.card-slide-navigation.previous {
+    right: 100%;
+  }
+
+  .button-nav.card-slide-navigation.next {
+    left: 100%;
+  }
+
+  .button-nav.card-slide-navigation svg {
+    fill: rgb(215 215 215 / 99%);
+    height: var(--h2-f);
+  }
+
+  .card-slide-inner-container {
+    padding: 0 48px;
+    overflow: hidden;
+
+    div#card-testimonials-repeater {
+      .card-section-block {
+        display: inline-block;
+        margin: var(--space-1);
+        padding: var(--space-4) var(--space-3) 40px;
+        max-width: none;
+        background: #fff;
+        box-shadow: 0 0 5px #dcdcdc;
+
+        picture {
+          width: 75px;
+          height: 75px;
+          margin: 0 auto;
+          border-radius: 100px;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+        }
+
+        img {
+          max-width: 150px;
+        }
+      }
+    }
+
+    span.quote-content {
+      margin: var(--space-3) 0;
+    }
+
+    span.name {
+      @apply text-primary;
+
+      font-weight: 700;
+    }
+
+    span.company {
+      margin: var(--space-1) 0 var(--space-3);
+      line-height: 1rem;
+    }
+  }
+
+  .card-slide-navigation svg {
+    fill: blue;
+    width: 40px;
+    height: 40px;
+  }
+}
+</style>
+
+<?php
+// Testimonial Cards
+->add_fields( 'testimonial-cards', 'Testimonial Cards', array(
+	Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
+		->add_options(array(
+			'no' => 'No',
+			'yes' => 'Yes'
+		)),
+	Field::make( 'color', 'background_color', 'Background Color' )
+		->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
+		->set_conditional_logic( array(
+		'relation' => 'OR',
+			array(
+				'field' => 'use_background_color',
+				'value' => 'yes',
+				'compare' => '=',
+			)
+		) ),
+	Field::make( 'text', 'heading', 'Section Heading' ),
+	Field::make( 'text', 'content', 'Section Content' ),
+	Field::make( 'radio', 'testimonial_number', 'How Many Testimonials to Show' )
+			->add_options( array(
+				'1' => '1',
+				'2' => '2',
+				'3' => '3',
+				'4' => '4',
+				'5' => '5',
+			) ),
+	Field::make( 'complex', 'crb_testimonials', 'Testimonial Cards' )
+		->set_collapsed( true )
+		->set_min('2')
+		->add_fields( 'testimonial-card', 'Testimonial Card', array(
+			Field::make( 'image', 'testimonial_image', 'Image' )
+				->set_value_type( 'url' ),
+			Field::make( 'textarea', 'testimonial_content', 'Content' ),
+			Field::make( 'text', 'testimonial_name', 'Name' ),
+			Field::make( 'text', 'testimonial_company', 'Company' )
+		) )
+) )
+?>

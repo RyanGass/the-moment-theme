@@ -17,7 +17,7 @@ if ($use_bg_color === 'yes') { $bg_color = ' bg-[' . $bg_color . ']'; } else { $
     <div class="container-inner">
         <div id="video-repeater">
             <div class="section-block">
-                <div id="section-image" class="section-video">
+                <div id="section-image" class="section-video flex justify-center">
                     <?php if ($video_url) : ?> 
                     <div id="video-container" class="w-fit hero-video"> 
                         <div class="section-video">

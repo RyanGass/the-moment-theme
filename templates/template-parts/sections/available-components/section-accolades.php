@@ -23,7 +23,7 @@ if ($use_bg_image === 'yes') {
                     <div class="content"><?php echo apply_filters('the_content', $section['acc_content']) ?></div>
                 <?php endif; ?>
             </div>
-            <div id="accolades">
+            <div id="accolades" class="flex">
                 <?php foreach ($accolades as $accolade) { ?>
                     <div class="image">
                         <img src="<?php echo $accolade['acc_image']; ?>" alt="Award / Recognition Logo">

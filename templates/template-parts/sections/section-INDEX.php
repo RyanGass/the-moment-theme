@@ -26,11 +26,6 @@
 			get_template_part('templates/template-parts/sections/available-components/section', 'free-form');
 			
 			break;
-		case 'tabs':
-
-			get_template_part('templates/template-parts/sections/available-components/section', 'tabs');
-
-			break;
 		case 'accolades':
 
 			get_template_part('templates/template-parts/sections/available-components/section', 'accolades');
@@ -39,26 +34,6 @@
 		case 'feature-cards':
 			
 			get_template_part('templates/template-parts/sections/available-components/section', 'feature-cards');
-			
-			break;
-		case 'feature-cards-slider':
-			
-			get_template_part('templates/template-parts/sections/available-components/section', 'feature-cards-slider');
-			
-			break;
-		case 'features-2':
-			
-			get_template_part('templates/template-parts/sections/available-components/section', 'feature-cards-2');
-			
-			break;
-		case 'testimonial-cards':
-			
-			get_template_part('templates/template-parts/sections/available-components/section', 'testimonial-cards');
-			
-			break;
-		case 'testimonial-image-slider':
-			
-			get_template_part('templates/template-parts/sections/available-components/section', 'testimonial-image-slider');
 			
 			break;
 		case 'testimonial-single':
@@ -99,11 +74,6 @@
 		case 'blockquote':
 			
 			get_template_part('templates/template-parts/sections/available-components/section', 'blockquote');
-			
-			break;
-		case 'data-table':
-		
-			get_template_part('templates/template-parts/sections/available-components/section', 'data-table');
 			
 			break;
 	}

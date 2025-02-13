@@ -481,4 +481,265 @@ function customCardNext() {
 
 </script>
 
+<style>
+/***
+*** Section Feature Cards (Slider) ***
+***/
 
+section#custom-feature-container.slider {
+  @apply relative;
+
+  #custom-features-repeater .custom-section-block {
+    @apply bg-white;
+
+    box-shadow: 0 0 5px #dcdcdc;
+    padding: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    #custom-features-repeater .custom-section-block {
+      padding: var(--space-4) var(--space-3);
+    }
+  }
+
+  .custom-inner-area {
+    padding: 0 var(--space-2);
+    max-width: none;
+
+    &.custom-image-size-full img {
+      max-height: 150px;
+    }
+
+    img {
+      margin: 0 auto var(--space-3);
+      max-height: 100px;
+    }
+
+    &.custom-image-size-sm img {
+      width: 50px;
+    }
+
+    &.custom-image-size-md img {
+      height: 125px;
+    }
+
+    &.custom-image-size-full img {
+      width: 100%;
+    }
+
+    .custom-feature-heading {
+      @apply text-darkgrey;
+
+      font-size: 18px !important;
+      font-weight: 600 !important;
+      line-height: 22px;
+    }
+
+    .custom-feature-content {
+      @apply text-primary;
+
+      font-size: 38px;
+      line-height: 25px;
+      margin: var(--space-1) auto var(--space-2);
+      width: fit-content;
+      font-weight: 900;
+    }
+  }
+
+  .custom-container-inner {
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-8);
+    position: relative;
+  }
+
+  .button-nav.custom-card-slide-navigation {
+    position: absolute;
+    z-index: 1;
+    padding-top: 0;
+    top: 63%;
+    transform: translateY(-50%);
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button-nav.custom-card-slide-navigation.previous {
+    right: 96%;
+    background: #fff !important;
+    border-radius: 50px !important;
+    box-shadow: 5px 5px 15px lightgrey;
+    width: 40px;
+    height: 40px;
+  }
+
+  .button-nav.custom-card-slide-navigation.next {
+    left: 96%;
+    background: #fff !important;
+    border-radius: 50px !important;
+    box-shadow: 5px 5px 15px lightgrey;
+    width: 40px;
+    height: 40px;
+  }
+
+  .button-nav.custom-card-slide-navigation svg {
+    fill: #7937fb;
+    height: 20px;
+  }
+
+  .custom-card-slide-inner-container {
+    padding: 0 48px;
+
+    div#custom-features-repeater {
+      .custom-card-section-block {
+        display: inline-block;
+        margin: var(--space-1);
+        padding: var(--space-4) 0 40px;
+        max-width: none;
+        background: #fff;
+        box-shadow: 5px 5px 35px #eee;
+        border-radius: 15px;
+
+        @media (min-width: 1024px) {
+          &:hover {
+            @apply bg-primary;
+
+            background: linear-gradient(324deg, rgb(180 85 247 / 100%) 0%, rgb(114 51 252 / 100%) 100%);
+          }
+
+          &:hover * {
+            @apply text-white;
+          }
+
+          &:hover img:not(.custom-image-hover) {
+            display: none;
+          }
+
+          &:hover img.custom-image-hover {
+            display: block;
+          }
+        }
+
+        picture {
+          width: 75px;
+          height: 75px;
+          margin: 0 auto;
+          border-radius: 100px;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+        }
+
+        img {
+          max-width: 150px;
+        }
+      }
+    }
+  }
+
+  .custom-card-slide-navigation svg {
+    fill: blue;
+    width: 40px;
+    height: 40px;
+  }
+
+  @media (max-width: 768px) {
+    .button-nav.custom-card-slide-navigation.previous {
+      right: 52%;
+      bottom: -10px;
+      top: unset;
+      transform: none;
+      width: 50px;
+      height: 50px;
+    }
+
+    .button-nav.custom-card-slide-navigation.next {
+      left: 52%;
+      bottom: -10px;
+      top: unset;
+      transform: none;
+      width: 50px;
+      height: 50px;
+    }
+
+    .button-nav.custom-card-slide-navigation svg {
+      height: 30px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  section#custom-feature-container.slider {
+    padding-bottom: var(--space-12);
+  }
+}
+
+section#custom-feature-container:not([class*="style-"]) {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 9vw;
+    height: 100%;
+    background: rgb(255 255 255 / 80%);
+    top: 0;
+    z-index: 1;
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+    z-index: 0;
+  }
+
+  @media (max-width: 768px) {
+    &::before,
+    &::after {
+      content: none;
+    }
+  }
+}
+</style>
+
+<?php
+// Feature Cards (w/Slider)
+->add_fields( 'feature-cards-slider', 'Feature Cards (w/ Slider)', array(
+    Field::make('radio', 'use_background_color', 'Use Backgrond Color?')
+        ->add_options(array(
+            'no' => 'No',
+            'yes' => 'Yes'
+        )),
+    Field::make( 'color', 'background_color', 'Background Color' )
+        ->set_palette( array( '#960F0F', '#818285', '#EEEEEE', '#333333', '#101010' ) )
+        ->set_conditional_logic( array(
+        'relation' => 'OR',
+            array(
+                'field' => 'use_background_color',
+                'value' => 'yes',
+                'compare' => '=',
+            )
+        ) ),
+    Field::make( 'text', 'heading', 'Section Heading' ),
+    Field::make( 'text', 'content', 'Section Content' ),
+    Field::make( 'radio', 'image_size', 'Image Size' )
+        ->add_options( array(
+            'sm' => 'Small',
+            'md' => 'Medium',
+            'full' => 'Full',
+        ) ),
+    Field::make( 'complex', 'crb_features', 'Feature Cards' )
+        ->set_collapsed( true )
+        ->add_fields( 'feature-card', 'Feature Card', array(
+            Field::make( 'image', 'featured_image', 'Image' )
+                ->set_value_type( 'url' ),
+            Field::make( 'image', 'featured_image_hover', 'Image (hover)' )
+                ->set_value_type( 'url' ),
+            Field::make( 'text', 'featured_heading', 'Heading' ),
+            Field::make( 'textarea', 'featured_content', 'Content' ),
+            Field::make( 'rich_text', 'add_featured_content', 'Additional Content' )
+        ) )
+) )
+?>
