@@ -112,5 +112,5 @@ jobs:
           WPE_ENV: $WPE_ENV
           REMOTE_PATH: wp-content/themes/solomon
           PHP_LINT: FALSE
-          # FLAGS: -azvr --delete --exclude-from=.deployignore --exclude vendor/
+          FLAGS: -azvr --delete
           CACHE_CLEAR: ${{ env.CLEARCACHE }}
